@@ -7,8 +7,8 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 
 import './index.css';
-import App from './App';
-import TestPage from './pages/TestPage';
+
+/** import components/pages for routes here */
 import BaseLayout from './common/layout/BaseLayout'
 
 const persistor = persistStore(store);
@@ -20,8 +20,8 @@ ReactDOM.render(
         <Router>
           <BaseLayout>
             <Routes>
-              <Route path="/" element={<App />}/>
-              <Route path="/test_page" element={<TestPage />}/>
+              <Route path="/"/>
+              <Route path="/test_page"/>
             </Routes>
           </BaseLayout>
         </Router>

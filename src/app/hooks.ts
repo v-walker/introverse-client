@@ -6,11 +6,14 @@ export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 
-// IMPORTANT!
-// in components, import the following:
-// import { useAppDispatch, useAppSelector } from '../hooks';
+/**
+ * IMPORTANT!
+ * in components, import the following:
+ * import { useAppDispatch, useAppSelector } from '../hooks';
+ * 
+ * Inside of component function, examples of use 
+ * const dispatch = useAppDispatch();
+ * export const selectCount = (state: RootState) => state.counter.value;  <-- in counterSlice.ts
+ * const count = useAppSelector(selectCount); <-- in Counter.tsx component
+ */
 
-// Inside of component function, examples of use 
-// const dispatch = useAppDispatch();
-// export const selectCount = (state: RootState) => state.counter.value;  <-- in counterSlice.ts
-// const count = useAppSelector(selectCount); <-- in Counter.tsx component
