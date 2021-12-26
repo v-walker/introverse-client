@@ -5,7 +5,11 @@ function Header() {
         <>
             <Link to="/">Home Page</Link>
             &nbsp;
-            <Link to="/test_page">Test Page</Link>
+            <Link to="/quiz">Quiz</Link>
+            &nbsp;
+            <Link to="/recommendations">Recommendations</Link>
+            &nbsp;
+            <Link to="/about">About</Link>
         </>
     )
 }
