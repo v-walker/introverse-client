@@ -1,7 +1,7 @@
 import React from 'react';
 import SignUpForm from './SignUpForm';
 
-function HomePageCardContent() {
+function HomePageCardContent(): JSX.Element {
     return (
         <>
             <div className="row">
@@ -12,7 +12,7 @@ function HomePageCardContent() {
                 </div>
                 <div className="col s12 m4 l4">
                 <SignUpForm />
-                
+
 
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SignUpForm() {
+function SignUpForm(): JSX.Element {
     return (
         <>
             <h5>Sign Up</h5>
