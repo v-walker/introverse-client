@@ -5,9 +5,29 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: FAFAFA;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/** Universal Class Utitlities */
+
+.mx0 {
+  margin-left: none !important;
+  margin-right: none !important;
+}
+
+.m-5 {
+  margin: 3rem;
+}
+
+.mt-5 {
+  margin-top: 3rem;
+}
+
+.mb-5 {
+  margin-bottom: 3rem;
+}
+
+.centerHoriz {
+  display: flex;
+  justify-content: center;
 }
