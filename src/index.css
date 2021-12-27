@@ -34,6 +34,17 @@ body {
   color: #252525;
 }
 
+/** Color classes */
+.text-teal {
+  color: #4db6ac;
+}
+.text-red {
+  color: #ef5350;
+}
+.text-orange {
+  color: #ffb74d;
+}
+
 /** Home Page Logo Icon Formatting */
 
 .main-icon-container {
@@ -45,10 +56,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.xl-icon {
-  font-size: 250px;
 }
 
 /** Universal Class Utitlities */
@@ -73,4 +80,16 @@ body {
 .centerHoriz {
   display: flex;
   justify-content: center;
+}
+
+
+
+/* Icon sizing */
+
+.lg-icon {
+  font-size: 10rem;
+}
+
+.xl-icon {
+  font-size: 17rem;
 }
