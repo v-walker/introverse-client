@@ -27,9 +27,10 @@ function App(): JSX.Element {
 
         <div className='row'>
           <div className='col s12 center-align'>
-              <h2>Features</h2>
+              <h2>The Introverse Way</h2>
           </div>
 
+          {/* feature column container */}
           <div className='col s12 center-align'>
             <div className='row'>
 
