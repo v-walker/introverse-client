@@ -22,7 +22,16 @@ function SignUpForm(): JSX.Element {
                     <input id="password" type="password" />
                     <label htmlFor="password">Password</label>
                 </div>
+                <div className='right-align'>
+                    <button type='submit' className='waves-effect waves-light btn'>Submit</button>
+                </div>
             </form>
+
+            <div className='col s12 mt-5'>
+                Already have an account?
+                <br />
+                Click here to sign in.
+            </div>
         </>
     )
 }

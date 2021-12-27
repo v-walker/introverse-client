@@ -1,3 +1,28 @@
+/**
+ * Color Palette
+ * 
+ * Hex Values
+ * Teal: #4db6ac
+ * Red: #ef5350
+ * Orange: #ffb74d
+ * Off White/Gray: #fafafa
+ * Charcoal: #252525
+ * 
+ * RGB Values
+ * Teal: rgb(77, 182, 172)
+ * Red: rgb(239, 83, 80)
+ * Orange: rgb(255, 184, 77)
+ * Off White: rgb(250, 250, 250)
+ * Charcoal: rgb(37, 37, 37)
+ * 
+ * Correlates to Materialize CSS
+ * Teal: teal lighten-2
+ * Red: red lighten-1
+ * Orange: orange lighten-2
+ * 
+ */
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,7 +30,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: FAFAFA;
+  background-color: #fafafa;
+  color: #252525;
 }
 
 /** Universal Class Utitlities */
