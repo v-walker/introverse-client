@@ -34,6 +34,23 @@ body {
   color: #252525;
 }
 
+/** Home Page Logo Icon Formatting */
+
+.main-icon-container {
+  height: 250px;
+}
+
+.main-icon-parent {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.xl-icon {
+  font-size: 250px;
+}
+
 /** Universal Class Utitlities */
 
 .mx0 {
