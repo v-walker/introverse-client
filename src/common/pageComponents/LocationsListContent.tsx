@@ -2,7 +2,7 @@ import React from 'react'
 
 function LocationsListContent(): JSX.Element {
     return (
-        <div>
+        <div className='locations-list'>
             locations list here
         </div>
     )

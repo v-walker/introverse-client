@@ -17,16 +17,18 @@ function RecommendationsPage() {
 
                     <div className='col s12 center-align'>
                         <h1>Your Recommendations</h1>
+                        <hr />
 
                     </div>
 
                     <aside className='col s12 m3 mt-5'>
                         {/* search section */}
-                        <h4>Search Location</h4>
+                        <h5>Search Location</h5>
                         <form>
                             <div className='row'>
                                 <div className='input-field col s12'>
                                     <input id="locationSearch" type="search" />
+                                    <label htmlFor="locationSearch">City, State</label>
                                 </div>
 
                                 <div className='right-align col s12'>
