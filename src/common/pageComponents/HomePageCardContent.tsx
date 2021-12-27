@@ -7,13 +7,13 @@ function HomePageCardContent(): JSX.Element {
             <div className="row">
                 <div className="col s12 m8 l8 center-align">
                 <h1>Introverse</h1>
-                <h6>Avoiding others, together</h6>
+                <h6>avoiding everyone, together</h6>
+
+                {/* add icon or logo/image here */}
                 
                 </div>
                 <div className="col s12 m4 l4">
-                <SignUpForm />
-
-
+                    <SignUpForm />
                 </div>
             </div>
         </>

@@ -30,6 +30,7 @@ function SignUpForm(): JSX.Element {
             <div className='col s12 mt-5'>
                 Already have an account?
                 <br />
+                {/* add links to this line */}
                 Click here to sign in.
             </div>
         </>
