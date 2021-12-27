@@ -5,7 +5,7 @@ interface FeatureElements {
     text: string
 }
 
-function FeatureColumn({IconElement, text}: FeatureElements) {
+function FeatureColumn({IconElement, text}: FeatureElements): JSX.Element {
     return (
         <div className='col s12 m4'>
             <div className="row mt-5">
