@@ -9,7 +9,11 @@ import { persistStore } from "redux-persist";
 import './index.css';
 
 /** import components/pages for routes here */
-import BaseLayout from './common/layout/BaseLayout'
+import BaseLayout from './common/layout/BaseLayout';
+import App from './App';
+import QuizPage from './pages/QuizPage';
+import RecommendationsPage from './pages/RecommendationsPage';
+import AboutPage from './pages/AboutPage';
 
 const persistor = persistStore(store);
 
@@ -20,8 +24,10 @@ ReactDOM.render(
         <Router>
           <BaseLayout>
             <Routes>
-              <Route path="/"/>
-              <Route path="/test_page"/>
+              <Route path="/" element={<App />}/>
+              <Route path="/quiz" element={<QuizPage />}/>
+              <Route path="/recommendations" element={<RecommendationsPage />}/>
+              <Route path="/about" element={<AboutPage />}/>
             </Routes>
           </BaseLayout>
         </Router>

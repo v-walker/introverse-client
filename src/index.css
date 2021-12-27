@@ -1,3 +1,28 @@
+/**
+ * Color Palette
+ * 
+ * Hex Values
+ * Teal: #4db6ac
+ * Red: #ef5350
+ * Orange: #ffb74d
+ * Off White/Gray: #fafafa
+ * Charcoal: #252525
+ * 
+ * RGB Values
+ * Teal: rgb(77, 182, 172)
+ * Red: rgb(239, 83, 80)
+ * Orange: rgb(255, 184, 77)
+ * Off White: rgb(250, 250, 250)
+ * Charcoal: rgb(37, 37, 37)
+ * 
+ * Correlates to Materialize CSS
+ * Teal: teal lighten-2
+ * Red: red lighten-1
+ * Orange: orange lighten-2
+ * 
+ */
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +30,66 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fafafa;
+  color: #252525;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/** Color classes */
+.text-teal {
+  color: #4db6ac;
+}
+.text-red {
+  color: #ef5350;
+}
+.text-orange {
+  color: #ffb74d;
+}
+
+/** Home Page Logo Icon Formatting */
+
+.main-icon-container {
+  height: 250px;
+}
+
+.main-icon-parent {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/** Universal Class Utitlities */
+
+.mx0 {
+  margin-left: none !important;
+  margin-right: none !important;
+}
+
+.m-5 {
+  margin: 3rem;
+}
+
+.mt-5 {
+  margin-top: 3rem;
+}
+
+.mb-5 {
+  margin-bottom: 3rem;
+}
+
+.centerHoriz {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/* Icon sizing */
+
+.lg-icon {
+  font-size: 10rem;
+}
+
+.xl-icon {
+  font-size: 17rem;
 }
