@@ -34,6 +34,12 @@ body {
   color: #252525;
 }
 
+nav {
+  position: fixed;
+  top: 0px;
+  z-index: 99;
+}
+
 footer {
   border-top: 3.5px solid #ffb74d;
 }
@@ -85,6 +91,10 @@ ul.hide-on-med-and-down.right:last-child {
 }
 
 /** Universal Class Utitlities */
+
+.m-below-nav {
+  margin-top: 6rem;
+}
 
 .mx0 {
   margin-left: none !important;

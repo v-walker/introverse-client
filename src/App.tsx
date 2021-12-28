@@ -18,9 +18,9 @@ import FeatureColumn from './common/pageComponents/FeatureColumn';
 function App(): JSX.Element {
   return (
     <>
-      <main className='container mt-5'>
+      <main className='container'>
         {/* main card content */}
-        <div className="row">
+        <div className="row m-below-nav">
           <div className='col s12'>
             <BasicLargeCard cardContent={<HomePageCardContent/>}/>
           </div>

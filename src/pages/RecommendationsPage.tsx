@@ -12,8 +12,8 @@ import MapCardContent from '../common/pageComponents/MapCardContent';
 function RecommendationsPage() {
     return (
         <>
-            <main className='container mt-5'>
-                <div className='row'>
+            <main className='container'>
+                <div className='row m-below-nav'>
 
                     <div className='col s12 center-align'>
                         <h1>Your Recommendations</h1>
