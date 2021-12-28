@@ -18,7 +18,7 @@ function Header():JSX.Element {
                 alignLinks="right"
                 brand={<Link to="/" className="">Logo</Link>}
                 id="mobile-nav"
-                menuIcon={<GiHamburgerMenu />}
+                menuIcon={<GiHamburgerMenu style={{fontSize: "1.5rem"}} />}
                 options={{
                     draggable: true,
                     edge: 'left',
