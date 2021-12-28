@@ -34,6 +34,22 @@ body {
   color: #252525;
 }
 
+footer {
+  border-top: 3.5px solid #ffb74d;
+}
+
+/** Color classes */
+.text-teal {
+  color: #4db6ac;
+}
+.text-red {
+  color: #ef5350;
+}
+.text-orange {
+  color: #ffb74d;
+}
+
+/** card component classes */
 .map-card {
   height: 60vh;
 }
@@ -54,16 +70,6 @@ ul.hide-on-med-and-down.right:last-child {
   }
 }
 
-/** Color classes */
-.text-teal {
-  color: #4db6ac;
-}
-.text-red {
-  color: #ef5350;
-}
-.text-orange {
-  color: #ffb74d;
-}
 
 /** Home Page Logo Icon Formatting */
 
@@ -95,6 +101,14 @@ ul.hide-on-med-and-down.right:last-child {
 
 .mb-5 {
   margin-bottom: 3rem;
+}
+
+.pt-5 {
+  padding-top: 3rem;
+}
+
+.pb-5 {
+  padding-bottom: 3rem;
 }
 
 .centerHoriz {

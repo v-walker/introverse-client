@@ -16,7 +16,7 @@ function Header():JSX.Element {
             <Navbar
                 className='orange lighten-2'
                 alignLinks="right"
-                brand={<Link to="/" className="">Logo</Link>}
+                brand={<Link to="/" className="" id="top">Logo</Link>}
                 id="mobile-nav"
                 menuIcon={<GiHamburgerMenu style={{fontSize: "1.5rem"}} />}
                 options={{
