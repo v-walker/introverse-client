@@ -42,6 +42,18 @@ body {
   height: 40vh;
 }
 
+/** navbar responsiveness */
+
+ul.hide-on-med-and-down.right:last-child {
+  margin-right: 15%;
+}
+
+@media only screen and (min-width: 992px) {
+  .brand-logo {
+    margin-left: 15%;
+  }
+}
+
 /** Color classes */
 .text-teal {
   color: #4db6ac;
