@@ -34,6 +34,16 @@ body {
   color: #252525;
 }
 
+nav {
+  position: fixed;
+  top: 0px;
+  z-index: 99;
+}
+
+footer {
+  border-top: 3.5px solid #ffb74d;
+}
+
 /** Color classes */
 .text-teal {
   color: #4db6ac;
@@ -44,6 +54,56 @@ body {
 .text-orange {
   color: #ffb74d;
 }
+
+/** card component classes */
+.map-card {
+  height: 60vh;
+}
+
+.locations-list {
+  height: 40vh;
+}
+
+/** navbar responsiveness */
+
+ul.hide-on-med-and-down.right:last-child {
+  margin-right: 15%;
+}
+
+@media only screen and (min-width: 992px) {
+  .brand-logo {
+    margin-left: 15%;
+  }
+}
+
+/** footer responsiveness */
+.footer-col1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start
+}
+
+.footer-col2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-col3 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+@media only screen and (max-width: 601px) {
+
+  .footer-col2, .footer-col3 {
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
+
+}
+
 
 /** Home Page Logo Icon Formatting */
 
@@ -60,6 +120,10 @@ body {
 
 /** Universal Class Utitlities */
 
+.m-below-nav {
+  margin-top: 6rem;
+}
+
 .mx0 {
   margin-left: none !important;
   margin-right: none !important;
@@ -75,6 +139,14 @@ body {
 
 .mb-5 {
   margin-bottom: 3rem;
+}
+
+.pt-5 {
+  padding-top: 3rem;
+}
+
+.pb-5 {
+  padding-bottom: 3rem;
 }
 
 .centerHoriz {
