@@ -119,100 +119,100 @@ function QuizCardContent(): JSX.Element {
                                 <>
                                     <h6>"I have now decided that I <i>don't</i> need milk, as there's someone else currently looking at the milk."</h6>
                                     <br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerOne}>My interest is still whole.</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerTwo}>My interest is half and half.</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerThree}>My interest is at 2%.</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerFour}>My interest is skim.</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerOne}>My interest is still whole.</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>My interest is half and half.</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerThree}>My interest is at 2%.</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>My interest is skim.</button><br />
                                 </>
                             }
                             {counter === 1 &&
                                 <>
                                     <h6>"Han shot first."</h6>
                                     <br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerOne}>Who's Han?</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerTwo}>I mean, if Georgie Boy said that he didn't...</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerThree}>YES.</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerFour}>YES, and I have the Laserdisc to prove it.</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerOne}>Who's Han?</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>I mean, if Georgie Boy said that he didn't...</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerThree}>YES.</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>YES, and I have the Laserdisc to prove it.</button><br />
                                 </>
                             }
                             {counter === 2 &&
                                 <>
                                     <h6>"I actually <i>finish</i> reading the books that I start."</h6>
                                     <br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerOne}>What's a book?</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerTwo}>Do magazines count?</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerThree}>Sometimes.</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerFour}>Often.</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerOne}>What's a book?</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>Do magazines count?</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerThree}>Sometimes.</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>Often.</button><br />
                                 </>
                             }
                             {counter === 3 &&
                                 <>
                                     <h6>"That elevator looks quite crowded, but I sure am in a hurry."</h6>
                                     <br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerOne}>Surely, they can fit one more in there...</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerTwo}>I'll wait for the next one.</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerThree}>I hope the escalators aren't "temporarily stairs"...</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerFour}>These 40 flights of stairs won't climb themselves!</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerOne}>Surely, they can fit one more in there...</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>I'll wait for the next one.</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerThree}>I hope the escalators aren't "temporarily stairs"...</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>These 40 flights of stairs won't climb themselves!</button><br />
                                 </>
                             }
                             {counter === 4 &&
                                 <>
                                     <h6>"'Starship Troopers' is OBVIOUSLY the true sequel to 'RoboCop'."</h6>
                                     <br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerOne}>C'MON YOU APES, YOU WANNA LIVE FOREVER?!?</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerTwo}>Your move, creep.</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerThree}>M.I. does the dyin', Fleet just does the flyin'...</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerFour}>I'd buy that for a dollar.</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerOne}>C'MON YOU APES, YOU WANNA LIVE FOREVER?!?</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>Your move, creep.</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerThree}>M.I. does the dyin', Fleet just does the flyin'...</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>I'd buy that for a dollar.</button><br />
                                 </>
                             }
                             {counter === 5 &&
                                 <>
                                     <h6>"Sorry to cancel our plans at the last minute..."</h6>
                                     <br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerOne}>Bummer!</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerTwo}>How's tomorrow?</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerThree}>Call me sometime down the road when you're free.</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerFour}>Whew!</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerOne}>Bummer!</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>How's tomorrow?</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerThree}>Call me sometime down the road when you're free.</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>Whew!</button><br />
                                 </>
                             }
                             {counter === 6 &&
                                 <>
                                     <h6>"I have 'The Right Stuff'."</h6>
                                     <br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerOne}>The best pilot you ever saw? You're lookin' at him.</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerTwo}>2</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerThree}>An astronaut named Gus???</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerFour}>More like spam in a can.</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerOne}>The best pilot you ever saw? You're lookin' at him.</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>2</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerThree}>An astronaut named Gus???</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>I'm More like spam in a can.</button><br />
                                 </>
                             }
                             {counter === 7 &&
                                 <>
                                     <h6>"Two plus two equals?"</h6>
                                     <br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerOne}>4</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerTwo}>2²</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerThree}>3x = 12, solved for "X"</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerFour}>( ∞ + 4 ) - ∞</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerOne}>4</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>2²</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerThree}>3x = 12, solved for "X"</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>( ∞ + 4 ) - ∞</button><br />
                                 </>
                             }
                             {counter === 8 &&
                                 <>
                                     <h6>Placeholder 9</h6>
                                     <br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerOne}>1</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerTwo}>2</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerThree}>3</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerFour}>4</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerOne}>1</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>2</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerThree}>3</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>4</button><br />
                                 </>
                             }
                             {counter === 9 &&
                                 <>
                                     <h6>Placeholder 10</h6>
                                     <br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerOne}>1</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerTwo}>2</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerThree}>3</button><br />
-                                    <button className='waves-effect waves-light btn-small' onClick={handleAnswerFour}>4</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerOne}>1</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>2</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerThree}>3</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>4</button><br />
                                 </>
                             }
                             
