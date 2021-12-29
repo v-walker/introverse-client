@@ -19,6 +19,7 @@ function HomePageCardContent(): JSX.Element {
                 
                 </div>
                 <div className="col s12 m4 l4">
+                    <h5>Sign Up</h5>
                     <SignUpForm />
                 </div>
             </div>

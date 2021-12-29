@@ -154,6 +154,9 @@ ul.hide-on-med-and-down.right:last-child {
   justify-content: center;
 }
 
+.input-field>label.select-label {
+  position: relative;
+}
 
 
 /* Icon sizing */
