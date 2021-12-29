@@ -8,8 +8,8 @@ function QuizPage() {
             <main className='container'>
                 <div className="row m-below-nav">
                     <div className='col s12'>
-                        <h2>Quiz/About/Directions</h2>
-                        <p>Here is some sample text. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat rem porro assumenda esse, odio aperiam corporis, excepturi maxime sunt, soluta nulla! Quis suscipit commodi repellendus deserunt ad alias sunt corporis.</p>
+                        <h2>Quiz</h2>
+                        <h5>Before we get started, please ponder these sentences.</h5>
                     </div>
                     <div className='col s12 mt-5'>
                         <BasicLargeCard cardContent={<QuizCardContent />} />
