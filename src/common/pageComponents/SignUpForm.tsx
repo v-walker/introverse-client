@@ -10,6 +10,7 @@ function SignUpForm(): JSX.Element {
     
     return (
         <>
+            {!isSignIn? <h5>Sign Up</h5> : <h5>Sign In</h5>}
             <form className='col s12'>
                 <div className="input-field">
                     <input id="email" type="text" className="validate" onChange={(e) => setEmail(e.target.value)} />
@@ -48,7 +49,7 @@ function SignUpForm(): JSX.Element {
                 Already have an account?
                 <br />
                 {/* add links to this line */}
-                Click here to <button onClick={() => setIsSignIn(!isSignIn)}>sign in</button>.
+                Click here to <button className='waves-effect waves-light btn-small btn-flat btn-signin' onClick={() => setIsSignIn(!isSignIn)}>sign in</button>.
                 </div>
             }
         </>

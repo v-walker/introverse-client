@@ -118,6 +118,12 @@ ul.hide-on-med-and-down.right:last-child {
   align-items: center;
 }
 
+/** Sign-in button */
+.btn-signin {
+  padding: 0 0 !important;
+  color: #4db6ac !important;
+}
+
 /** Universal Class Utitlities */
 
 .m-below-nav {
