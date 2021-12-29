@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit';
 /** import reducers here */
-import quizReducer from '../features/user/userSlice';
+import userReducer from '../features/user/userSlice';
 
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage';
@@ -12,7 +12,7 @@ export const config = {
 }
 
 const rootReducer = combineReducers({
-  quiz: quizReducer
+  user: userReducer
   /** add reducers to root reducer here
    * format:
    * 

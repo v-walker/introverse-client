@@ -1,5 +1,6 @@
 import React, { FormEvent, useState, useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { finalScore } from "../../features/user/userSlice"
 // import { selectFinalScore } from "./quizSlice";
 
 function QuizCardContent(): JSX.Element {
@@ -38,6 +39,7 @@ function QuizCardContent(): JSX.Element {
     useEffect(() => {
         let sum = localScore.reduce((a: number, b: number) => a + b, 0)
         setTotalScore(sum)
+        // dispatch(finalScore(totalScore))
     }, [counter === 10])
 
     const handleAnswerOne = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -93,6 +95,11 @@ function QuizCardContent(): JSX.Element {
         setLocalScore([...localScore, indivScore])
         setCounter(counter + 1)
     }
+
+    const handleQuizInfoSubmit = (e: FormEvent) => {
+        e.preventDefault()
+        dispatch(finalScore(totalScore))
+    }
     
     return (
         <>
@@ -106,6 +113,7 @@ function QuizCardContent(): JSX.Element {
                     <hr />
                     <br />
                     {`Your Score: ${totalScore}`}
+                    <button className='waves-effect waves-light btn-small' onClick={(e) => handleQuizInfoSubmit(e)}>REVIEW MY INFO</button>
                 </>
             :
                 <>

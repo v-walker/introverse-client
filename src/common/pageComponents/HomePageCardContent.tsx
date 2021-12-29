@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import SignUpForm from './SignUpForm';
 import { IoPlanet } from "react-icons/io5"
 
