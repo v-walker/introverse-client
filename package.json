@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@googlemaps/react-wrapper": "^1.1.18",
     "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -45,6 +46,8 @@
     ]
   },
   "devDependencies": {
+    "@types/google.maps": "^3.47.2",
+    "@types/googlemaps": "^3.43.3",
     "@types/redux-persist": "^4.3.1"
   }
 }
