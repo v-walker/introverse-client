@@ -1,25 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { statesArray } from '../utils';
 
 function SignUpForm(): JSX.Element {
+    const [email, setEmail] = useState("");
+    const [homeCity, setHomeCity] = useState("");
+    const [homeState, setHomeState] = useState("");
+    const [password, setPassword] = useState("");
+    const [isSignIn, setIsSignIn] = useState(false);
+    
     return (
         <>
-            <h5>Sign Up</h5>
+            {!isSignIn? <h5>Sign Up</h5> : <h5>Sign In</h5>}
             <form className='col s12'>
                 <div className="input-field">
-                    <input id="email" type="text" className="validate" />
+                    <input id="email" type="text" className="validate" onChange={(e) => setEmail(e.target.value)} />
                     <label htmlFor="email">Email</label>
                 </div>
-                <div className='input-field'>
-                    <input id="homeCity" type="text" />
-                    <label htmlFor="homeCity">Home City</label>
-                </div>
-                {/* need to make this a drop-down instead of input */}
-                <div className='input-field'>
-                    <input id="homeState" type="text" />
-                    <label htmlFor="homeState">State</label>
-                </div>
+                {!isSignIn && 
+                <>
+                    <div className='input-field'>
+                        <input id="homeCity" type="text" onChange={(e) => setHomeCity(e.target.value)} />
+                        <label htmlFor="homeCity">Home City</label>
+                    </div>
+
+                    <div className='input-field'>
+                    <label htmlFor="homeState" className='select-label'>Select a State</label>
+                    <select id="homeState" className='browser-default' defaultValue="" onChange={(e) => setHomeState(e.target.value)}>
+                        <option value="" disabled>State</option>
+                        {statesArray.map((stateString, index) => {
+                            return <option key={index} value={stateString}>{stateString}</option>
+                        })}
+                    </select>
+                    </div>
+                </>
+                }
+                
                 <div className="input-field">
-                    <input id="password" type="password" />
+                    <input id="password" type="password" onChange={(e) => setPassword(e.target.value)} />
                     <label htmlFor="password">Password</label>
                 </div>
                 <div className='right-align'>
@@ -27,12 +44,14 @@ function SignUpForm(): JSX.Element {
                 </div>
             </form>
 
-            <div className='col s12 mt-5'>
+            {!isSignIn && 
+                <div className='col s12 mt-5'>
                 Already have an account?
                 <br />
                 {/* add links to this line */}
-                Click here to sign in.
-            </div>
+                Click here to <button className='waves-effect waves-light btn-small btn-flat btn-signin' onClick={() => setIsSignIn(!isSignIn)}>sign in</button>.
+                </div>
+            }
         </>
     )
 }
