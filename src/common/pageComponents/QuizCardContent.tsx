@@ -1,45 +1,30 @@
 import React, { FormEvent, useState, useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { finalScore } from "../../features/user/userSlice"
-// import { selectFinalScore } from "./quizSlice";
 
 function QuizCardContent(): JSX.Element {
 
-    /**
-     * allQuestionsAnswered variable checks to see if there is an answer for every question prior to showing the submit button on the quiz form.
-     */
-
     const dispatch = useAppDispatch();
-    // const finScore = useAppSelector(selectFinalScore);
     const [counter, setCounter] = useState(0);
     const [localScore, setLocalScore] = useState([] as any);
     const [indivScore, setIndivScore] = useState(0);
     const [totalScore, setTotalScore] = useState(0);
-    // const [allQuestionsAnswered, setAllQuestionsAnswered] = useState(false)
 
-    const handleSubmitFinalScore = (event: FormEvent) => {
-        event.preventDefault();
-    };
-    /**
-     * Continue documenting the following function: handleNextQuestionClick
-     * @param e : click event
-     */
-    useEffect(() => {
-        console.log(localScore)
-    }, [localScore])
+    // useEffect(() => {
+    //     console.log(localScore)
+    // }, [localScore])
 
-    useEffect(() => {
-        console.log(indivScore)
-    }, [indivScore])
+    // useEffect(() => {
+    //     console.log(indivScore)
+    // }, [indivScore])
 
-    useEffect(() => {
-        console.log(totalScore)
-    }, [totalScore])
+    // useEffect(() => {
+    //     console.log(totalScore)
+    // }, [totalScore])
 
     useEffect(() => {
         let sum = localScore.reduce((a: number, b: number) => a + b, 0)
         setTotalScore(sum)
-        // dispatch(finalScore(totalScore))
     }, [counter === 10])
 
     const handleAnswerOne = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -58,6 +43,11 @@ function QuizCardContent(): JSX.Element {
         e.preventDefault()
         setIndivScore(4)
     }
+
+    /**
+     * Continue documenting the following function: handleNextQuestionClick
+     * @param e : click event
+     */
 
     const handleNextQuestionClick = (e: FormEvent) => {
         e.preventDefault();
@@ -112,8 +102,12 @@ function QuizCardContent(): JSX.Element {
                     <h3 className='center-align'>Thanks for your input!</h3>
                     <hr />
                     <br />
-                    {`Your Score: ${totalScore}`}
-                    <button className='waves-effect waves-light btn-small' onClick={(e) => handleQuizInfoSubmit(e)}>REVIEW MY INFO</button>
+                    <div className='center-align'>
+                        <p>{`Your Score: ${totalScore}`}</p>
+                        <br />
+                        <button className='waves-effect waves-light btn-small' onClick={(e) => handleQuizInfoSubmit(e)}>REVIEW MY INFO</button>
+                    </div>
+                    
                 </>
             :
                 <>
@@ -121,7 +115,6 @@ function QuizCardContent(): JSX.Element {
                         <h3 className='center-align'>{`Question ${counter + 1}`}</h3>
                         <hr />
                         <br />
-
                         <div className='center-align'>
                             {counter === 0 &&
                                 <>
@@ -190,7 +183,7 @@ function QuizCardContent(): JSX.Element {
                                     <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerOne}>The best pilot you ever saw? You're lookin' at him.</button><br />
                                     <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>2</button><br />
                                     <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerThree}>An astronaut named Gus???</button><br />
-                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>I'm More like spam in a can.</button><br />
+                                    <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>I'm more like spam in a can.</button><br />
                                 </>
                             }
                             {counter === 7 &&
@@ -251,9 +244,7 @@ function QuizCardContent(): JSX.Element {
                                         }
                                     </>
                                 }
-                                
                             </div>
-                            
                     </form>
                 </>
             }

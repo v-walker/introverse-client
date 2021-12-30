@@ -14,6 +14,7 @@ import App from './App';
 import QuizPage from './pages/QuizPage';
 import RecommendationsPage from './pages/RecommendationsPage';
 import AboutPage from './pages/AboutPage';
+import DoomPage from './pages/DoomPage';
 
 const persistor = persistStore(store);
 
@@ -28,6 +29,7 @@ ReactDOM.render(
               <Route path="/quiz" element={<QuizPage />}/>
               <Route path="/recommendations" element={<RecommendationsPage />}/>
               <Route path="/about" element={<AboutPage />}/>
+              <Route path="/itrunsdoom" element={<DoomPage />}/>
             </Routes>
           </BaseLayout>
         </Router>
