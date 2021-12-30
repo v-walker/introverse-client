@@ -1,17 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, FormEvent } from 'react';
+import { userSignUp, PayloadUserInfo } from "../../features/user/userSlice"
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { statesArray } from '../utils';
 
 function SignUpForm(): JSX.Element {
+
+    const dispatch = useAppDispatch();
+
     const [email, setEmail] = useState("");
     const [homeCity, setHomeCity] = useState("");
     const [homeState, setHomeState] = useState("");
     const [password, setPassword] = useState("");
     const [isSignIn, setIsSignIn] = useState(false);
     
+    const handleSignUp = (e: FormEvent, userInfo: PayloadUserInfo) => {
+        e.preventDefault();
+        dispatch(userSignUp(userInfo))
+    }
+
+
     return (
         <>
             {!isSignIn? <h5>Sign Up</h5> : <h5>Sign In</h5>}
-            <form className='col s12'>
+            <form onSubmit={(e) => handleSignUp(e, {email, homeCity, homeState, password})} className='col s12'>
                 <div className="input-field">
                     <input id="email" type="text" className="validate" onChange={(e) => setEmail(e.target.value)} />
                     <label htmlFor="email">Email</label>

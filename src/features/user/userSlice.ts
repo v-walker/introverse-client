@@ -1,26 +1,47 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
-export interface TestState {
-    finalScore: number
+export interface UserState {
+    finalScore: number,
+    email: string,
+    homeCity: string,
+    homeState: string,
+    password: string
 };
 
-const initialState: TestState = {
-    finalScore: 0
+export interface PayloadUserInfo {
+    email: string,
+    homeCity: string,
+    homeState: string,
+    password: string
+}
+
+const initialState: UserState = {
+    finalScore: 0,
+    email: "",
+    homeCity: "",
+    homeState: "",
+    password: ""
 };
 
-export const quizSlice = createSlice({
-    name: 'Ouiz',
+export const userSlice = createSlice({
+    name: 'User',
     initialState,
     reducers: {
         finalScore: (state, action: PayloadAction<number>) => {
             state.finalScore = action.payload
+        },
+        userSignUp: (state, action:  PayloadAction<PayloadUserInfo>) => {
+            state.email = action.payload.email
+            state.homeCity = action.payload.homeCity
+            state.homeState = action.payload.homeState
+            state.password = action.payload.password
         }
     }
 });
 
-export const { finalScore } = quizSlice.actions;
+export const { finalScore, userSignUp } = userSlice.actions;
 
-export const selectFinalScore = (state: RootState) => state.quiz.finalScore
+export const selectFinalScore = (state: RootState) => state.user.finalScore
 
-export default quizSlice.reducer
+export default userSlice.reducer
