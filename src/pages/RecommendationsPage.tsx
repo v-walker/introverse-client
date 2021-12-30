@@ -53,4 +53,4 @@ function RecommendationsPage() {
     )
 }
 
-export default RecommendationsPage
+export default RecommendationsPage;

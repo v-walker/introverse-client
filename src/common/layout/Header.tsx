@@ -14,7 +14,7 @@ function Header():JSX.Element {
     return (
         <>
             <Navbar
-                className='orange lighten-2'
+                className='teal lighten-2'
                 alignLinks="right"
                 brand={<Link to="/" className="" id="top">Logo</Link>}
                 id="mobile-nav"
