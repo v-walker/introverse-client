@@ -5,7 +5,7 @@ import axios from 'axios';
 
 /** Local Components */
 import Map from '../../features/map/Map';
-// import Marker from '../../features/map/Marker';
+import Marker from '../../features/map/Marker';
 import { useAppSelector } from '../../app/hooks';
 import { selectUserCity, selectUserState } from '../../features/user/userSlice';
 import { selectCitySearch } from '../../features/map/mapSlice';
@@ -49,8 +49,6 @@ function MapCardContent(): JSX.Element {
         lat: 33.748995,
         lng: -84.387982,
     });
-    // const [searchedCity, setSearchedCity] = useState("");
-    // const [searchedState, setSearchedState] = useState("");
 
     const onClick = (e: google.maps.MapMouseEvent) => {
         // avoid directly mutating state
@@ -102,11 +100,11 @@ function MapCardContent(): JSX.Element {
     
     return (
         <div className='map-card'>
-            <Wrapper apiKey={`${process.env.REACT_APP_GMAPS_KEY}`} render={render}>
+            <Wrapper apiKey={`${process.env.REACT_APP_GMAPS_KEY}`} render={render} libraries={["places"]}>
                 <Map center={center} zoom={zoom} onClick={onClick} onIdle={onIdle} style={{ flexGrow: "1", height: "100%" }}>
-                    {/* {clicks.map((latLng, i) => (
+                    {clicks.map((latLng, i) => (
                         <Marker key={i} position={latLng} />
-                    ))} */}
+                    ))}
                 </Map>
             </Wrapper>
         </div>

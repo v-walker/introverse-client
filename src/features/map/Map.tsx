@@ -1,9 +1,15 @@
 import React from 'react';
+
 import { isLatLngLiteral } from "@googlemaps/typescript-guards";
 import { createCustomEqual } from "fast-equals";
+// import { request } from 'https';
+import Marker from './Marker'
+import { selectCitySearch } from '../../features/map/mapSlice';
+import { useAppSelector } from '../../app/hooks'
 
 interface MapProps extends google.maps.MapOptions {
     style: {[key: string]: string};
+    // center: {lat: number, lng: number};
     onClick?: (e: google.maps.MapMouseEvent) => void;
     onIdle?: (map: google.maps.Map) => void
 }
@@ -40,8 +46,9 @@ function useDeepCompareEffectForMaps(
     React.useEffect(callback, dependencies.map(useDeepCompareMemoize));
 }
 
-
 const Map: React.FC<MapProps> = ({ onClick, onIdle, children, style, ...options }) => {
+
+    const citySearch = useAppSelector(selectCitySearch);
 
     const ref = React.useRef<HTMLDivElement>(null);
     const [map, setMap] = React.useState<google.maps.Map>();
@@ -49,6 +56,7 @@ const Map: React.FC<MapProps> = ({ onClick, onIdle, children, style, ...options 
     React.useEffect(() => {
     if (ref.current && !map) {
         setMap(new window.google.maps.Map(ref.current, {}));
+        
     }
     }, [ref, map]);
 
@@ -73,6 +81,21 @@ const Map: React.FC<MapProps> = ({ onClick, onIdle, children, style, ...options 
         }
         }
     }, [map, onClick, onIdle]);
+
+    React.useEffect(() => {
+        if(map) {
+            const service = new google.maps.places.PlacesService(map)
+
+            service.textSearch({location: {lat: 33.748995 , lng: -84.387982}, query: "restaurants"}, (results, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+                    // dispatch results to global state --> pull down results in MapCardContent component, then map through to show markers
+
+                    console.log(results);
+                }
+            })
+
+        }
+    }, [map])
 
     return (
         <>
