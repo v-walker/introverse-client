@@ -8,7 +8,7 @@ import { Wrapper, Status } from "@googlemaps/react-wrapper";
 // const geocoder = new google.maps.Geocoder();
 
 // const getGeocodeInfo = (locationString: string) => {
-    
+
 //     geocoder.geocode( { 'address': locationString}, function(results, status) {
 //         if (status === 'OK' && results) {
 //         return (results[0].geometry.location);
