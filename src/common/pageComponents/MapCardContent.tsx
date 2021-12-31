@@ -1,26 +1,42 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Map from '../../features/map/Map';
 // import Marker from '../../features/map/Marker';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import axios from 'axios';
 
 // Atlanta lat: 33.748995, lng:-84.387982
 
-// const geocoder = new google.maps.Geocoder();
+/**
+ * 
+ * function takes in two strings: city, state and returns a promise containing geocoding location data from Google Maps Geocoding API
+ * 
+ * for more information regarding this API and the data returned from it, please refer to https://developers.google.com/maps/documentation/geocoding/requests-geocoding#json
+ * 
+ * @param city 
+ * @param state 
+ * @returns Promise<any>
+ */
 
-// const getGeocodeInfo = (locationString: string) => {
+const getGeoInfo = async (city: string, state: string): Promise<any> => {
+    try {
+        let response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${city}+${state}&key=${process.env.REACT_APP_GMAPS_KEY}`);
+
+        if (response.status === 200) {
+            return response.data;
+        }
+
+    } catch (err) {
+        
+        return err
+    }
     
-//     geocoder.geocode( { 'address': locationString}, function(results, status) {
-//         if (status === 'OK' && results) {
-//         return (results[0].geometry.location);
-//         } else {
-//         alert('Geocode was not successful for the following reason: ' + status);
-//         }
-//     });
-// }
+}
 
 function MapCardContent(): JSX.Element {
-    const [clicks, setClicks] = React.useState<google.maps.LatLng[]>([]);
-    const [zoom, setZoom] = React.useState(14); // initial zoom
+    const [clicks, setClicks] = useState<google.maps.LatLng[]>([]);
+    const [zoom, setZoom] = useState(14); // initial zoom
+    // const [lat, setLat] = useState(33.748995); // initial lat
+    // const [lng, setLng] = useState(-84.387982); // initial lng
     const [center, setCenter] = React.useState<google.maps.LatLngLiteral>({
         lat: 33.748995,
         lng: -84.387982,
@@ -42,9 +58,16 @@ function MapCardContent(): JSX.Element {
         return <h1>{status}</h1>
     }
 
-    // useEffect(() => {
-    //     console.log(getGeocodeInfo("Atlanta, Georgia, USA"))
-    // }, [])
+    useEffect(() => {
+
+            getGeoInfo("Los Angeles", "California").then(results => console.log(results));
+            getGeoInfo("Los Angeles", "California").then(results => {
+                
+                setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng})
+                
+            });
+
+        }, []);
     
     return (
         <div className='map-card'>
