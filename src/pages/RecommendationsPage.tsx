@@ -1,4 +1,5 @@
 import React, { useState, FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 
 /** icons */
 import { MdSearch } from 'react-icons/md';
@@ -67,7 +68,13 @@ function RecommendationsPage() {
                     <div className='col s12 m9 mt-5'>
                         <BasicLargeCard cardContent={<MapCardContent />} />
                     </div>
-
+                    <div className="center-align">
+                        <Link to="/itrunsdoom">
+                            <span className="doomFontLeft">I</span>
+                            <span className="doomFontStd">'m feeling luck</span>
+                            <span className="doomFontRight">Y</span>
+                        </Link>
+                    </div>
                 </div>
             </main>
         </>
