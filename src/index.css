@@ -160,6 +160,11 @@ ul.hide-on-med-and-down.right:last-child {
   justify-content: center;
 }
 
+/* .centerHorizDoom {
+  display: flex;
+  justify-content: center;
+} */
+
 .input-field>label.select-label {
   position: relative;
 }
@@ -173,4 +178,40 @@ ul.hide-on-med-and-down.right:last-child {
 
 .xl-icon {
   font-size: 17rem;
+}
+
+@font-face{
+  font-family: "DoomStd";
+  src: local("DoomStd"),
+  url("./fonts/Doom2016Text-GOlBq.ttf") format("truetype")
+}
+
+@font-face{
+  font-family: "DoomLeft";
+  src: local("DoomLeft"),
+  url("./fonts/Doom2016Left-RpJDA.ttf") format("truetype")
+}
+
+@font-face{
+  font-family: "DoomRight";
+  src: local("DoomRight"),
+  url("./fonts/Doom2016Right-VGz0z.ttf") format("truetype")
+}
+
+.doomFontStd{
+  font-family: "DoomStd";
+  color: #4db6ac;
+  font-size: 50px
+}
+
+.doomFontLeft{
+  font-family: "DoomLeft";
+  color: #4db6ac;
+  font-size: 50px
+}
+
+.doomFontRight{
+  font-family: "DoomRight";
+  color: #4db6ac;
+  font-size: 50px
 }

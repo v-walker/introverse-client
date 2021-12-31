@@ -96,14 +96,32 @@ function QuizCardContent(): JSX.Element {
             <div className='center-align'>
                 <img src="logo192.png" alt="" />
             </div>
-            {counter >= 10
+            {counter === 10
             ?
                 <>
                     <h3 className='center-align'>Thanks for your input!</h3>
                     <hr />
                     <br />
                     <div className='center-align'>
-                        <p>{`Your Score: ${totalScore}`}</p>
+                        {totalScore <= 20
+                        ?
+                        <>
+                            <p>We have calibrated your level of IntroSafe™ protection to: LOW</p>
+                        </>
+                        :
+                        <>
+                            {totalScore >= 21 && totalScore <= 30
+                            ?
+                            <>
+                                <p>We have calibrated your level of IntroSafe™ protection to: MEDIUM</p>
+                            </>
+                            :
+                            <>
+                                <p>We have calibrated your level of IntroSafe™ protection to: HIGH</p>
+                            </>}
+                        
+                        </>
+                        }
                         <br />
                         <button className='waves-effect waves-light btn-small' onClick={(e) => handleQuizInfoSubmit(e)}>REVIEW MY INFO</button>
                     </div>
