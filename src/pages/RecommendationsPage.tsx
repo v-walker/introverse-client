@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 
 /** icons */
@@ -8,9 +8,30 @@ import { MdSearch } from 'react-icons/md';
 import BasicLargeCard from '../common/pageComponents/BasicLargeCard';
 import LocationsListContent from '../common/pageComponents/LocationsListContent';
 import MapCardContent from '../common/pageComponents/MapCardContent';
+import { useAppDispatch } from '../app/hooks';
+import { searchCity } from '../features/map/mapSlice';
 
 
 function RecommendationsPage() {
+    const dispatch = useAppDispatch();
+
+    const [userCitySearch, setUserCitySearch] = useState("");
+
+    /**
+     * function handleSearchSubmit() handles form submission of location search, dispatching the search string to global state and resetting the form input to an empty string ("") 
+     * 
+     * @param e: FormEvent
+     * @returns void
+     */
+
+    const handleSearchSubmit = (e: FormEvent): void => {
+        e.preventDefault();
+
+        dispatch(searchCity(userCitySearch));
+
+        setUserCitySearch("");
+    }
+
     return (
         <>
             <main className='container'>
@@ -25,10 +46,10 @@ function RecommendationsPage() {
                     <aside className='col s12 m3 mt-5'>
                         {/* search section */}
                         <h5>Search Location</h5>
-                        <form>
+                        <form onSubmit={(e) => handleSearchSubmit(e)}>
                             <div className='row'>
                                 <div className='input-field col s12'>
-                                    <input id="locationSearch" type="search" />
+                                    <input id="locationSearch" type="search" value={userCitySearch} onChange={(e) => setUserCitySearch(e.target.value)} />
                                     <label htmlFor="locationSearch">City, State</label>
                                 </div>
 
