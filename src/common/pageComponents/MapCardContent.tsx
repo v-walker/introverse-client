@@ -12,7 +12,7 @@ import { selectUserCity, selectUserState } from '../../features/user/userSlice';
 
 /**
  * 
- * function takes in two strings: city, state and returns a promise containing geocoding location data from Google Maps Geocoding API
+ * getGeoInfo() function takes in two strings: city, state and returns a promise containing geocoding location data from Google Maps Geocoding API
  * 
  * for more information regarding this API and the data returned from it, please refer to https://developers.google.com/maps/documentation/geocoding/requests-geocoding#json
  * 
@@ -42,12 +42,11 @@ function MapCardContent(): JSX.Element {
 
     const [clicks, setClicks] = useState<google.maps.LatLng[]>([]);
     const [zoom, setZoom] = useState(14); // initial zoom
-    // const [lat, setLat] = useState(33.748995); // initial lat
-    // const [lng, setLng] = useState(-84.387982); // initial lng
     const [center, setCenter] = React.useState<google.maps.LatLngLiteral>({
         lat: 33.748995,
         lng: -84.387982,
     });
+    const [userCitySearch, setUserCitySearch] = useState("");
 
     const onClick = (e: google.maps.MapMouseEvent) => {
         // avoid directly mutating state
