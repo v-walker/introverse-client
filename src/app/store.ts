@@ -1,6 +1,7 @@
 import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit';
 /** import reducers here */
 import userReducer from '../features/user/userSlice';
+import mapReducer from '../features/map/mapSlice'
 
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage';
@@ -12,7 +13,8 @@ export const config = {
 }
 
 const rootReducer = combineReducers({
-  user: userReducer
+  user: userReducer,
+  map: mapReducer
   /** add reducers to root reducer here
    * format:
    * 

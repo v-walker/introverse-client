@@ -21,4 +21,6 @@ export const mapSlice = createSlice({
 
 export const { searchCity } = mapSlice.actions;
 
+export const selectCitySearch = (state: RootState) => state.map.citySearch;
+
 export default mapSlice.reducer;

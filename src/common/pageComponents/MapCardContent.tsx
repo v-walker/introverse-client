@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import axios from 'axios';
@@ -7,6 +8,7 @@ import Map from '../../features/map/Map';
 // import Marker from '../../features/map/Marker';
 import { useAppSelector } from '../../app/hooks';
 import { selectUserCity, selectUserState } from '../../features/user/userSlice';
+import { selectCitySearch } from '../../features/map/mapSlice';
 
 // Atlanta lat: 33.748995, lng:-84.387982
 
@@ -39,6 +41,7 @@ const getGeoInfo = async (city: string, state: string): Promise<any> => {
 function MapCardContent(): JSX.Element {
     const userCity = useAppSelector(selectUserCity);
     const userState = useAppSelector(selectUserState);
+    const citySearch = useAppSelector(selectCitySearch);
 
     const [clicks, setClicks] = useState<google.maps.LatLng[]>([]);
     const [zoom, setZoom] = useState(14); // initial zoom
@@ -46,7 +49,8 @@ function MapCardContent(): JSX.Element {
         lat: 33.748995,
         lng: -84.387982,
     });
-    const [userCitySearch, setUserCitySearch] = useState("");
+    // const [searchedCity, setSearchedCity] = useState("");
+    // const [searchedState, setSearchedState] = useState("");
 
     const onClick = (e: google.maps.MapMouseEvent) => {
         // avoid directly mutating state
@@ -65,15 +69,36 @@ function MapCardContent(): JSX.Element {
     }
 
     useEffect(() => {
-
-            getGeoInfo(userCity, userState).then(results => console.log(results));
-            getGeoInfo(userCity, userState).then(results => {
-                
-                setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng})
-                
-            });
+        
+        getGeoInfo(userCity, userState).then(results => {
+            
+            setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng})
+            
+        });
 
         }, []);
+
+    useEffect(() => {
+
+        if (citySearch.includes(",")) {
+            let searchArray = citySearch.split(", ")
+            let searchedCity = searchArray[0];
+            let searchedState = searchArray[1];
+
+            getGeoInfo(searchedCity, searchedState).then(results => {
+
+                setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng})
+
+            })
+        } else {
+            getGeoInfo(citySearch, "").then(results => {
+
+                setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng})
+
+            })
+        }
+
+    }, [citySearch])
     
     return (
         <div className='map-card'>
