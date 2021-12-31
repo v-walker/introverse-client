@@ -3,7 +3,7 @@ import { isLatLngLiteral } from "@googlemaps/typescript-guards";
 import { createCustomEqual } from "fast-equals";
 
 interface MapProps extends google.maps.MapOptions {
-    style?: {[key: string]: string};
+    style: {[key: string]: string};
     onClick?: (e: google.maps.MapMouseEvent) => void;
     onIdle?: (map: google.maps.Map) => void
 }
@@ -41,13 +41,7 @@ function useDeepCompareEffectForMaps(
 }
 
 
-const Map: React.FC<MapProps> = ({
-    onClick,
-    onIdle,
-    children,
-    style,
-    ...options
-}) => {
+const Map: React.FC<MapProps> = ({ onClick, onIdle, children, style, ...options }) => {
 
     const ref = React.useRef<HTMLDivElement>(null);
     const [map, setMap] = React.useState<google.maps.Map>();
