@@ -23,7 +23,14 @@ function RecommendationsPage() {
 
     // }, [userCitySearch])
 
-    const handleSearchSubmit = (e: FormEvent) => {
+    /**
+     * function handleSearchSubmit() handles form submission of location search, dispatching the search string to global state and resetting the form input to an empty string ("") 
+     * 
+     * @param e: FormEvent
+     * @returns void
+     */
+
+    const handleSearchSubmit = (e: FormEvent): void => {
         e.preventDefault();
 
         dispatch(searchCity(userCitySearch));
