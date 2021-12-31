@@ -42,6 +42,10 @@ export const userSlice = createSlice({
 
 export const { finalScore, userSignUp } = userSlice.actions;
 
-export const selectFinalScore = (state: RootState) => state.user.finalScore
+export const selectFinalScore = (state: RootState) => state.user.finalScore;
+
+export const selectUserCity = (state: RootState) => state.user.homeCity;
+
+export const selectUserState = (state: RootState) => state.user.homeState;
 
 export default userSlice.reducer

@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import Map from '../../features/map/Map';
-// import Marker from '../../features/map/Marker';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import axios from 'axios';
+
+/** Local Components */
+import Map from '../../features/map/Map';
+// import Marker from '../../features/map/Marker';
+import { useAppSelector } from '../../app/hooks';
+import { selectUserCity, selectUserState } from '../../features/user/userSlice';
 
 // Atlanta lat: 33.748995, lng:-84.387982
 
@@ -12,8 +16,8 @@ import axios from 'axios';
  * 
  * for more information regarding this API and the data returned from it, please refer to https://developers.google.com/maps/documentation/geocoding/requests-geocoding#json
  * 
- * @param city 
- * @param state 
+ * @param city: string 
+ * @param state: string 
  * @returns Promise<any>
  */
 
@@ -33,6 +37,9 @@ const getGeoInfo = async (city: string, state: string): Promise<any> => {
 }
 
 function MapCardContent(): JSX.Element {
+    const userCity = useAppSelector(selectUserCity);
+    const userState = useAppSelector(selectUserState);
+
     const [clicks, setClicks] = useState<google.maps.LatLng[]>([]);
     const [zoom, setZoom] = useState(14); // initial zoom
     // const [lat, setLat] = useState(33.748995); // initial lat
@@ -60,8 +67,8 @@ function MapCardContent(): JSX.Element {
 
     useEffect(() => {
 
-            getGeoInfo("Los Angeles", "California").then(results => console.log(results));
-            getGeoInfo("Los Angeles", "California").then(results => {
+            getGeoInfo(userCity, userState).then(results => console.log(results));
+            getGeoInfo(userCity, userState).then(results => {
                 
                 setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng})
                 

@@ -35,7 +35,7 @@ function useDeepCompareMemoize(value: any) {
 function useDeepCompareEffectForMaps(
     callback: React.EffectCallback,
     dependencies: any[]
-) {
+): void {
     React.useEffect(callback, dependencies.map(useDeepCompareMemoize));
 }
 
