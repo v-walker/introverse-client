@@ -1,30 +1,56 @@
-import React, { useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import axios from 'axios';
+
+/** Local Components */
 import Map from '../../features/map/Map';
 // import Marker from '../../features/map/Marker';
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import { useAppSelector } from '../../app/hooks';
+import { selectUserCity, selectUserState } from '../../features/user/userSlice';
+import { selectCitySearch } from '../../features/map/mapSlice';
 
 // Atlanta lat: 33.748995, lng:-84.387982
 
-// const geocoder = new google.maps.Geocoder();
+/**
+ * 
+ * getGeoInfo() function takes in two strings: city, state and returns a promise containing geocoding location data from Google Maps Geocoding API
+ * 
+ * for more information regarding this API and the data returned from it, please refer to https://developers.google.com/maps/documentation/geocoding/requests-geocoding#json
+ * 
+ * @param city: string 
+ * @param state: string 
+ * @returns Promise<any>
+ */
 
-// const getGeocodeInfo = (locationString: string) => {
+const getGeoInfo = async (city: string, state: string): Promise<any> => {
+    try {
+        let response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${city}+${state}&key=${process.env.REACT_APP_GMAPS_KEY}`);
+
+        if (response.status === 200) {
+            return response.data;
+        }
+
+    } catch (err) {
+        
+        return err
+    }
     
-//     geocoder.geocode( { 'address': locationString}, function(results, status) {
-//         if (status === 'OK' && results) {
-//         return (results[0].geometry.location);
-//         } else {
-//         alert('Geocode was not successful for the following reason: ' + status);
-//         }
-//     });
-// }
+}
 
 function MapCardContent(): JSX.Element {
-    const [clicks, setClicks] = React.useState<google.maps.LatLng[]>([]);
-    const [zoom, setZoom] = React.useState(14); // initial zoom
+    const userCity = useAppSelector(selectUserCity);
+    const userState = useAppSelector(selectUserState);
+    const citySearch = useAppSelector(selectCitySearch);
+
+    const [clicks, setClicks] = useState<google.maps.LatLng[]>([]);
+    const [zoom, setZoom] = useState(14); // initial zoom
     const [center, setCenter] = React.useState<google.maps.LatLngLiteral>({
         lat: 33.748995,
         lng: -84.387982,
     });
+    // const [searchedCity, setSearchedCity] = useState("");
+    // const [searchedState, setSearchedState] = useState("");
 
     const onClick = (e: google.maps.MapMouseEvent) => {
         // avoid directly mutating state
@@ -42,9 +68,37 @@ function MapCardContent(): JSX.Element {
         return <h1>{status}</h1>
     }
 
-    // useEffect(() => {
-    //     console.log(getGeocodeInfo("Atlanta, Georgia, USA"))
-    // }, [])
+    useEffect(() => {
+        
+        getGeoInfo(userCity, userState).then(results => {
+            
+            setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng})
+            
+        });
+
+        }, []);
+
+    useEffect(() => {
+
+        if (citySearch.includes(",")) {
+            let searchArray = citySearch.split(", ")
+            let searchedCity = searchArray[0];
+            let searchedState = searchArray[1];
+
+            getGeoInfo(searchedCity, searchedState).then(results => {
+
+                setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng})
+
+            })
+        } else {
+            getGeoInfo(citySearch, "").then(results => {
+
+                setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng})
+
+            })
+        }
+
+    }, [citySearch])
     
     return (
         <div className='map-card'>
