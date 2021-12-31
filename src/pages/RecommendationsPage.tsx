@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useState, FormEvent } from 'react';
 
 /** icons */
 import { MdSearch } from 'react-icons/md';
@@ -15,13 +15,6 @@ function RecommendationsPage() {
     const dispatch = useAppDispatch();
 
     const [userCitySearch, setUserCitySearch] = useState("");
-
-
-    // useEffect(() => {
-        
-    //     console.log(userCitySearch)
-
-    // }, [userCitySearch])
 
     /**
      * function handleSearchSubmit() handles form submission of location search, dispatching the search string to global state and resetting the form input to an empty string ("") 
