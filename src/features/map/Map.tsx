@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
 import { isLatLngLiteral } from "@googlemaps/typescript-guards";
 import { createCustomEqual } from "fast-equals";
 
+// local components
+import { selectCurrentLocation, updateLocationQuery } from '../../features/map/mapSlice';
+import { useAppSelector, useAppDispatch } from '../../app/hooks'
+
 interface MapProps extends google.maps.MapOptions {
-    style?: {[key: string]: string};
+    style: {[key: string]: string};
+    // center: {lat: number, lng: number};
     onClick?: (e: google.maps.MapMouseEvent) => void;
     onIdle?: (map: google.maps.Map) => void
 }
@@ -40,14 +46,9 @@ function useDeepCompareEffectForMaps(
     React.useEffect(callback, dependencies.map(useDeepCompareMemoize));
 }
 
-
-const Map: React.FC<MapProps> = ({
-    onClick,
-    onIdle,
-    children,
-    style,
-    ...options
-}) => {
+const Map: React.FC<MapProps> = ({ onClick, onIdle, children, style, ...options }) => {
+    const dispatch = useAppDispatch();
+    const currentLocation = useAppSelector(selectCurrentLocation);
 
     const ref = React.useRef<HTMLDivElement>(null);
     const [map, setMap] = React.useState<google.maps.Map>();
@@ -55,6 +56,7 @@ const Map: React.FC<MapProps> = ({
     React.useEffect(() => {
     if (ref.current && !map) {
         setMap(new window.google.maps.Map(ref.current, {}));
+        
     }
     }, [ref, map]);
 
@@ -79,6 +81,23 @@ const Map: React.FC<MapProps> = ({
         }
         }
     }, [map, onClick, onIdle]);
+
+    useEffect(() => {
+        if(map) {
+            const service = new google.maps.places.PlacesService(map)
+
+            service.textSearch({location: currentLocation, query: "restaurants"}, (results, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+                    // dispatch results to global state --> pull down results in MapCardContent component, then map through to show markers
+                    dispatch(updateLocationQuery(results))
+
+                    console.log(results);
+                }
+            })
+
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [map, currentLocation])
 
     return (
         <>

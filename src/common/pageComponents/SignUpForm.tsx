@@ -15,7 +15,7 @@ function SignUpForm(): JSX.Element {
     
     const handleSignUp = (e: FormEvent, userInfo: PayloadUserInfo) => {
         e.preventDefault();
-        dispatch(userSignUp(userInfo))
+        dispatch(userSignUp(userInfo));
     }
 
 

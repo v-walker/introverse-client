@@ -9,7 +9,8 @@ import BasicLargeCard from '../common/pageComponents/BasicLargeCard';
 import LocationsListContent from '../common/pageComponents/LocationsListContent';
 import MapCardContent from '../common/pageComponents/MapCardContent';
 import { useAppDispatch } from '../app/hooks';
-import { searchCity } from '../features/map/mapSlice';
+import { updateCurrentLocation, searchCity } from '../features/map/mapSlice';
+import { getGeoInfo } from '../common/utils'
 
 
 function RecommendationsPage() {
@@ -28,6 +29,37 @@ function RecommendationsPage() {
         e.preventDefault();
 
         dispatch(searchCity(userCitySearch));
+
+        if (userCitySearch.includes(",")) {
+            let searchArray: string[] = []
+            if (userCitySearch.includes(", ")) {
+                searchArray = userCitySearch.split(", ");
+                let searchedCity = searchArray[0];
+                let searchedState = searchArray[1];
+
+                getGeoInfo(searchedCity, searchedState).then(results => {
+
+                    dispatch(updateCurrentLocation({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng}))
+
+                })
+            } else {
+                searchArray = userCitySearch.split(",");
+                let searchedCity = searchArray[0];
+                let searchedState = searchArray[1];
+
+                getGeoInfo(searchedCity, searchedState).then(results => {
+
+                    dispatch(updateCurrentLocation({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng}))
+
+                })
+            }
+        } else {
+            getGeoInfo(userCitySearch, "").then(results => {
+
+                dispatch(updateCurrentLocation({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng}))
+
+            })
+        }
 
         setUserCitySearch("");
     }
