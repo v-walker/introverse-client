@@ -70,9 +70,9 @@ function RecommendationsPage() {
                     </div>
                     <div className="center-align">
                         <Link to="/itrunsdoom">
-                            <span className="doomFontLeft">I</span>
-                            <span className="doomFontStd">'m feeling luck</span>
-                            <span className="doomFontRight">Y</span>
+                            <span className="doomFontLeftSmall">I</span>
+                            <span className="doomFontStdSmall">'m feeling luck</span>
+                            <span className="doomFontRightSmall">Y</span>
                         </Link>
                     </div>
                 </div>
