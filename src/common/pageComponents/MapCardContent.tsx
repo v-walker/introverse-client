@@ -4,6 +4,7 @@ import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import axios from 'axios';
 
 /** Local Components */
+import { getGeoInfo } from '../utils';
 import { useAppDispatch } from '../../app/hooks';
 import Map from '../../features/map/Map';
 import Marker from '../../features/map/Marker';
@@ -23,21 +24,6 @@ import { selectCitySearch, updateCurrentLocation } from '../../features/map/mapS
  * @param state: string 
  * @returns Promise<any>
  */
-
-const getGeoInfo = async (city: string, state: string): Promise<any> => {
-    try {
-        let response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${city}+${state}&key=${process.env.REACT_APP_GMAPS_KEY}`);
-
-        if (response.status === 200) {
-            return response.data;
-        }
-
-    } catch (err) {
-        
-        return err
-    }
-    
-}
 
 function MapCardContent(): JSX.Element {
     const dispatch = useAppDispatch();
