@@ -21,7 +21,6 @@ function SignUpForm(): JSX.Element {
         if(password !== ""){
             navigate("/quiz")
         }
-        
     }
 
 

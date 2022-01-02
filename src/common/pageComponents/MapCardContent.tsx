@@ -1,14 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
-import axios from 'axios';
+// import axios from 'axios';
 
 /** Local Components */
+import { getGeoInfo } from '../utils';
+import { useAppDispatch } from '../../app/hooks';
 import Map from '../../features/map/Map';
-// import Marker from '../../features/map/Marker';
+import Marker from '../../features/map/Marker';
 import { useAppSelector } from '../../app/hooks';
 import { selectUserCity, selectUserState } from '../../features/user/userSlice';
-import { selectCitySearch } from '../../features/map/mapSlice';
+import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery } from '../../features/map/mapSlice';
 
 // Atlanta lat: 33.748995, lng:-84.387982
 
@@ -23,25 +25,12 @@ import { selectCitySearch } from '../../features/map/mapSlice';
  * @returns Promise<any>
  */
 
-const getGeoInfo = async (city: string, state: string): Promise<any> => {
-    try {
-        let response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${city}+${state}&key=${process.env.REACT_APP_GMAPS_KEY}`);
-
-        if (response.status === 200) {
-            return response.data;
-        }
-
-    } catch (err) {
-        
-        return err
-    }
-    
-}
-
 function MapCardContent(): JSX.Element {
+    const dispatch = useAppDispatch();
     const userCity = useAppSelector(selectUserCity);
     const userState = useAppSelector(selectUserState);
-    const citySearch = useAppSelector(selectCitySearch);
+    const searchLocation = useAppSelector(selectCurrentLocation);
+    const currentLocationQuery = useAppSelector(selectCurrentLocationQuery);
 
     const [clicks, setClicks] = useState<google.maps.LatLng[]>([]);
     const [zoom, setZoom] = useState(14); // initial zoom
@@ -49,8 +38,6 @@ function MapCardContent(): JSX.Element {
         lat: 33.748995,
         lng: -84.387982,
     });
-    // const [searchedCity, setSearchedCity] = useState("");
-    // const [searchedState, setSearchedState] = useState("");
 
     const onClick = (e: google.maps.MapMouseEvent) => {
         // avoid directly mutating state
@@ -72,40 +59,42 @@ function MapCardContent(): JSX.Element {
         
         getGeoInfo(userCity, userState).then(results => {
             
-            setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng})
-            
+            setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng});
+
+            dispatch(updateCurrentLocation({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng}));
         });
 
         }, []);
 
     useEffect(() => {
+        console.log(clicks);
+    }, [clicks])
 
-        if (citySearch.includes(",")) {
-            let searchArray = citySearch.split(", ")
-            let searchedCity = searchArray[0];
-            let searchedState = searchArray[1];
+    useEffect(() => {
+        // console.log(currentLocationQuery)
+        currentLocationQuery.map(searchObj => {
+            console.log(searchObj)
+            return null
+        })
+    }, [currentLocationQuery])
 
-            getGeoInfo(searchedCity, searchedState).then(results => {
+    useEffect(() => {
+        setCenter(searchLocation)
 
-                setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng})
-
-            })
-        } else {
-            getGeoInfo(citySearch, "").then(results => {
-
-                setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng})
-
-            })
-        }
-
-    }, [citySearch])
+    }, [searchLocation]);
     
     return (
         <div className='map-card'>
-            <Wrapper apiKey={`${process.env.REACT_APP_GMAPS_KEY}`} render={render}>
+            <Wrapper apiKey={`${process.env.REACT_APP_GMAPS_KEY}`} render={render} libraries={["places"]}>
                 <Map center={center} zoom={zoom} onClick={onClick} onIdle={onIdle} style={{ flexGrow: "1", height: "100%" }}>
                     {/* {clicks.map((latLng, i) => (
                         <Marker key={i} position={latLng} />
+                    ))} */}
+
+                    {/* to map through currentLocationQuery, set marker position to lat/lng returned */}
+
+                    {/* {currentLocationQuery.map((searchObj, i) => (
+                        <Marker key={i} position={searchObj.geometry.location} />
                     ))} */}
                 </Map>
             </Wrapper>
