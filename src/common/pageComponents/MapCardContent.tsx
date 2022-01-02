@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
-import axios from 'axios';
+// import axios from 'axios';
 
 /** Local Components */
 import { getGeoInfo } from '../utils';
@@ -10,7 +10,7 @@ import Map from '../../features/map/Map';
 import Marker from '../../features/map/Marker';
 import { useAppSelector } from '../../app/hooks';
 import { selectUserCity, selectUserState } from '../../features/user/userSlice';
-import { selectCitySearch, updateCurrentLocation } from '../../features/map/mapSlice';
+import { selectCitySearch, updateCurrentLocation, selectCurrentLocation } from '../../features/map/mapSlice';
 
 // Atlanta lat: 33.748995, lng:-84.387982
 
@@ -29,7 +29,8 @@ function MapCardContent(): JSX.Element {
     const dispatch = useAppDispatch();
     const userCity = useAppSelector(selectUserCity);
     const userState = useAppSelector(selectUserState);
-    const citySearch = useAppSelector(selectCitySearch);
+    // const citySearch = useAppSelector(selectCitySearch);
+    const searchLocation = useAppSelector(selectCurrentLocation);
 
     const [clicks, setClicks] = useState<google.maps.LatLng[]>([]);
     const [zoom, setZoom] = useState(14); // initial zoom
@@ -66,32 +67,9 @@ function MapCardContent(): JSX.Element {
         }, []);
 
     useEffect(() => {
+        setCenter(searchLocation)
 
-        if (citySearch.includes(",")) {
-            let searchArray = citySearch.split(", ");
-            let searchedCity = searchArray[0];
-            let searchedState = searchArray[1];
-
-            getGeoInfo(searchedCity, searchedState).then(results => {
-
-                setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng});
-
-            })
-        } else {
-            getGeoInfo(citySearch, "").then(results => {
-
-                setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng});
-
-            })
-        }
-
-    }, [citySearch]);
-
-    useEffect(() => {
-
-        dispatch(updateCurrentLocation(center))
-
-    }, [center])
+    }, [searchLocation]);
     
     return (
         <div className='map-card'>
