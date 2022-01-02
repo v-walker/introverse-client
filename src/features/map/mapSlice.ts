@@ -32,4 +32,6 @@ export const { updateCurrentLocation, searchCity } = mapSlice.actions;
 
 export const selectCitySearch = (state: RootState) => state.map.citySearch;
 
+export const selectCurrentLocation = (state: RootState) => state.map.currentLocation;
+
 export default mapSlice.reducer;

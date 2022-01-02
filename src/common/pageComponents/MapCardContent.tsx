@@ -90,20 +90,22 @@ function MapCardContent(): JSX.Element {
 
                 setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng});
 
-                dispatch(updateCurrentLocation({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng}));
-
             })
         } else {
             getGeoInfo(citySearch, "").then(results => {
 
                 setCenter({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng});
 
-                dispatch(updateCurrentLocation({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng}));
-
             })
         }
 
-    }, [citySearch])
+    }, [citySearch]);
+
+    useEffect(() => {
+
+        dispatch(updateCurrentLocation(center))
+
+    }, [center])
     
     return (
         <div className='map-card'>
