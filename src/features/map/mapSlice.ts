@@ -7,12 +7,14 @@ export interface LatLng {
 }
 export interface MapState {
     currentLocation: LatLng,
-    citySearch: string
+    citySearch: string,
+    locationQuery: object[]
 }
 
 const initialState: MapState = {
     currentLocation: {lat: 0, lng: 0},
-    citySearch: ""
+    citySearch: "",
+    locationQuery: []
 }
 
 export const mapSlice = createSlice({
@@ -24,14 +26,19 @@ export const mapSlice = createSlice({
         },
         searchCity: (state, action: PayloadAction<string>) => {
             state.citySearch = action.payload
+        },
+        updateLocationQuery: (state, action) => {
+            state.locationQuery = action.payload
         }
     }
 })
 
-export const { updateCurrentLocation, searchCity } = mapSlice.actions;
+export const { updateCurrentLocation, searchCity, updateLocationQuery } = mapSlice.actions;
 
 export const selectCitySearch = (state: RootState) => state.map.citySearch;
 
 export const selectCurrentLocation = (state: RootState) => state.map.currentLocation;
+
+export const selectCurrentLocationQuery = (state: RootState) => state.map.locationQuery;
 
 export default mapSlice.reducer;

@@ -10,7 +10,7 @@ import Map from '../../features/map/Map';
 import Marker from '../../features/map/Marker';
 import { useAppSelector } from '../../app/hooks';
 import { selectUserCity, selectUserState } from '../../features/user/userSlice';
-import { updateCurrentLocation, selectCurrentLocation } from '../../features/map/mapSlice';
+import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery } from '../../features/map/mapSlice';
 
 // Atlanta lat: 33.748995, lng:-84.387982
 
@@ -30,6 +30,7 @@ function MapCardContent(): JSX.Element {
     const userCity = useAppSelector(selectUserCity);
     const userState = useAppSelector(selectUserState);
     const searchLocation = useAppSelector(selectCurrentLocation);
+    const currentLocationQuery = useAppSelector(selectCurrentLocationQuery);
 
     const [clicks, setClicks] = useState<google.maps.LatLng[]>([]);
     const [zoom, setZoom] = useState(14); // initial zoom
@@ -66,6 +67,18 @@ function MapCardContent(): JSX.Element {
         }, []);
 
     useEffect(() => {
+        console.log(clicks);
+    }, [clicks])
+
+    useEffect(() => {
+        // console.log(currentLocationQuery)
+        currentLocationQuery.map(searchObj => {
+            console.log(searchObj)
+            return null
+        })
+    }, [currentLocationQuery])
+
+    useEffect(() => {
         setCenter(searchLocation)
 
     }, [searchLocation]);
@@ -74,9 +87,15 @@ function MapCardContent(): JSX.Element {
         <div className='map-card'>
             <Wrapper apiKey={`${process.env.REACT_APP_GMAPS_KEY}`} render={render} libraries={["places"]}>
                 <Map center={center} zoom={zoom} onClick={onClick} onIdle={onIdle} style={{ flexGrow: "1", height: "100%" }}>
-                    {clicks.map((latLng, i) => (
+                    {/* {clicks.map((latLng, i) => (
                         <Marker key={i} position={latLng} />
-                    ))}
+                    ))} */}
+
+                    {/* to map through currentLocationQuery, set marker position to lat/lng returned */}
+
+                    {/* {currentLocationQuery.map((searchObj, i) => (
+                        <Marker key={i} position={searchObj.geometry.location} />
+                    ))} */}
                 </Map>
             </Wrapper>
         </div>
