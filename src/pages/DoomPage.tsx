@@ -13,6 +13,44 @@ function DoomPage(): JSX.Element {
                         <DosPlayer bundleUrl="DOOM.jsdos" />
                     </div>
                 </div>
+                <div className="center-align">
+                    <span className="doomFontLeft">C</span>
+                    <span className="doomFontStd">ontrol</span>
+                    <span className="doomFontRight">S</span>
+                </div>
+                <div className="valign-wrapper">
+                    <div className="col s6 right-align">
+                        <span className="doomFontLeftSmall">W</span>
+                        <span className="doomFontStdSmall">as</span>
+                        <span className="doomFontRightSmall">D</span>
+                    </div>
+                    <div className="col s6 left-align">
+                        <span>Forward/Backward/Strafe</span>
+                    </div>
+                </div>
+                <div className="valign-wrapper">
+                    <div className="col s6 right-align">
+                        <span className="doomFontRightSmall">E</span>
+                    </div>
+                    <div className="col s6 left-align">
+                        <span>Use/Open Door</span>
+                    </div>
+                </div>
+                <div className="valign-wrapper">
+                    <div className="col s6 right-align">
+                        <span className="doomFontLeftSmall">M</span>
+                        <span className="doomFontStdSmall">ous</span>
+                        <span className="doomFontRightSmall">E</span>
+                    </div>
+                    <div className="col s6 left-align">
+                        <span>Turn Left/Right, Fire (MB 1)</span>
+                    </div>
+                </div>
+                <div className="center-align">
+                    <span className="doomFontLeft">Q</span>
+                    <span className="doomFontStd">uick star</span>
+                    <span className="doomFontRight">T</span>
+                </div>
             </div>
         </main>
     )

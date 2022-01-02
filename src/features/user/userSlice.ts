@@ -44,8 +44,12 @@ export const { finalScore, userSignUp } = userSlice.actions;
 
 export const selectFinalScore = (state: RootState) => state.user.finalScore;
 
+export const selectUserEmail = (state: RootState) => state.user.email;
+
 export const selectUserCity = (state: RootState) => state.user.homeCity;
 
 export const selectUserState = (state: RootState) => state.user.homeState;
+
+export const selectUserPW = (state: RootState) => state.user.password;
 
 export default userSlice.reducer
