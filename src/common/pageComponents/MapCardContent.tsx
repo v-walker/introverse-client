@@ -66,17 +66,17 @@ function MapCardContent(): JSX.Element {
 
         }, []);
 
-    useEffect(() => {
-        console.log(clicks);
-    }, [clicks])
+    // useEffect(() => {
+    //     console.log(clicks);
+    // }, [clicks])
 
-    useEffect(() => {
-        // console.log(currentLocationQuery)
-        currentLocationQuery.map(searchObj => {
-            console.log(searchObj)
-            return null
-        })
-    }, [currentLocationQuery])
+    // useEffect(() => {
+    //     // console.log(currentLocationQuery)
+    //     currentLocationQuery.map((searchObj: google.maps.places.PlaceResult) => {
+    //         console.log(searchObj.geometry?.location)
+    //         return null
+    //     })
+    // }, [currentLocationQuery])
 
     useEffect(() => {
         setCenter(searchLocation)
@@ -93,9 +93,11 @@ function MapCardContent(): JSX.Element {
 
                     {/* to map through currentLocationQuery, set marker position to lat/lng returned */}
 
-                    {/* {currentLocationQuery.map((searchObj, i) => (
-                        <Marker key={i} position={searchObj.geometry.location} />
-                    ))} */}
+                    {currentLocationQuery.map((searchObj: google.maps.places.PlaceResult, i) => {
+                        return (
+                        <Marker key={i} position={searchObj.geometry?.location} />
+                    )
+                    })}
                 </Map>
             </Wrapper>
         </div>
