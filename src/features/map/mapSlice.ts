@@ -19,7 +19,7 @@ export const mapSlice = createSlice({
     name: 'Map',
     initialState,
     reducers: {
-        currentLocation: (state, action: PayloadAction<LatLng>) => {
+        updateCurrentLocation: (state, action: PayloadAction<LatLng>) => {
             state.currentLocation = action.payload
         },
         searchCity: (state, action: PayloadAction<string>) => {
@@ -28,7 +28,7 @@ export const mapSlice = createSlice({
     }
 })
 
-export const { searchCity } = mapSlice.actions;
+export const { updateCurrentLocation, searchCity } = mapSlice.actions;
 
 export const selectCitySearch = (state: RootState) => state.map.citySearch;
 
