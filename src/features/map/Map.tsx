@@ -48,7 +48,7 @@ function useDeepCompareEffectForMaps(
 
 const Map: React.FC<MapProps> = ({ onClick, onIdle, children, style, ...options }) => {
 
-    const citySearch = useAppSelector(selectCitySearch);
+    // const citySearch = useAppSelector(selectCitySearch);
 
     const ref = React.useRef<HTMLDivElement>(null);
     const [map, setMap] = React.useState<google.maps.Map>();
