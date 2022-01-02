@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 
 import { isLatLngLiteral } from "@googlemaps/typescript-guards";
 import { createCustomEqual } from "fast-equals";
-// import { request } from 'https';
-import Marker from './Marker'
+
+// local components
 import { selectCurrentLocation } from '../../features/map/mapSlice';
 import { useAppSelector } from '../../app/hooks'
 

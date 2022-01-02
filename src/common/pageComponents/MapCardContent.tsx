@@ -10,7 +10,7 @@ import Map from '../../features/map/Map';
 import Marker from '../../features/map/Marker';
 import { useAppSelector } from '../../app/hooks';
 import { selectUserCity, selectUserState } from '../../features/user/userSlice';
-import { selectCitySearch, updateCurrentLocation, selectCurrentLocation } from '../../features/map/mapSlice';
+import { updateCurrentLocation, selectCurrentLocation } from '../../features/map/mapSlice';
 
 // Atlanta lat: 33.748995, lng:-84.387982
 
@@ -29,7 +29,6 @@ function MapCardContent(): JSX.Element {
     const dispatch = useAppDispatch();
     const userCity = useAppSelector(selectUserCity);
     const userState = useAppSelector(selectUserState);
-    // const citySearch = useAppSelector(selectCitySearch);
     const searchLocation = useAppSelector(selectCurrentLocation);
 
     const [clicks, setClicks] = useState<google.maps.LatLng[]>([]);
