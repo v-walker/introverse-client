@@ -100,13 +100,16 @@ function RecommendationsPage() {
                     <div className='col s12 m9 mt-5'>
                         <BasicLargeCard cardContent={<MapCardContent />} />
                     </div>
-                    <div className="center-align">
-                        <Link to="/itrunsdoom">
-                            <span className="doomFontLeftSmall">I</span>
-                            <span className="doomFontStdSmall">'m feeling luck</span>
-                            <span className="doomFontRightSmall">Y</span>
-                        </Link>
+                    <div className="row">
+                        <div className="col s12 center-align">
+                            <Link to="/itrunsdoom">
+                                <span className="doomFontLeftSmall">I</span>
+                                <span className="doomFontStdSmall">'m staying i</span>
+                                <span className="doomFontRightSmall">N</span>
+                            </Link>
+                        </div>
                     </div>
+                    
                 </div>
             </main>
         </>
