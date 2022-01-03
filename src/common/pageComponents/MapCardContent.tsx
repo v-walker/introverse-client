@@ -8,6 +8,7 @@ import { getGeoInfo } from '../utils';
 import { useAppDispatch } from '../../app/hooks';
 import Map from '../../features/map/Map';
 import Marker from '../../features/map/Marker';
+// import InfoWindow from '../../features/map/InfoWindow';
 import { useAppSelector } from '../../app/hooks';
 import { selectUserCity, selectUserState } from '../../features/user/userSlice';
 import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery, updateCurrentMapCenter, updateClick } from '../../features/map/mapSlice';
@@ -88,7 +89,7 @@ function MapCardContent(): JSX.Element {
 
                     {currentLocationQuery.map((searchObj: google.maps.places.PlaceResult, i) => {
                         return (
-                        <Marker key={i} position={searchObj.geometry?.location} />
+                            <Marker key={i} position={searchObj.geometry?.location} />
                     )
                     })}
                 </Map>
