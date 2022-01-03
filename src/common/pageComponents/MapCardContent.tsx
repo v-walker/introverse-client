@@ -10,20 +10,19 @@ import Map from '../../features/map/Map';
 import Marker from '../../features/map/Marker';
 import { useAppSelector } from '../../app/hooks';
 import { selectUserCity, selectUserState } from '../../features/user/userSlice';
-import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery } from '../../features/map/mapSlice';
+import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery, updateCurrentMapCenter, updateClick } from '../../features/map/mapSlice';
+// import { LatLng } from '../../features/map/mapSlice';
 
 // Atlanta lat: 33.748995, lng:-84.387982
 
-/**
- * 
- * getGeoInfo() function takes in two strings: city, state and returns a promise containing geocoding location data from Google Maps Geocoding API
- * 
- * for more information regarding this API and the data returned from it, please refer to https://developers.google.com/maps/documentation/geocoding/requests-geocoding#json
- * 
- * @param city: string 
- * @param state: string 
- * @returns Promise<any>
- */
+// const getLatLngLit = (clickObj: google.maps.LatLng) => {
+//     let latLngLit = {lat: clickObj.lat, lng:clickObj.lng}
+
+//     console.log(latLngLit);
+
+//     return latLngLit
+// }
+
 
 function MapCardContent(): JSX.Element {
     const dispatch = useAppDispatch();
@@ -31,16 +30,26 @@ function MapCardContent(): JSX.Element {
     const userState = useAppSelector(selectUserState);
     const searchLocation = useAppSelector(selectCurrentLocation);
     const currentLocationQuery = useAppSelector(selectCurrentLocationQuery);
+    // const recentClick = useAppSelector(selectRecentClick);
 
     const [clicks, setClicks] = useState<google.maps.LatLng[]>([]);
-    const [zoom, setZoom] = useState(14); // initial zoom
+    const [zoom, setZoom] = useState(15); // initial zoom
     const [center, setCenter] = React.useState<google.maps.LatLngLiteral>({
-        lat: 33.748995,
-        lng: -84.387982,
+        lat: 0,
+        lng: 0,
     });
+
+    // clicks.forEach(click => {
+    //     console.log(click.toJSON())
+    // })
 
     const onClick = (e: google.maps.MapMouseEvent) => {
         // avoid directly mutating state
+
+        console.log(e.latLng);
+
+        // let latLngLit = {lat: e.latLng?.lat, lng: e.latLng?.lng}
+
         setClicks([...clicks, e.latLng!]);
     };
 
@@ -66,22 +75,32 @@ function MapCardContent(): JSX.Element {
 
         }, []);
 
-    // useEffect(() => {
-    //     console.log(clicks);
-    // }, [clicks])
+    useEffect(() => {
+        // let lastClick = clicks[clicks.length - 1].toJSON()
+       
+        console.log(clicks);
+        // console.log(lastClick);
+        // dispatch(updateClick(clicks[clicks.length - 1].toJSON()));
+        dispatch(updateClick(clicks[clicks.length - 1]))
+    }, [clicks])
 
     // useEffect(() => {
-    //     // console.log(currentLocationQuery)
-    //     currentLocationQuery.map((searchObj: google.maps.places.PlaceResult) => {
-    //         console.log(searchObj.geometry?.location)
-    //         return null
-    //     })
-    // }, [currentLocationQuery])
+    //     setCenter(recentClick)
+    // }, [recentClick])
 
     useEffect(() => {
         setCenter(searchLocation)
 
     }, [searchLocation]);
+
+    useEffect(() => {
+
+        dispatch(updateCurrentMapCenter(center));
+        // console.log(center);
+
+    }, [center])
+
+
     
     return (
         <div className='map-card'>
@@ -98,6 +117,9 @@ function MapCardContent(): JSX.Element {
                         <Marker key={i} position={searchObj.geometry?.location} />
                     )
                     })}
+
+                    {/* <Marker position={center} draggable /> */}
+
                 </Map>
             </Wrapper>
         </div>
