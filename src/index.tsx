@@ -8,6 +8,7 @@ import { persistStore } from "redux-persist";
 
 
 import './index.css';
+import "./fonts/Doom2016Text-GOlBq.ttf"
 
 /** import components/pages for routes here */
 import BaseLayout from './common/layout/BaseLayout';
