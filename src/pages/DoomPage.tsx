@@ -37,12 +37,12 @@ function DoomPage(): JSX.Element {
                     </div>
                 </div>
                 <div className="valign-wrapper">
-                    <div className="col s6 right-align">
+                    <div className="col s6 right-align mb-5">
                         <span className="doomFontLeftSmall">M</span>
                         <span className="doomFontStdSmall">ous</span>
                         <span className="doomFontRightSmall">E</span>
                     </div>
-                    <div className="col s6 left-align">
+                    <div className="col s6 left-align mb-5">
                         <span>Turn Left/Right, Fire (MB 1)</span>
                     </div>
                 </div>

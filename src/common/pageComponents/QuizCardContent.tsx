@@ -181,18 +181,27 @@ function QuizCardContent(): JSX.Element {
                                     {totalScore <= 20
                                     ?
                                     <>
-                                        <p>We have calibrated your level of IntroSafe™ protection to: LOW</p>
+                                        <p>We have calibrated your level of IntroSafe™ protection to:</p>
+                                        <br />
+                                        <img src="./img/shield-low.png" width={150} />
+                                        <br />
                                     </>
                                     :
                                     <>
                                         {totalScore >= 21 && totalScore <= 30
                                         ?
                                         <>
-                                            <p>We have calibrated your level of IntroSafe™ protection to: MEDIUM</p>
+                                            <p>We have calibrated your level of IntroSafe™ protection to:</p>
+                                            <br />
+                                            <img src="./img/shield-medium.png" width={150} />
+                                            <br />
                                         </>
                                         :
                                         <>
-                                            <p>We have calibrated your level of IntroSafe™ protection to: HIGH</p>
+                                            <p>We have calibrated your level of IntroSafe™ protection to:</p>
+                                            <br />
+                                            <img src="./img/shield-high.png" width={150} />
+                                            <br />
                                         </>}
                                     </>
                                     }

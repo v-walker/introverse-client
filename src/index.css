@@ -201,35 +201,41 @@ ul.hide-on-med-and-down.right:last-child {
 .doomFontStd{
   font-family: "DoomStd";
   color: #4db6ac;
-  font-size: 100px
+  font-size: 100px;
+  margin: 0px
 }
 
 .doomFontLeft{
   font-family: "DoomLeft";
   color: #4db6ac;
-  font-size: 100px
+  font-size: 100px;
+  margin: 0px
 }
 
 .doomFontRight{
   font-family: "DoomRight";
   color: #4db6ac;
-  font-size: 100px
+  font-size: 100px;
+  margin: 0px
 }
 
 .doomFontStdSmall{
   font-family: "DoomStd";
   color: #4db6ac;
-  font-size: 50px
+  font-size: 50px;
+  margin: 0px
 }
 
 .doomFontLeftSmall{
   font-family: "DoomLeft";
   color: #4db6ac;
-  font-size: 50px
+  font-size: 50px;
+  margin: 0px
 }
 
 .doomFontRightSmall{
   font-family: "DoomRight";
   color: #4db6ac;
-  font-size: 50px
+  font-size: 50px;
+  margin: 0px
 }
