@@ -2,7 +2,7 @@ import React from "react";
 
 interface MarkerProps extends google.maps.MarkerOptions {
     onClick?: (e: google.maps.MapMouseEvent) => void;
-}
+};
 
 const Marker: React.FC<MarkerProps> = ({onClick, ...options}) => {
     const [marker, setMarker] = React.useState<google.maps.Marker>();
@@ -10,7 +10,7 @@ const Marker: React.FC<MarkerProps> = ({onClick, ...options}) => {
     React.useEffect(() => {
     if (!marker) {
         setMarker(new google.maps.Marker());
-    }
+    };
 
     // remove marker from map on unmount
     return () => {
