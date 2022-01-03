@@ -2,7 +2,7 @@ import React, { useState, FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { userSignUp, PayloadUserInfo } from "../../features/user/userSlice"
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { statesArray } from '../../features/user/utils';
+import { statesArray } from '../utils';
 
 
 function SignUpForm(): JSX.Element {

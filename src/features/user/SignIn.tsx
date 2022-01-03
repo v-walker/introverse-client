@@ -1,10 +1,8 @@
 
 import React, {useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginUser, userSelector, clearState, fetchUserBytoken, } from './userSlice';
-import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -13,7 +11,7 @@ const SignIn = ({}) => {
 const dispatch = useDispatch();
 const navigate = useNavigate();
 const { handleSubmit } = useForm();
-const { isFetching, isSuccess, isError, errorMessage } = useSelector(
+const { isSuccess, isError, errorMessage } = useSelector(
     userSelector
 );
 
@@ -25,8 +23,9 @@ const { email } = useSelector(userSelector);
 
 useEffect(() => {
     if (isError) {
+    console.log(errorMessage);
     dispatch(clearState());
-    navigate('/login');
+    navigate('/');
 }
 }, [isError]);
 
@@ -41,9 +40,10 @@ return () => {
 };
 }, []);
 
+
 useEffect(() => {
 if (isError) {
-    toast.error(errorMessage);
+    console.log(errorMessage);
     dispatch(clearState());
 }
 
@@ -56,7 +56,7 @@ if (isSuccess) {
 return (
 <>
     <h5>Sign In</h5>
-    <form onSubmit={handleSubmit(onSubmit)} className='col s12'>
+    <form onSubmit={handleSubmit(()=>onSubmit)} className='col s12'>
         <div className="input-field">
             <label htmlFor="email">Email</label>
             <input

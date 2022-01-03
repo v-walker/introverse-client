@@ -1,12 +1,11 @@
 
 import React, { useState, useEffect,FormEvent } from 'react';
-import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { userSignUp, userSelector, clearState ,PayloadUserInfo } from './userSlice';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import { statesArray } from './utils';
+import { statesArray } from '../../common/utils';
 
 
 const SignUp = () => {
@@ -16,13 +15,13 @@ const [email, setEmail] = useState("");
 const [homeCity, setHomeCity] = useState("");
 const [homeState, setHomeState] = useState("");
 const [password, setPassword] = useState("");
-const [isSignIn, setIsSignIn] = useState(false);
+
 
 
 
 const { register, handleSubmit } = useForm();
 const navigate = useNavigate();
-const { isFetching, isSuccess, isError, errorMessage } = useSelector(userSelector);
+const { isSuccess, isError, errorMessage } = useSelector(userSelector);
 
 const handleSignUp = (e: FormEvent, userInfo: PayloadUserInfo) => {
     e.preventDefault();

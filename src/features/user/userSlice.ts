@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { createSlice, PayloadAction, createAsyncThunk, AsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
 export interface UserState {
     finalScore: number,
@@ -9,7 +9,6 @@ export interface UserState {
     homeCity: string,
     homeState: string,
     password: string,
-    isFetching: boolean,
     isSuccess: boolean,
     isError: boolean,
     errorMessage:string,
@@ -28,7 +27,6 @@ const initialState: UserState = {
     homeCity: "",
     homeState: "",
     password: "",
-    isFetching: false,
     isSuccess: false,
     isError: false,
     errorMessage: "",
@@ -112,7 +110,7 @@ export const userSlice = createSlice({
         clearState: (state) => {
             state.isError = false;
             state.isSuccess = false;
-            state.isFetching = false;
+
             return state;
         },
         finalScore: (state, action: PayloadAction<number>) => {
@@ -121,48 +119,34 @@ export const userSlice = createSlice({
     },
     extraReducers: {
     [userSignUp.fulfilled]: (state, { payload }) => {
-        state.isFetching = false;
         state.isSuccess = true;
         state.email = payload.user.email;
         state.homeCity = payload.payload.homeCity
         state.homeState = payload.payload.homeState
         },
-        [userSignUp.pending]: (state) => {
-        state.isFetching = true;
-        },
         [userSignUp.rejected]: (state, { payload }) => {
-        state.isFetching = false;
         state.isError = true;
         state.errorMessage = payload.message;
         },
         [loginUser.fulfilled]: (state, { payload }) => {
         state.email = payload.email;
         state.username = payload.name;
-        state.isFetching = false;
         state.isSuccess = true;
         return state;
         },
         [loginUser.rejected]: (state, { payload }) => {
         console.log('payload', payload);
-        state.isFetching = false;
         state.isError = true;
         state.errorMessage = payload.message;
         },
-        [loginUser.pending]: (state) => {
-        state.isFetching = true;
-        },
-        [fetchUserBytoken.pending]: (state) => {
-        state.isFetching = true;
-        },
         [fetchUserBytoken.fulfilled]: (state, { payload }) => {
-        state.isFetching = false;
         state.isSuccess = true;
         state.email = payload.email;
         state.username = payload.name;
         },
+
         [fetchUserBytoken.rejected]: (state) => {
-        console.log('fetchUserBytoken');
-        state.isFetching = false;
+        console.log('fetchUserBytoken rejected');
         state.isError = true;
         },
     
