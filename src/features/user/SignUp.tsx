@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect,FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -5,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { userSignUp, userSelector, clearState ,PayloadUserInfo } from './userSlice';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import {statesArray} from '/utils'
+import { statesArray } from './utils';
 
 
 const SignUp = () => {
@@ -19,13 +20,13 @@ const [isSignIn, setIsSignIn] = useState(false);
 
 
 
-const { register, errors, handleSubmit } = useForm();
+const { register, handleSubmit } = useForm();
 const navigate = useNavigate();
 const { isFetching, isSuccess, isError, errorMessage } = useSelector(userSelector);
 
 const handleSignUp = (e: FormEvent, userInfo: PayloadUserInfo) => {
     e.preventDefault();
-    dispatch(userSignUp())
+    dispatch(userSignUp(userInfo))
 }
 
 useEffect(() => {
@@ -48,13 +49,13 @@ if (isError) {
 
 return (
     <>
-    {!isSignIn? <h5>Sign Up</h5> : <h5>Sign In</h5>}
-    <form onSubmit={(e) => handleSignUp(e, {email, homeCity, homeState, password})} className='col s12'>
+     <h5>Sign Up</h5>
+    <form onSubmit={(e) => handleSignUp(e, {email, homeCity, homeState, password})} className='col s12' method="POST">
         <div className="input-field">
-            <input id="email" type="text" className="validate" onChange={(e) => setEmail(e.target.value)} />
+            <input id="email" type="text" className="validate" onChange={(e) => setEmail(e.target.value)} autoComplete="email"/>
             <label htmlFor="email">Email</label>
         </div>
-        {!isSignIn && 
+        
         <>
             <div className='input-field'>
                 <input id="homeCity" type="text" onChange={(e) => setHomeCity(e.target.value)} />
@@ -71,10 +72,10 @@ return (
             </select>
             </div>
         </>
-        }
+        
         
         <div className="input-field">
-            <input id="password" type="password" onChange={(e) => setPassword(e.target.value)} />
+            <input id="password" type="password" onChange={(e) => setPassword(e.target.value)} autoComplete="current-password"/>
             <label htmlFor="password">Password</label>
         </div>
         <div className='right-align'>
@@ -82,14 +83,7 @@ return (
         </div>
     </form>
 
-    {!isSignIn && 
-        <div className='col s12 mt-5'>
-        Already have an account?
-        <br />
-        {/* add links to this line */}
-        Click here to <button className='waves-effect waves-light btn-small btn-flat btn-signin' onClick={() => setIsSignIn(!isSignIn)}>sign in</button>.
-        </div>
-    }
+    
 </>
 
 

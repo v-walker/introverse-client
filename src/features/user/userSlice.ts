@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createSlice, PayloadAction, createAsyncThunk, AsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import axios, { AxiosResponse } from 'axios';
@@ -36,11 +37,12 @@ const initialState: UserState = {
 
 export const userSignUp:AsyncThunk<any,any,{}> = createAsyncThunk(
 "users/userSignUp",
-async ({email,password}, thunkAPI) => {
+async (formData, thunkAPI) => {
     try {
-    const response = await axios.post("/register")
+    const response = await axios.post("/register",formData)
 
     let data = await response.json()
+
     console.log("data", data)
 
     if (response.status === 200) {
@@ -59,11 +61,13 @@ async ({email,password}, thunkAPI) => {
 
 export const loginUser:AsyncThunk<any,any,{}> = createAsyncThunk(
 "users/login",
-async ({ email, password }, thunkAPI) => {
+async (formData, thunkAPI) => {
     try {
-        const response = await axios.post("/login")
+        const response = await axios.post("/login",formData)
     let data = await response.json();
+
     console.log('response', data);
+
     if (response.status === 200) {
         localStorage.setItem('token', data.token);
         return data;
@@ -81,7 +85,10 @@ export const fetchUserBytoken = createAsyncThunk(
 'users/fetchUserByToken',
 async ({ token }, thunkAPI) => {
     try {
-        const response = await axios.get("/")
+        const response = await axios.get("/protected",{
+            headers: {
+                'authorization': localStorage.token
+            }})
 
     let data = await response.json();
     console.log('data', data, response.status);
