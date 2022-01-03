@@ -4,6 +4,7 @@ import { userSignUp, PayloadUserInfo } from "../../features/user/userSlice"
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { statesArray } from '../utils';
 
+
 function SignUpForm(): JSX.Element {
 
     const dispatch = useAppDispatch();
@@ -65,7 +66,7 @@ function SignUpForm(): JSX.Element {
                 Already have an account?
                 <br />
                 {/* add links to this line */}
-                Click here to <button className='waves-effect waves-light btn-small btn-flat btn-signin' onClick={() => setIsSignIn(!isSignIn)}>sign in</button>.
+                Click here to <button className='waves-effect waves-light btn-small btn-flat btn-signin' onClick={() => setIsSignIn(!isSignIn)}>Sign In</button>.
                 </div>
             }
         </>
