@@ -11,18 +11,8 @@ import Marker from '../../features/map/Marker';
 import { useAppSelector } from '../../app/hooks';
 import { selectUserCity, selectUserState } from '../../features/user/userSlice';
 import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery, updateCurrentMapCenter, updateClick } from '../../features/map/mapSlice';
-// import { LatLng } from '../../features/map/mapSlice';
 
 // Atlanta lat: 33.748995, lng:-84.387982
-
-// const getLatLngLit = (clickObj: google.maps.LatLng) => {
-//     let latLngLit = {lat: clickObj.lat, lng:clickObj.lng}
-
-//     console.log(latLngLit);
-
-//     return latLngLit
-// }
-
 
 function MapCardContent(): JSX.Element {
     const dispatch = useAppDispatch();
@@ -39,17 +29,11 @@ function MapCardContent(): JSX.Element {
         lng: 0,
     });
 
-    // clicks.forEach(click => {
-    //     console.log(click.toJSON())
-    // })
 
     const onClick = (e: google.maps.MapMouseEvent) => {
         // avoid directly mutating state
 
         console.log(e.latLng);
-
-        // let latLngLit = {lat: e.latLng?.lat, lng: e.latLng?.lng}
-
         setClicks([...clicks, e.latLng!]);
     };
 
@@ -76,17 +60,9 @@ function MapCardContent(): JSX.Element {
         }, []);
 
     useEffect(() => {
-        // let lastClick = clicks[clicks.length - 1].toJSON()
-       
         console.log(clicks);
-        // console.log(lastClick);
-        // dispatch(updateClick(clicks[clicks.length - 1].toJSON()));
         dispatch(updateClick(clicks[clicks.length - 1]))
     }, [clicks])
-
-    // useEffect(() => {
-    //     setCenter(recentClick)
-    // }, [recentClick])
 
     useEffect(() => {
         setCenter(searchLocation)
@@ -96,7 +72,6 @@ function MapCardContent(): JSX.Element {
     useEffect(() => {
 
         dispatch(updateCurrentMapCenter(center));
-        // console.log(center);
 
     }, [center])
 
@@ -117,9 +92,6 @@ function MapCardContent(): JSX.Element {
                         <Marker key={i} position={searchObj.geometry?.location} />
                     )
                     })}
-
-                    {/* <Marker position={center} draggable /> */}
-
                 </Map>
             </Wrapper>
         </div>
