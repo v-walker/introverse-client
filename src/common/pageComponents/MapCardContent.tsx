@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
+// import { InfoWindow } from "react-google-maps";
 // import axios from 'axios';
 
 /** Local Components */
@@ -8,7 +9,7 @@ import { getGeoInfo } from '../utils';
 import { useAppDispatch } from '../../app/hooks';
 import Map from '../../features/map/Map';
 import Marker from '../../features/map/Marker';
-// import InfoWindow from '../../features/map/InfoWindow';
+import InfoWindow from '../../features/map/InfoWindow';
 import { useAppSelector } from '../../app/hooks';
 import { selectUserCity, selectUserState } from '../../features/user/userSlice';
 import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery, updateCurrentMapCenter, updateClick } from '../../features/map/mapSlice';
@@ -29,11 +30,12 @@ function MapCardContent(): JSX.Element {
         lat: 0,
         lng: 0,
     });
+    const [selectedPlaceObj, setSelectedPlaceObj] = useState<any>(null);
 
     const onClick = (e: google.maps.MapMouseEvent) => {
         // avoid directly mutating state
 
-        console.log(e.latLng);
+        // console.log(e.latLng);
         setClicks([...clicks, e.latLng!]);
     };
 
@@ -75,7 +77,9 @@ function MapCardContent(): JSX.Element {
 
     }, [center])
 
-
+    useEffect(() => {
+        console.log(selectedPlaceObj);
+    }, [selectedPlaceObj])
     
     return (
         <div className='map-card'>
@@ -89,9 +93,16 @@ function MapCardContent(): JSX.Element {
 
                     {currentLocationQuery.map((searchObj: google.maps.places.PlaceResult, i) => {
                         return (
-                            <Marker key={i} position={searchObj.geometry?.location} />
+                            <Marker key={i} position={searchObj.geometry?.location} onClick={() => setSelectedPlaceObj(searchObj)} />
                     )
                     })}
+
+                    { selectedPlaceObj && 
+                    <InfoWindow position={selectedPlaceObj.geometry?.location}>
+                            {/* <div>{selectedPlaceObj.name}</div> */}
+                    </InfoWindow>
+
+                    }
                 </Map>
             </Wrapper>
         </div>
