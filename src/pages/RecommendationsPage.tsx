@@ -32,8 +32,6 @@ function RecommendationsPage() {
         e.preventDefault();
 
         dispatch(updatePlaceSearchType(placeTypeSearch));
-
-        setPlaceTypeSearch("");
     }
 
     /**
@@ -110,7 +108,7 @@ function RecommendationsPage() {
                                 {/* <label htmlFor="placeTypeSearch">Select a Place Type</label> */}
                                 <br />
                                 <select required id="placeTypeSearch" className='browser-default' defaultValue="" onChange={(e) => setPlaceTypeSearch(e.target.value)} >
-                                    <option value="" disabled>place</option>
+                                    <option value="place" disabled>place</option>
                                     {placeTypesArray.map((placeTypeObj, index) => {
                                         return <option key={index} value={placeTypeObj.value}>{placeTypeObj.displayName}</option>
                                     })}
