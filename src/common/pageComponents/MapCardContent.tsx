@@ -29,7 +29,6 @@ function MapCardContent(): JSX.Element {
         lng: 0,
     });
 
-
     const onClick = (e: google.maps.MapMouseEvent) => {
         // avoid directly mutating state
 
