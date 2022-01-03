@@ -22,6 +22,11 @@ export interface PayloadUserInfo {
     homeState: string,
     
 }
+export interface PayloadUserLoginInfo {
+    email: string,
+    password:string
+
+}
 
 const initialState: UserState = {
     finalScore: 0,
@@ -41,9 +46,6 @@ export const userSignUp:AsyncThunk<any,any,{}> = createAsyncThunk(
 async (formData, thunkAPI) => {
     try {
     const response = await axios.post("/register", formData)
-
-    
-
     console.log(" response data", response)
 
     if (response.status === 200) {
@@ -54,7 +56,6 @@ async (formData, thunkAPI) => {
     }
     } catch (e) {
     console.log("Error:", e.response.data)
-
     return thunkAPI.rejectWithValue(e.response.data)
     }
 }
@@ -63,17 +64,20 @@ async (formData, thunkAPI) => {
 
 export const loginUser:AsyncThunk<any,any,{}> = createAsyncThunk(
 "users/login",
-async (formData, thunkAPI) => {
+async (formData,cb, thunkAPI) => {
     try {
+        console.log('formData',formData)
         const response = await axios.post("/login",formData)
+console.log('response',response)
 
     if (response.status === 200) {
-        localStorage.setItem('token', data.token);
-        return data;
+        cb()
+        localStorage.setItem('token', response.data.token);
     } else {
         return thunkAPI.rejectWithValue(data);
     }
     } catch (e) {
+        console.log(e, 'e')
     console.log('Error', e.response.data);
     thunkAPI.rejectWithValue(e.response.data);
     }

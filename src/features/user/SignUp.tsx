@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect,FormEvent } from 'react';
-import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { userSignUp, userSelector, clearState ,PayloadUserInfo } from './userSlice';
 import { useNavigate } from 'react-router-dom';
@@ -19,7 +18,7 @@ const [password, setPassword] = useState("");
 
 
 
-const { register, handleSubmit } = useForm();
+
 const navigate = useNavigate();
 const { isSuccess, isError, errorMessage } = useSelector(userSelector);
 

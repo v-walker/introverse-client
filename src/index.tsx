@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React,{useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
@@ -5,6 +6,8 @@ import { store } from './app/store';
 import { Provider } from 'react-redux';
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
+import { PrivateRoute } from './features/user/PrivateRoute';
+import RequireAuth from './features/user/RequireAuth';
 
 
 import './index.css';
@@ -32,11 +35,12 @@ ReactDOM.render(
           <BaseLayout>
             <Routes>
               <Route path="/" element={<App />}/>
-              <Route path="/quiz" element={<QuizPage />}/>
-              <Route path="/recommendations" element={<RecommendationsPage />}/>
-              <Route path="/about" element={<AboutPage />}/>
-              <Route path="/itrunsdoom" element={<DoomPage />}/>
-            </Routes>
+              
+              <Route path="/quiz" element={  <RequireAuth ><QuizPage /></RequireAuth>}/>
+              <Route path="/recommendations" element={<RequireAuth ><RecommendationsPage /></RequireAuth>}/>
+              <Route path="/about" element={<RequireAuth ><AboutPage /></RequireAuth>}/>
+              <Route path="/itrunsdoom" element={<RequireAuth ><DoomPage /></RequireAuth>}/>
+            </Routes> 
           </BaseLayout>
         </Router>
       </PersistGate>
