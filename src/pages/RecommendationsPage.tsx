@@ -10,7 +10,7 @@ import LocationsListContent from '../common/pageComponents/LocationsListContent'
 import MapCardContent from '../common/pageComponents/MapCardContent';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { updateCurrentLocation, searchCity, selectRecentClick, updateCurrentMapCenter, updatePlaceSearchType } from '../features/map/mapSlice';
-import { getGeoInfo } from '../common/utils';
+import { getGeoInfo, placeTypesArray } from '../common/utils';
 
 
 function RecommendationsPage() {
@@ -21,10 +21,19 @@ function RecommendationsPage() {
     const recentClick = useAppSelector(selectRecentClick);
     
 
+    /**
+     * handlePlaceTypeSubmit() handles form submission of place type search, dispatching the seaarch string to the global state, then resetting the form input to an empty string
+     * 
+     * @param e 
+     * @returns void
+     */
+
     const handlePlaceTypeSubmit = (e: FormEvent): void => {
         e.preventDefault();
 
-        dispatch(updatePlaceSearchType(placeTypeSearch))
+        dispatch(updatePlaceSearchType(placeTypeSearch));
+
+        setPlaceTypeSearch("");
     }
 
     /**
@@ -100,8 +109,11 @@ function RecommendationsPage() {
                             <div className='row'>
                                 {/* <label htmlFor="placeTypeSearch">Select a Place Type</label> */}
                                 <br />
-                                <select required id="placeTypeSearch" className='browser-default' defaultValue="" value={placeTypeSearch} onChange={(e) => setPlaceTypeSearch(e.target.value)} >
+                                <select required id="placeTypeSearch" className='browser-default' defaultValue="" onChange={(e) => setPlaceTypeSearch(e.target.value)} >
                                     <option value="" disabled>place</option>
+                                    {placeTypesArray.map((placeTypeObj, index) => {
+                                        return <option key={index} value={placeTypeObj.value}>{placeTypeObj.displayName}</option>
+                                    })}
                                 </select>
                                 <br />
                                 <div className='right-align col s12'>
