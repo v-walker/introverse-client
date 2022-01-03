@@ -11,6 +11,7 @@ import MapCardContent from '../common/pageComponents/MapCardContent';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { updateCurrentLocation, searchCity, selectRecentClick, updateCurrentMapCenter } from '../features/map/mapSlice';
 import { getGeoInfo } from '../common/utils';
+import TimesChart from "../features/map/TimesChart";
 
 
 function RecommendationsPage() {
@@ -79,7 +80,6 @@ function RecommendationsPage() {
                     <div className='col s12 center-align'>
                         <h1>Your Recommendations</h1>
                         <hr />
-
                     </div>
 
                     <aside className='col s12 m3 mt-5'>
@@ -112,6 +112,11 @@ function RecommendationsPage() {
                         <BasicLargeCard cardContent={<MapCardContent />} />
                     </div>
                     <div className="row">
+                        <div className="col s12">
+                            <TimesChart />
+                        </div>
+                    </div>
+                    <div className="row">
                         <div className="col s12 center-align">
                             <Link to="/itrunsdoom">
                                 <span className="doomFontLeftSmall">I</span>
@@ -120,7 +125,6 @@ function RecommendationsPage() {
                             </Link>
                         </div>
                     </div>
-                    
                 </div>
             </main>
         </>
