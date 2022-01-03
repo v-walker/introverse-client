@@ -9,6 +9,7 @@ import BasicLargeCard from '../common/pageComponents/BasicLargeCard';
 import LocationsListContent from '../common/pageComponents/LocationsListContent';
 import MapCardContent from '../common/pageComponents/MapCardContent';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
+import TimesChart from "../features/map/TimesChart";
 import { updateCurrentLocation, searchCity, selectRecentClick, updateCurrentMapCenter, updatePlaceSearchType } from '../features/map/mapSlice';
 import { getGeoInfo, placeTypesArray } from '../common/utils';
 
@@ -97,7 +98,6 @@ function RecommendationsPage() {
                     <div className='col s12 center-align'>
                         <h1>Your Interactive Intro-Rating Map</h1>
                         <hr />
-
                     </div>
 
                     <aside className='col s12 m3 mt-5'>
@@ -151,6 +151,11 @@ function RecommendationsPage() {
                         <BasicLargeCard cardContent={<MapCardContent />} />
                     </div>
                     <div className="row">
+                        <div className="col s12">
+                            <TimesChart />
+                        </div>
+                    </div>
+                    <div className="row">
                         <div className="col s12 center-align">
                             <Link to="/itrunsdoom">
                                 <span className="doomFontLeftSmall">I</span>
@@ -159,7 +164,6 @@ function RecommendationsPage() {
                             </Link>
                         </div>
                     </div>
-                    
                 </div>
             </main>
         </>
