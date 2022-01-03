@@ -11,9 +11,7 @@ const SignIn = ({}) => {
 const dispatch = useDispatch();
 const navigate = useNavigate();
 const { handleSubmit } = useForm();
-const { isSuccess, isError, errorMessage } = useSelector(
-    userSelector
-);
+const { isSuccess, isError, errorMessage } = useSelector( userSelector);
 
 useEffect(() => { 
     dispatch(fetchUserBytoken());
@@ -23,7 +21,7 @@ const { email } = useSelector(userSelector);
 
 useEffect(() => {
     if (isError) {
-    console.log(errorMessage);
+    console.log('use effect errorMessage',errorMessage);
     dispatch(clearState());
     navigate('/');
 }
@@ -49,6 +47,7 @@ if (isError) {
 
 if (isSuccess) {
     dispatch(clearState());
+    console.log('success');
     navigate('/');
 }
 }, [isError, isSuccess]);

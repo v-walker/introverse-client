@@ -10,7 +10,7 @@ import { statesArray } from '../../common/utils';
 
 const SignUp = () => {
 const dispatch = useDispatch();
-
+const [username, setUsername] = useState("")
 const [email, setEmail] = useState("");
 const [homeCity, setHomeCity] = useState("");
 const [homeState, setHomeState] = useState("");
@@ -49,10 +49,14 @@ if (isError) {
 return (
     <>
      <h5>Sign Up</h5>
-    <form onSubmit={(e) => handleSignUp(e, {email, homeCity, homeState, password})} className='col s12' method="POST">
+    <form onSubmit={(e) => handleSignUp(e, {email,username, homeCity, homeState, password})} className='col s12' method="POST">
         <div className="input-field">
             <input id="email" type="text" className="validate" onChange={(e) => setEmail(e.target.value)} autoComplete="email"/>
             <label htmlFor="email">Email</label>
+        </div>
+        <div className="input-field">
+            <input id="username" type="text" className="validate" onChange={(e) => setUsername(e.target.value)} autoComplete=""/>
+            <label htmlFor="username">Username</label>
         </div>
         
         <>

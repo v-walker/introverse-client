@@ -6,9 +6,10 @@ import axios from 'axios';
 export interface UserState {
     finalScore: number,
     email: string,
+    username:string,
     homeCity: string,
     homeState: string,
-    password: string,
+    auth:string,
     isSuccess: boolean,
     isError: boolean,
     errorMessage:string,
@@ -16,20 +17,23 @@ export interface UserState {
 
 export interface PayloadUserInfo {
     email: string,
+    username:string,
     homeCity: string,
     homeState: string,
-    password: string
+    auth:string
 }
 
 const initialState: UserState = {
     finalScore: 0,
     email: "",
+    username:"",
     homeCity: "",
     homeState: "",
     password: "",
     isSuccess: false,
     isError: false,
     errorMessage: "",
+    auth,
 };
 
 
