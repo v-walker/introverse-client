@@ -8,15 +8,17 @@ import { MdSearch } from 'react-icons/md';
 import BasicLargeCard from '../common/pageComponents/BasicLargeCard';
 import LocationsListContent from '../common/pageComponents/LocationsListContent';
 import MapCardContent from '../common/pageComponents/MapCardContent';
-import { useAppDispatch } from '../app/hooks';
-import { updateCurrentLocation, searchCity } from '../features/map/mapSlice';
-import { getGeoInfo } from '../common/utils'
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { updateCurrentLocation, searchCity, selectRecentClick, updateCurrentMapCenter } from '../features/map/mapSlice';
+import { getGeoInfo } from '../common/utils';
 
 
 function RecommendationsPage() {
     const dispatch = useAppDispatch();
 
     const [userCitySearch, setUserCitySearch] = useState("");
+    const recentClick = useAppSelector(selectRecentClick);
+    
 
     /**
      * function handleSearchSubmit() handles form submission of location search, dispatching the search string to global state and resetting the form input to an empty string ("") 
@@ -64,6 +66,11 @@ function RecommendationsPage() {
         setUserCitySearch("");
     }
 
+    const handleRecenterButton = () => {
+        dispatch(updateCurrentLocation(recentClick))
+        dispatch(updateCurrentMapCenter(recentClick))
+    }
+
     return (
         <>
             <main className='container'>
@@ -97,7 +104,11 @@ function RecommendationsPage() {
 
 
                     {/* map section */}
-                    <div className='col s12 m9 mt-5'>
+                    <div className='center-align'>
+                        <button className="mt-5" onClick={() => handleRecenterButton()}>set new map center</button>
+                    </div>
+
+                    <div className='col s12 m9'>
                         <BasicLargeCard cardContent={<MapCardContent />} />
                     </div>
                     <div className="row">

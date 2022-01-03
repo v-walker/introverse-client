@@ -9,7 +9,6 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks'
 
 interface MapProps extends google.maps.MapOptions {
     style: {[key: string]: string};
-    // center: {lat: number, lng: number};
     onClick?: (e: google.maps.MapMouseEvent) => void;
     onIdle?: (map: google.maps.Map) => void
 }
@@ -85,6 +84,7 @@ const Map: React.FC<MapProps> = ({ onClick, onIdle, children, style, ...options 
     useEffect(() => {
         if(map) {
             const service = new google.maps.places.PlacesService(map)
+            // console.log(map);
 
             service.textSearch({location: currentLocation, query: "restaurants"}, (results, status) => {
                 if (status === google.maps.places.PlacesServiceStatus.OK && results) {

@@ -10,20 +10,9 @@ import Map from '../../features/map/Map';
 import Marker from '../../features/map/Marker';
 import { useAppSelector } from '../../app/hooks';
 import { selectUserCity, selectUserState } from '../../features/user/userSlice';
-import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery } from '../../features/map/mapSlice';
+import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery, updateCurrentMapCenter, updateClick } from '../../features/map/mapSlice';
 
 // Atlanta lat: 33.748995, lng:-84.387982
-
-/**
- * 
- * getGeoInfo() function takes in two strings: city, state and returns a promise containing geocoding location data from Google Maps Geocoding API
- * 
- * for more information regarding this API and the data returned from it, please refer to https://developers.google.com/maps/documentation/geocoding/requests-geocoding#json
- * 
- * @param city: string 
- * @param state: string 
- * @returns Promise<any>
- */
 
 function MapCardContent(): JSX.Element {
     const dispatch = useAppDispatch();
@@ -31,16 +20,20 @@ function MapCardContent(): JSX.Element {
     const userState = useAppSelector(selectUserState);
     const searchLocation = useAppSelector(selectCurrentLocation);
     const currentLocationQuery = useAppSelector(selectCurrentLocationQuery);
+    // const recentClick = useAppSelector(selectRecentClick);
 
     const [clicks, setClicks] = useState<google.maps.LatLng[]>([]);
-    const [zoom, setZoom] = useState(14); // initial zoom
+    const [zoom, setZoom] = useState(15); // initial zoom
     const [center, setCenter] = React.useState<google.maps.LatLngLiteral>({
-        lat: 33.748995,
-        lng: -84.387982,
+        lat: 0,
+        lng: 0,
     });
+
 
     const onClick = (e: google.maps.MapMouseEvent) => {
         // avoid directly mutating state
+
+        console.log(e.latLng);
         setClicks([...clicks, e.latLng!]);
     };
 
@@ -68,20 +61,21 @@ function MapCardContent(): JSX.Element {
 
     useEffect(() => {
         console.log(clicks);
+        dispatch(updateClick(clicks[clicks.length - 1]))
     }, [clicks])
-
-    useEffect(() => {
-        // console.log(currentLocationQuery)
-        currentLocationQuery.map(searchObj => {
-            console.log(searchObj)
-            return null
-        })
-    }, [currentLocationQuery])
 
     useEffect(() => {
         setCenter(searchLocation)
 
     }, [searchLocation]);
+
+    useEffect(() => {
+
+        dispatch(updateCurrentMapCenter(center));
+
+    }, [center])
+
+
     
     return (
         <div className='map-card'>
@@ -93,9 +87,11 @@ function MapCardContent(): JSX.Element {
 
                     {/* to map through currentLocationQuery, set marker position to lat/lng returned */}
 
-                    {/* {currentLocationQuery.map((searchObj, i) => (
-                        <Marker key={i} position={searchObj.geometry.location} />
-                    ))} */}
+                    {currentLocationQuery.map((searchObj: google.maps.places.PlaceResult, i) => {
+                        return (
+                        <Marker key={i} position={searchObj.geometry?.location} />
+                    )
+                    })}
                 </Map>
             </Wrapper>
         </div>
