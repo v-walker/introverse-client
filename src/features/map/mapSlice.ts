@@ -8,13 +8,17 @@ export interface LatLng {
 export interface MapState {
     currentLocation: LatLng,
     citySearch: string,
-    locationQuery: object[]
+    locationQuery: object[],
+    mapCenter: LatLng,
+    click: LatLng
 }
 
 const initialState: MapState = {
     currentLocation: {lat: 0, lng: 0},
     citySearch: "",
-    locationQuery: []
+    locationQuery: [],
+    mapCenter: {lat: 0, lng: 0},
+    click: {lat: 0, lng: 0}
 }
 
 export const mapSlice = createSlice({
@@ -29,16 +33,26 @@ export const mapSlice = createSlice({
         },
         updateLocationQuery: (state, action) => {
             state.locationQuery = action.payload
+        },
+        updateCurrentMapCenter: (state, action) => {
+            state.mapCenter = action.payload
+        },
+        updateClick: (state, action:PayloadAction<any>) => {
+            state.click = action.payload
         }
     }
 })
 
-export const { updateCurrentLocation, searchCity, updateLocationQuery } = mapSlice.actions;
+export const { updateCurrentLocation, searchCity, updateLocationQuery, updateCurrentMapCenter, updateClick } = mapSlice.actions;
 
 export const selectCitySearch = (state: RootState) => state.map.citySearch;
 
 export const selectCurrentLocation = (state: RootState) => state.map.currentLocation;
 
 export const selectCurrentLocationQuery = (state: RootState) => state.map.locationQuery;
+
+export const selectCurrentMapCenter = (state: RootState) => state.map.mapCenter;
+
+export const selectRecentClick = (state: RootState) => state.map.click;
 
 export default mapSlice.reducer;
