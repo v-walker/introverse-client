@@ -9,7 +9,6 @@ export interface UserState {
     username:string,
     homeCity: string,
     homeState: string,
-    auth:string,
     isSuccess: boolean,
     isError: boolean,
     errorMessage:string,
@@ -18,9 +17,10 @@ export interface UserState {
 export interface PayloadUserInfo {
     email: string,
     username:string,
+    password:string
     homeCity: string,
     homeState: string,
-    auth:string
+    
 }
 
 const initialState: UserState = {
@@ -33,7 +33,6 @@ const initialState: UserState = {
     isSuccess: false,
     isError: false,
     errorMessage: "",
-    auth,
 };
 
 
@@ -41,11 +40,11 @@ export const userSignUp:AsyncThunk<any,any,{}> = createAsyncThunk(
 "users/userSignUp",
 async (formData, thunkAPI) => {
     try {
-    const response = await axios.post("/register",formData)
+    const response = await axios.post("/register", formData)
 
-    let data = await response.json()
+    
 
-    console.log("data", data)
+    console.log(" response data", response)
 
     if (response.status === 200) {
         localStorage.setItem("token", data.token)
@@ -54,7 +53,8 @@ async (formData, thunkAPI) => {
         return thunkAPI.rejectWithValue(data)
     }
     } catch (e) {
-    console.log("Error", e.response.data)
+    console.log("Error:", e.response.data)
+
     return thunkAPI.rejectWithValue(e.response.data)
     }
 }
@@ -66,9 +66,6 @@ export const loginUser:AsyncThunk<any,any,{}> = createAsyncThunk(
 async (formData, thunkAPI) => {
     try {
         const response = await axios.post("/login",formData)
-    let data = await response.json();
-
-    console.log('response', data);
 
     if (response.status === 200) {
         localStorage.setItem('token', data.token);
@@ -92,11 +89,10 @@ async ({ token }, thunkAPI) => {
                 'authorization': localStorage.token
             }})
 
-    let data = await response.json();
-    console.log('data', data, response.status);
+            console.log(" response data", response)
 
     if (response.status === 200) {
-        return { ...data };
+        return { ...response };
     } else {
         return thunkAPI.rejectWithValue(data);
     }
