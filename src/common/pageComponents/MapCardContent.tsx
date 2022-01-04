@@ -103,8 +103,9 @@ function MapCardContent(): JSX.Element {
                     {/* to map through currentLocationQuery, set marker position to lat/lng returned */}
 
                     {currentLocationQuery.map((searchObj: google.maps.places.PlaceResult, i) => {
+                        const labelNum = i+1;
                         return (
-                            <Marker key={i} position={searchObj.geometry?.location} onClick={() => setSelectedPlaceObj(searchObj)} />
+                            <Marker key={i} position={searchObj.geometry?.location} label={`${labelNum}`} onClick={() => setSelectedPlaceObj(searchObj)} />
                     )
                     })}
 
