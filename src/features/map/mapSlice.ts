@@ -11,7 +11,8 @@ export interface MapState {
     locationQuery: object[],
     mapCenter: LatLng,
     click: LatLng,
-    placeSearchType: string
+    placeSearchType: string,
+    selectedPlace: google.maps.places.PlaceResult | null
 }
 
 const initialState: MapState = {
@@ -20,7 +21,8 @@ const initialState: MapState = {
     locationQuery: [],
     mapCenter: {lat: 0, lng: 0},
     click: {lat: 0, lng: 0},
-    placeSearchType: ""
+    placeSearchType: "",
+    selectedPlace: null
 }
 
 export const mapSlice = createSlice({
@@ -44,11 +46,14 @@ export const mapSlice = createSlice({
         },
         updatePlaceSearchType: (state, action:PayloadAction<string>) => {
             state.placeSearchType = action.payload
+        },
+        updateSelectedPlace: (state, action:PayloadAction<google.maps.places.PlaceResult>) => {
+            state.selectedPlace = action.payload
         }
     }
 })
 
-export const { updateCurrentLocation, searchCity, updateLocationQuery, updateCurrentMapCenter, updateClick, updatePlaceSearchType } = mapSlice.actions;
+export const { updateCurrentLocation, searchCity, updateLocationQuery, updateCurrentMapCenter, updateClick, updatePlaceSearchType, updateSelectedPlace } = mapSlice.actions;
 
 export const selectCitySearch = (state: RootState) => state.map.citySearch;
 

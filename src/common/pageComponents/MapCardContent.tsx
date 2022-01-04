@@ -12,7 +12,7 @@ import Marker from '../../features/map/Marker';
 import InfoWindow from '../../features/map/InfoWindow';
 import { useAppSelector } from '../../app/hooks';
 import { selectUserCity, selectUserState } from '../../features/user/userSlice';
-import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery, updateCurrentMapCenter, updateClick } from '../../features/map/mapSlice';
+import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery, updateCurrentMapCenter, updateClick, updateSelectedPlace } from '../../features/map/mapSlice';
 
 // Atlanta lat: 33.748995, lng:-84.387982
 
@@ -79,6 +79,7 @@ function MapCardContent(): JSX.Element {
 
     useEffect(() => {
         console.log(selectedPlaceObj);
+        dispatch(updateSelectedPlace(selectedPlaceObj))
     }, [selectedPlaceObj])
     
     return (
