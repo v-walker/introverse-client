@@ -10,6 +10,7 @@ import { useAppDispatch } from '../../app/hooks';
 import Map from '../../features/map/Map';
 import Marker from '../../features/map/Marker';
 import InfoWindow from '../../features/map/InfoWindow';
+import TimesChart from '../../features/map/TimesChart';
 import { useAppSelector } from '../../app/hooks';
 import { selectUserCity, selectUserState } from '../../features/user/userSlice';
 import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery, updateCurrentMapCenter, updateClick } from '../../features/map/mapSlice';
@@ -98,8 +99,14 @@ function MapCardContent(): JSX.Element {
                     })}
 
                     { selectedPlaceObj && 
-                    <InfoWindow position={selectedPlaceObj.geometry?.location}>
-                            {/* <div>{selectedPlaceObj.name}</div> */}
+                    <InfoWindow position={selectedPlaceObj.geometry?.location} content={`
+                        <div class="center-align">
+                            <h6>${selectedPlaceObj.name}</h6>
+                            <br>
+                            ${selectedPlaceObj.formatted_address}
+                            <br>
+                            <a href="#times_chart">see times recommendations</a>
+                        <div>`}>
                     </InfoWindow>
 
                     }
