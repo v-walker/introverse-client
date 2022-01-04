@@ -24,7 +24,12 @@ const Marker: React.FC<MarkerProps> = ({onClick, ...options}) => {
     if (marker) {
         marker.setOptions(options);
     }
-    }, [marker, options]);
+
+    if (marker && onClick) {
+        marker.addListener("click", onClick);
+    }
+
+    }, [marker, options, onClick]);
 
     return null;
 };
