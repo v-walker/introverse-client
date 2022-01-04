@@ -1,0 +1,8 @@
+
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/introecc/introverse
+    - /bin/cp -r * $DEPLOYPATH
+    
+    
