@@ -1,6 +1,6 @@
-import axios from 'axios';
+// import axios from 'axios';
 
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
 export interface LatLng {
