@@ -1,6 +1,5 @@
 // @ts-nocheck
 import React, {useEffect,FormEvent,useState } from 'react';
-// import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginUser, userSelector, clearState, PayloadUserLoginInfo, } from './userSlice';
 import { useNavigate } from 'react-router-dom';
@@ -11,15 +10,13 @@ const SignIn = ({}) => {
 const dispatch = useDispatch();
 const navigate = useNavigate();
 
-// const { handleSubmit } = useForm();
+
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 
 const { isSuccess, isError, errorMessage } = useSelector( userSelector);
 
-// useEffect(() => { 
-//     dispatch(fetchUserBytoken());
-// }, []);
+
 
 
 

@@ -1,6 +1,9 @@
+
+   
 // @ts-nocheck
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createAsyncThunk, AsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
+import axios from 'axios';
 
 export interface UserState {
     finalScore: number,
@@ -113,7 +116,13 @@ async ({ token }, thunkAPI) => {
 export const userSlice = createSlice({
     name: 'User',
     initialState,
-    reducers: {
+    reducers: { 
+        clearState: (state) => {
+            state.isError = false;
+            state.isSuccess = false;
+
+            return state;
+    },
         finalScore: (state, action: PayloadAction<number>) => {
             state.finalScore = action.payload
         },
@@ -159,7 +168,7 @@ export const userSlice = createSlice({
     },
 });
 
-export const { finalScore, userSignUp } = userSlice.actions;
+export const { finalScore, clearState } = userSlice.actions;
 
 export const selectFinalScore = (state: RootState) => state.user.finalScore;
 
@@ -172,3 +181,5 @@ export const selectUserState = (state: RootState) => state.user.homeState;
 export const selectUserPW = (state: RootState) => state.user.password;
 
 export default userSlice.reducer
+
+export const userSelector = (state: RootState) => state.user
