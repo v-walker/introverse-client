@@ -1,7 +1,6 @@
 // @ts-nocheck
-import { createSlice, PayloadAction, createAsyncThunk, AsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import axios from 'axios';
 
 export interface UserState {
     finalScore: number,
@@ -13,7 +12,7 @@ export interface UserState {
     isError: boolean,
     errorMessage:string,
     introvertRating: number
-
+    password: string
 };
 
 export interface PayloadUserInfo {
@@ -115,12 +114,6 @@ export const userSlice = createSlice({
     name: 'User',
     initialState,
     reducers: {
-        clearState: (state) => {
-            state.isError = false;
-            state.isSuccess = false;
-
-            return state;
-        },
         finalScore: (state, action: PayloadAction<number>) => {
             state.finalScore = action.payload
         },
@@ -165,11 +158,8 @@ export const userSlice = createSlice({
     
     },
 });
-    
 
-
-
-export const { finalScore,clearState} = userSlice.actions;
+export const { finalScore, userSignUp } = userSlice.actions;
 
 export const selectFinalScore = (state: RootState) => state.user.finalScore;
 
@@ -182,5 +172,3 @@ export const selectUserState = (state: RootState) => state.user.homeState;
 export const selectUserPW = (state: RootState) => state.user.password;
 
 export default userSlice.reducer
-
-export const userSelector = (state: RootState) => state.user

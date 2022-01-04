@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 import React, {useEffect,FormEvent,useState } from 'react';
 // import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';

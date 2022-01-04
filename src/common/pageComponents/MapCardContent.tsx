@@ -1,16 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
+// import { InfoWindow } from "react-google-maps";
 // import axios from 'axios';
 
 /** Local Components */
-import { getGeoInfo } from '../utils';
+import { getGeoInfo, getPopTimesData } from '../utils';
 import { useAppDispatch } from '../../app/hooks';
 import Map from '../../features/map/Map';
 import Marker from '../../features/map/Marker';
+import InfoWindow from '../../features/map/InfoWindow';
 import { useAppSelector } from '../../app/hooks';
 import { selectUserCity, selectUserState } from '../../features/user/userSlice';
-import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery, updateCurrentMapCenter, updateClick } from '../../features/map/mapSlice';
+import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery, updateCurrentMapCenter, updateClick, updateSelectedPlace, updatePopTimesData } from '../../features/map/mapSlice';
 
 // Atlanta lat: 33.748995, lng:-84.387982
 
@@ -28,12 +30,12 @@ function MapCardContent(): JSX.Element {
         lat: 0,
         lng: 0,
     });
-
+    const [selectedPlaceObj, setSelectedPlaceObj] = useState<any>(null);
 
     const onClick = (e: google.maps.MapMouseEvent) => {
         // avoid directly mutating state
 
-        console.log(e.latLng);
+        // console.log(e.latLng);
         setClicks([...clicks, e.latLng!]);
     };
 
@@ -61,11 +63,13 @@ function MapCardContent(): JSX.Element {
 
     useEffect(() => {
         console.log(clicks);
-        dispatch(updateClick(clicks[clicks.length - 1]))
-    }, [clicks])
+        dispatch(updateClick(clicks[clicks.length - 1]));
+    }, [clicks]);
 
     useEffect(() => {
-        setCenter(searchLocation)
+        setCenter(searchLocation);
+        
+        setSelectedPlaceObj(null);
 
     }, [searchLocation]);
 
@@ -73,25 +77,50 @@ function MapCardContent(): JSX.Element {
 
         dispatch(updateCurrentMapCenter(center));
 
-    }, [center])
+        setSelectedPlaceObj(null);
 
+    }, [center]);
 
+    useEffect(() => {
+        console.log(selectedPlaceObj);
+        dispatch(updateSelectedPlace(selectedPlaceObj))
+
+        if (selectedPlaceObj !== null) {
+            // dispatch(updatePopTimesData(selectedPlaceObj.place_id))
+            getPopTimesData(selectedPlaceObj.place_id).then(response => {
+                console.log(response);
+                dispatch(updatePopTimesData(response))
+            })
+        }
+
+    }, [selectedPlaceObj])
     
     return (
         <div className='map-card'>
             <Wrapper apiKey={`${process.env.REACT_APP_GMAPS_KEY}`} render={render} libraries={["places"]}>
                 <Map center={center} zoom={zoom} onClick={onClick} onIdle={onIdle} style={{ flexGrow: "1", height: "100%" }}>
-                    {/* {clicks.map((latLng, i) => (
-                        <Marker key={i} position={latLng} />
-                    ))} */}
 
                     {/* to map through currentLocationQuery, set marker position to lat/lng returned */}
 
                     {currentLocationQuery.map((searchObj: google.maps.places.PlaceResult, i) => {
+                        const labelNum = i+1;
                         return (
-                        <Marker key={i} position={searchObj.geometry?.location} />
+                            <Marker key={i} position={searchObj.geometry?.location} label={`${labelNum}`} onClick={() => setSelectedPlaceObj(searchObj)} />
                     )
                     })}
+
+                    { selectedPlaceObj && 
+                    <InfoWindow position={selectedPlaceObj.geometry?.location} content={`
+                        <div class="center-align">
+                            <h6>${selectedPlaceObj.name}</h6>
+                            <br>
+                            ${selectedPlaceObj.formatted_address}
+                            <br>
+                            <a href="#times_chart">see times recommendations</a>
+                        <div>`}>
+                    </InfoWindow>
+
+                    }
                 </Map>
             </Wrapper>
         </div>
