@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Tab, Tabs } from 'react-materialize'
 import TimesChart from "../map/TimesChart"
+import {selectRecentClick} from './mapSlice';
 
 const dataFromAPICall = {
     "id": "ChIJSYuuSx9awokRyrrOFTGg0GY",
@@ -119,31 +121,35 @@ const popTimes = dataFromAPICall.populartimes
 console.log(popTimes)
 
 const TimesTabs = () => {
-    return (
-        <>
-            <Tabs
-            className="tab-demo z-depth-1"
-            //   scope="tabs-22"
-            >
-                {popTimes.map(popTime => {
-                    return (
-                        <Tab
-                        // active
-                        // options={{
-                        //   duration: 300,
-                        //   onShow: null,
-                        //   responsiveThreshold: Infinity,
-                        //   swipeable: false
-                        // }}
-                        title={popTime.name}
-                        >
-                            <TimesChart data={popTime.data} />
-                        </Tab>
-                    )
-                })}
-            </Tabs>
-        </>
-    )
+
+  const realData = useAppSelector(selectRecentClick)
+  console.log(realData)
+
+  return (
+      <>
+          <Tabs
+          className="tab-demo z-depth-1"
+          //   scope="tabs-22"
+          >
+              {popTimes.map(popTime => {
+                  return (
+                      <Tab
+                      // active
+                      // options={{
+                      //   duration: 300,
+                      //   onShow: null,
+                      //   responsiveThreshold: Infinity,
+                      //   swipeable: false
+                      // }}
+                      title={popTime.name}
+                      >
+                          <TimesChart data={popTime.data} />
+                      </Tab>
+                  )
+              })}
+          </Tabs>
+      </>
+  )
 }
 
 
