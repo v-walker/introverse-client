@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Navbar, Icon, SideNavItem } from 'react-materialize'
+import { Navbar, Icon, SideNavItem } from 'react-materialize';
+import { useNavigate } from 'react-router-dom';
 
 // icons
 import { GiHamburgerMenu } from 'react-icons/gi'
@@ -7,6 +8,12 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 
 function Header():JSX.Element {
     
+    const navigate = useNavigate()
+    const onLogOut = () => {
+        localStorage.removeItem("token");
+        navigate("/");
+    };
+
     // useEffect(() => {
     //     console.log(indivScore)
     // }, [indivScore])
@@ -31,6 +38,7 @@ function Header():JSX.Element {
                             <SideNavItem href="/quiz">Quiz</SideNavItem>
                             <SideNavItem href="/recommendations">Recommendations</SideNavItem>
                             <SideNavItem href="/about">About</SideNavItem>
+                            <button onClick={() => onLogOut()}>Logout</button>
                         </>}
                 >
                 <Link to="/">
@@ -45,6 +53,7 @@ function Header():JSX.Element {
                 <Link to="/about">
                     About
                 </Link>
+                <button onClick={() => onLogOut()}>Logout</button>
             </Navbar>
             
 
