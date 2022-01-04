@@ -10,15 +10,16 @@ import LocationsListContent from '../common/pageComponents/LocationsListContent'
 import MapCardContent from '../common/pageComponents/MapCardContent';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import TimesChart from "../features/map/TimesChart";
-import { updateCurrentLocation, searchCity, selectRecentClick, updateCurrentMapCenter, updatePlaceSearchType } from '../features/map/mapSlice';
+import { updateCurrentLocation, searchCity, selectRecentClick, updateCurrentMapCenter, updatePlaceSearchType, selectPlaceSearchType} from '../features/map/mapSlice';
 import { getGeoInfo, placeTypesArray } from '../common/utils';
 
 
 function RecommendationsPage() {
     const dispatch = useAppDispatch();
+    const selectedPlaceSearchType = useAppSelector(selectPlaceSearchType);
 
     const [userCitySearch, setUserCitySearch] = useState("");
-    const [placeTypeSearch, setPlaceTypeSearch] = useState("");
+    const [placeTypeSearch, setPlaceTypeSearch] = useState(selectedPlaceSearchType || "");
     const recentClick = useAppSelector(selectRecentClick);
     
 
@@ -107,7 +108,7 @@ function RecommendationsPage() {
                             <div className='row'>
                                 {/* <label htmlFor="placeTypeSearch">Select a Place Type</label> */}
                                 <br />
-                                <select required id="placeTypeSearch" className='browser-default' defaultValue="" onChange={(e) => setPlaceTypeSearch(e.target.value)} >
+                                <select required id="placeTypeSearch" className='browser-default' defaultValue={selectedPlaceSearchType || "place"} onChange={(e) => setPlaceTypeSearch(e.target.value)} >
                                     <option value="place" disabled>place</option>
                                     {placeTypesArray.map((placeTypeObj, index) => {
                                         return <option key={index} value={placeTypeObj.value}>{placeTypeObj.displayName}</option>

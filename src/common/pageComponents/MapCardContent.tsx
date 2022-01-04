@@ -10,7 +10,6 @@ import { useAppDispatch } from '../../app/hooks';
 import Map from '../../features/map/Map';
 import Marker from '../../features/map/Marker';
 import InfoWindow from '../../features/map/InfoWindow';
-import TimesChart from '../../features/map/TimesChart';
 import { useAppSelector } from '../../app/hooks';
 import { selectUserCity, selectUserState } from '../../features/user/userSlice';
 import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery, updateCurrentMapCenter, updateClick } from '../../features/map/mapSlice';
