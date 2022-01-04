@@ -1,8 +1,7 @@
-
-import React, {useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+// @ts-nocheck
+import React, {useEffect,FormEvent,useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { loginUser, userSelector, clearState, fetchUserBytoken, } from './userSlice';
+import { loginUser, userSelector, clearState, PayloadUserLoginInfo, } from './userSlice';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -10,29 +9,30 @@ const SignIn = ({}) => {
     
 const dispatch = useDispatch();
 const navigate = useNavigate();
-const { handleSubmit } = useForm();
-const { isSuccess, isError, errorMessage } = useSelector(
-    userSelector
-);
 
-useEffect(() => { 
-    dispatch(fetchUserBytoken());
-}, []);
 
-const { email } = useSelector(userSelector);
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+
+const { isSuccess, isError, errorMessage } = useSelector( userSelector);
+
+
+
+
 
 useEffect(() => {
     if (isError) {
-    console.log(errorMessage);
+    console.log('use effect errorMessage',errorMessage);
     dispatch(clearState());
     navigate('/');
 }
 }, [isError]);
 
+const handleSignIn = (e: FormEvent, userInfo: PayloadUserLoginInfo) => {
+    e.preventDefault();
 
-const onSubmit = (data:any) => {
-    dispatch(loginUser(data));
-};
+    dispatch(loginUser(userInfo))
+}
 
 useEffect(() => {
 return () => {
@@ -49,14 +49,15 @@ if (isError) {
 
 if (isSuccess) {
     dispatch(clearState());
-    navigate('/');
+    console.log('success');
+    navigate('/recommendations');
 }
 }, [isError, isSuccess]);
 
 return (
 <>
     <h5>Sign In</h5>
-    <form onSubmit={handleSubmit(()=>onSubmit)} className='col s12'>
+    <form onSubmit={(e) => handleSignIn(e, {email, password})} className='col s12'>
         <div className="input-field">
             <label htmlFor="email">Email</label>
             <input
@@ -65,7 +66,9 @@ return (
                     type="email"
                     autoComplete="email"
                     required
-                    className="validate"/>
+                    className="validate"
+                    onChange={(e) => setEmail(e.target.value)}/>
+                    
         </div>
         
         <div className="input-field">
@@ -76,6 +79,7 @@ return (
                     type="password"
                     autoComplete="current-password"
                     required
+                    onChange={(e) => setPassword(e.target.value)}
                 />
         </div>
         

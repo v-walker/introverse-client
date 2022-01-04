@@ -9,7 +9,7 @@ function SignUpForm(): JSX.Element {
 
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-
+    const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");
     const [homeCity, setHomeCity] = useState("");
     const [homeState, setHomeState] = useState("");
@@ -28,7 +28,7 @@ function SignUpForm(): JSX.Element {
     return (
         <>
             {!isSignIn? <h5>Sign Up</h5> : <h5>Sign In</h5>}
-            <form onSubmit={(e) => handleSignUp(e, {email, homeCity, homeState, password})} className='col s12'>
+            <form onSubmit={(e) => handleSignUp(e, {email, homeCity,username, homeState, password})} className='col s12'>
                 <div className="input-field">
                     <input id="email" type="text" className="validate" onChange={(e) => setEmail(e.target.value)} required/>
                     <label htmlFor="email">Email</label>
