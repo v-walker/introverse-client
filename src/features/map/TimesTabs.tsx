@@ -127,6 +127,7 @@ const TimesTabs = () => {
 
   return (
       <>
+        <div id="times_chart">
           <Tabs
           className="tab-demo z-depth-1"
           //   scope="tabs-22"
@@ -148,6 +149,7 @@ const TimesTabs = () => {
                   )
               })}
           </Tabs>
+        </div>
       </>
   )
 }
