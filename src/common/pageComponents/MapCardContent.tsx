@@ -63,11 +63,13 @@ function MapCardContent(): JSX.Element {
 
     useEffect(() => {
         console.log(clicks);
-        dispatch(updateClick(clicks[clicks.length - 1]))
-    }, [clicks])
+        dispatch(updateClick(clicks[clicks.length - 1]));
+    }, [clicks]);
 
     useEffect(() => {
-        setCenter(searchLocation)
+        setCenter(searchLocation);
+        
+        setSelectedPlaceObj(null);
 
     }, [searchLocation]);
 
@@ -75,7 +77,9 @@ function MapCardContent(): JSX.Element {
 
         dispatch(updateCurrentMapCenter(center));
 
-    }, [center])
+        setSelectedPlaceObj(null);
+
+    }, [center]);
 
     useEffect(() => {
         console.log(selectedPlaceObj);
@@ -95,9 +99,6 @@ function MapCardContent(): JSX.Element {
         <div className='map-card'>
             <Wrapper apiKey={`${process.env.REACT_APP_GMAPS_KEY}`} render={render} libraries={["places"]}>
                 <Map center={center} zoom={zoom} onClick={onClick} onIdle={onIdle} style={{ flexGrow: "1", height: "100%" }}>
-                    {/* {clicks.map((latLng, i) => (
-                        <Marker key={i} position={latLng} />
-                    ))} */}
 
                     {/* to map through currentLocationQuery, set marker position to lat/lng returned */}
 
