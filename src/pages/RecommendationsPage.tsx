@@ -9,7 +9,7 @@ import BasicLargeCard from '../common/pageComponents/BasicLargeCard';
 import LocationsListContent from '../common/pageComponents/LocationsListContent';
 import MapCardContent from '../common/pageComponents/MapCardContent';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import TimesChart from "../features/map/TimesChart";
+import TimesTabs from "../features/map/TimesTabs";
 import { updateCurrentLocation, searchCity, selectRecentClick, updateCurrentMapCenter, updatePlaceSearchType } from '../features/map/mapSlice';
 import { getGeoInfo, placeTypesArray } from '../common/utils';
 
@@ -150,15 +150,15 @@ function RecommendationsPage() {
                     </div>
                     <div className="row">
                         <div className="col s12">
-                            <TimesChart />
+                            <TimesTabs />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col s12 center-align">
                             <Link to="/itrunsdoom">
-                                <span className="doomFontLeftSmall">I</span>
-                                <span className="doomFontStdSmall">'m staying i</span>
-                                <span className="doomFontRightSmall">N</span>
+                                <span className="doomFontLeftMed">I</span>
+                                <span className="doomFontStdMed">'m staying i</span>
+                                <span className="doomFontRightMed">N</span>
                             </Link>
                         </div>
                     </div>

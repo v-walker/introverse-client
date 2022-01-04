@@ -219,6 +219,27 @@ ul.hide-on-med-and-down.right:last-child {
   margin: 0px
 }
 
+.doomFontStdMed{
+  font-family: "DoomStd";
+  color: #4db6ac;
+  font-size: 75px;
+  margin: 0px
+}
+
+.doomFontLeftMed{
+  font-family: "DoomLeft";
+  color: #4db6ac;
+  font-size: 75px;
+  margin: 0px
+}
+
+.doomFontRightMed{
+  font-family: "DoomRight";
+  color: #4db6ac;
+  font-size: 75px;
+  margin: 0px
+}
+
 .doomFontStdSmall{
   font-family: "DoomStd";
   color: #4db6ac;
