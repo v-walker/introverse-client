@@ -111,8 +111,9 @@ function QuizCardContent(): JSX.Element {
 
 
     const handleRegistration = (e: FormEvent) => {
+        let token = localStorage.getItem("token")
         e.preventDefault();
-        dispatch(updateIntrovertRating({introvertRating: totalScore})).then(() => {
+        dispatch(updateIntrovertRating({introvertRating: totalScore, token: token})).then(() => {
             navigate("/recommendations")
         })
     }

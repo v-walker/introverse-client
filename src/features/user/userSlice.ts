@@ -80,7 +80,7 @@ async (formData, thunkAPI) => {
         localStorage.setItem('token', response.data.token);
         return response.data
     } else {
-        return thunkAPI.rejectWithValue(data);
+        return thunkAPI.rejectWithValue(response.data);
     }
     } catch (e) {
         console.log(e, 'e')
@@ -172,6 +172,20 @@ export const userSlice = createSlice({
         return state;
         },
         [loginUser.rejected]: (state, { payload }) => {
+        state.isError = true;
+        state.errorMessage = payload.message;
+        },
+        [updateIntrovertRating.fulfilled]: (state, { payload }) => {
+            console.log('payload',payload)
+        state.email = payload.email;
+        state.username = payload.username;
+        state.homeCity = payload.homeCity
+        state.homeState = payload.homeState
+        state.introvertRating = payload.introvertRating
+        state.isSuccess = true;
+        return state;
+        },
+        [updateIntrovertRating.rejected]: (state, { payload }) => {
         state.isError = true;
         state.errorMessage = payload.message;
         },
