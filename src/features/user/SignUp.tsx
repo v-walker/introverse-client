@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 import React, { useState, useEffect,FormEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { userSignUp, userSelector, clearState ,PayloadUserInfo } from './userSlice';
@@ -36,7 +36,7 @@ return () => {
 useEffect(() => {
 if (isSuccess) {
     dispatch(clearState());
-    navigate('/');
+    navigate('/quiz');
 }
 if (isError) {
     toast.error(errorMessage);

@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import React, {useEffect,FormEvent,useState } from 'react';
 // import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
@@ -34,9 +34,7 @@ useEffect(() => {
 const handleSignIn = (e: FormEvent, userInfo: PayloadUserLoginInfo) => {
     e.preventDefault();
 
-    dispatch(loginUser(userInfo,() => {
-    navigate('/quiz')
-    }))
+    dispatch(loginUser(userInfo))
 }
 
 useEffect(() => {
@@ -55,7 +53,7 @@ if (isError) {
 if (isSuccess) {
     dispatch(clearState());
     console.log('success');
-    navigate('/quiz');
+    navigate('/recommendations');
 }
 }, [isError, isSuccess]);
 

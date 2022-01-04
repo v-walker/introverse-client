@@ -12,6 +12,8 @@ export interface UserState {
     isSuccess: boolean,
     isError: boolean,
     errorMessage:string,
+    introvertRating: number
+
 };
 
 export interface PayloadUserInfo {
@@ -38,6 +40,7 @@ const initialState: UserState = {
     isSuccess: false,
     isError: false,
     errorMessage: "",
+    introvertRating: 0
 };
 
 
@@ -49,11 +52,11 @@ async (formData, thunkAPI) => {
     console.log(" response data", response)
 
     if (response.status === 200) {
-        localStorage.setItem("token", data.token)
-        return { ...data, email: email }
+        localStorage.setItem("token", response.data.token)
+        return response.data
     } else {
-        return thunkAPI.rejectWithValue(data)
-    }
+        return thunkAPI.rejectWithValue(response.data)
+    }    
     } catch (e) {
     console.log("Error:", e.response.data)
     return thunkAPI.rejectWithValue(e.response.data)
@@ -64,15 +67,16 @@ async (formData, thunkAPI) => {
 
 export const loginUser:AsyncThunk<any,any,{}> = createAsyncThunk(
 "users/login",
-async (formData,cb, thunkAPI) => {
+async (formData, thunkAPI) => {
     try {
         console.log('formData',formData)
         const response = await axios.post("/login",formData)
-console.log('response',response)
+        
+    console.log('response',response)
 
     if (response.status === 200) {
-        cb()
         localStorage.setItem('token', response.data.token);
+        return response.data
     } else {
         return thunkAPI.rejectWithValue(data);
     }
@@ -124,22 +128,27 @@ export const userSlice = createSlice({
     extraReducers: {
     [userSignUp.fulfilled]: (state, { payload }) => {
         state.isSuccess = true;
-        state.email = payload.user.email;
-        state.homeCity = payload.payload.homeCity
-        state.homeState = payload.payload.homeState
+        state.email = payload.email;
+        state.username = payload.username;
+        state.homeCity = payload.homeCity
+        state.homeState = payload.homeState
+        state.introvertRating = payload.introvertRating
         },
         [userSignUp.rejected]: (state, { payload }) => {
         state.isError = true;
         state.errorMessage = payload.message;
         },
         [loginUser.fulfilled]: (state, { payload }) => {
+            console.log('payload',payload)
         state.email = payload.email;
-        state.username = payload.name;
+        state.username = payload.username;
+        state.homeCity = payload.homeCity
+        state.homeState = payload.homeState
+        state.introvertRating = payload.introvertRating
         state.isSuccess = true;
         return state;
         },
         [loginUser.rejected]: (state, { payload }) => {
-        console.log('payload', payload);
         state.isError = true;
         state.errorMessage = payload.message;
         },
