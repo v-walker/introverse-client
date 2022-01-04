@@ -79,6 +79,27 @@ async (formData, thunkAPI) => {
 }
 );
 
+export const updateIntrovertRating:AsyncThunk<any,any,{}> = createAsyncThunk(
+"users/updateIntrovertRating",
+async (formData, thunkAPI) => {
+        console.log(formData)
+        try {
+            const response = await axios.put("/introvertrating", formData)
+        if (response.status === 200) {
+            localStorage.setItem('token', response.data.token);
+            return response.data
+        } else {
+            return thunkAPI.rejectWithValue(data);
+        }
+        } catch (e) {
+            console.log(e, 'e')
+        console.log('Error', e.response.data);
+        thunkAPI.rejectWithValue(e.response.data);
+        }
+    }
+    );
+
+
 export const fetchUserBytoken = createAsyncThunk(
 'users/fetchUserByToken',
 async ({ token }, thunkAPI) => {

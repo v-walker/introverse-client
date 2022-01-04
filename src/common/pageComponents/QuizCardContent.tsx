@@ -1,10 +1,11 @@
 import React, { FormEvent, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { finalScore, userSignUp, PayloadUserInfo, selectUserEmail, selectUserCity, selectUserState, selectUserPW } from "../../features/user/userSlice"
+import { finalScore, userSignUp, PayloadUserInfo, updateIntrovertRating, selectUserEmail, selectUserCity, selectUserState, selectUserPW } from "../../features/user/userSlice"
 // import { statesArray } from '../utils';
 
 function QuizCardContent(): JSX.Element {
-
+    const navigate = useNavigate()
     const dispatch = useAppDispatch();
     // const globalEmail = useAppSelector(selectUserEmail)
     // const globalCity = useAppSelector(selectUserCity)
@@ -108,10 +109,14 @@ function QuizCardContent(): JSX.Element {
         setCounter(counter + 1)
     }
 
+
     const handleRegistration = (e: FormEvent) => {
         e.preventDefault();
+        dispatch(updateIntrovertRating({introvertRating: totalScore})).then(() => {
+            navigate("/recommendations")
+        })
     }
-    
+
     return (
         <>
             <div className='center-align'>
