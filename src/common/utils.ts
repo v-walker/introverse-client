@@ -99,4 +99,17 @@ const getGeoInfo = async (city: string, state: string): Promise<any> => {
     
 }
 
-export { statesArray, placeTypesArray, getGeoInfo };
+const getPopTimesData = async (placeID: string): Promise<any> => {
+    try {
+        let response = await axios.get(`https://introverse-crawler.herokuapp.com/get-by-id/?place_id=${placeID}`)
+        
+        if (response.status === 200) {
+            return response.data
+        }
+    } catch (err) {
+        console.log(err)
+        return null
+    }
+}
+
+export { statesArray, placeTypesArray, getGeoInfo, getPopTimesData };
