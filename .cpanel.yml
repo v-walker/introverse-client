@@ -1,8 +1,0 @@
-
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/introecc/public_html
-    - /bin/cp -r * $DEPLOYPATH
-    
-    
