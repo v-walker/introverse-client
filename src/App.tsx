@@ -1,6 +1,6 @@
-import React, { FormEvent } from 'react';
-import { useAppSelector, useAppDispatch } from "./app/hooks";
-import { userSignUp, PayloadUserInfo } from "./features/user/userSlice"
+// import React, { FormEvent } from 'react';
+// import { useAppSelector, useAppDispatch } from "./app/hooks";
+// import { userSignUp, PayloadUserInfo } from "./features/user/userSlice"
 import 'materialize-css/dist/css/materialize.min.css';
 
 /** Icons */
@@ -41,39 +41,39 @@ function App(): JSX.Element {
             <div className='col s12 m4'>
             <div className="row mt-5">
                 <div className='col s12'>
-                  <img src="./img/anon.png" width={210} />
+                  <img src="./img/anon.png" alt='three stick figures with bags over their heads, standing side-by-side, holding hands' width={210} />
                 </div>
                 <div className='col s12'>
                   <h3>Anonymity</h3>
                 </div>
                 <div className='col s12'>
-                  <p>For introverts, BY INTROVERTS. Here at IntroVerse, your privacy is of the utmost importance. We will never ask you for any information other than where you collect your email and where you lay your head.</p>
+                  <p className='displayFont'>For introverts, BY INTROVERTS. Here at IntroVerse, your privacy is of the utmost importance. We will never ask you for any information other than where you collect your email and where you lay your head.</p>
                 </div>
               </div>
             </div>
             <div className='col s12 m4'>
             <div className="row mt-5">
                 <div className='col s12'>
-                  <img src="./img/all-shields.png" width={200} />
+                  <img src="./img/all-shields.png" alt='three shields, one of each color: green, yellow-orange, red' width={200} />
                 </div>
                 <div className='col s12'>
                   <h3>Safety</h3>
                 </div>
                 <div className='col s12'>
-                  <p>Our patent-pending IntroSafe™ technology is GUARANTEED to help you avoid large groups of people, plain and simple.</p>
+                  <p className='displayFont'>Our patent-pending IntroSafe™ technology is GUARANTEED to help you avoid large groups of people, plain and simple.</p>
                 </div>
               </div>
             </div>
             <div className='col s12 m4'>
             <div className="row mt-5">
                 <div className='col s12'>
-                  <img src="./img/fun.png" width={208} />
+                  <img src="./img/fun.png" alt='stick figure with bag over head playing fetch with dog' width={208} />
                 </div>
                 <div className='col s12'>
                   <h3>Fun</h3>
                 </div>
                 <div className='col s12'>
-                  <p>Frankly, you deserve to have it. And we here at the IntroVerse aim to help you find it.</p>
+                  <p className='displayFont'>Frankly, you deserve to have it. And we here at the IntroVerse aim to help you find it. Find your comfort zone by registering today!</p>
                 </div>
               </div>
             </div>

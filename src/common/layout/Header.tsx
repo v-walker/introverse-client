@@ -1,6 +1,7 @@
-import { Link} from 'react-router-dom';
 
-import { Navbar, Icon, SideNavItem } from 'react-materialize'
+import { Link } from 'react-router-dom';
+import { Navbar, SideNavItem } from 'react-materialize';
+import { useNavigate } from 'react-router-dom';
 
 // icons
 import { GiHamburgerMenu } from 'react-icons/gi'
@@ -8,6 +9,12 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 
 function Header():JSX.Element {
     
+    const navigate = useNavigate()
+    const onLogOut = () => {
+        localStorage.removeItem("token");
+        navigate("/");
+    };
+
     // useEffect(() => {
     //     console.log(indivScore)
     // }, [indivScore])
@@ -17,9 +24,9 @@ function Header():JSX.Element {
             <Navbar
                 className='teal lighten-2'
                 alignLinks="right"
-                brand={<Link to="/" className="" id="top">Logo</Link>}
+                brand={<Link to="/" className="mt-2" id="top"><img src="img/header-logo.png" width={80} /></Link>}
                 id="mobile-nav"
-                menuIcon={<GiHamburgerMenu style={{fontSize: "1.5rem"}} />}
+                menuIcon={<GiHamburgerMenu  style={{fontSize: "2rem", margin: "16px"}} />}
                 options={{
                     draggable: true,
                     edge: 'left',
@@ -32,6 +39,7 @@ function Header():JSX.Element {
                             <SideNavItem href="/quiz">Quiz</SideNavItem>
                             <SideNavItem href="/recommendations">Recommendations</SideNavItem>
                             <SideNavItem href="/about">About</SideNavItem>
+                            <button style={{width: "100%"}} className="left-align" onClick={() => onLogOut()}><SideNavItem href="/">Logout</SideNavItem></button>
                         </>}
                 >
                 <Link to="/">
@@ -46,31 +54,11 @@ function Header():JSX.Element {
                 <Link to="/about">
                     About
                 </Link>
+                <Link onClick={() => onLogOut()} to="/">
+                    Logout
+                </Link>
+                
             </Navbar>
-            
-
-
-            {/* <nav>
-                <div className='container'>
-                    <div className="nav-wrapper">
-                        <Link to="/" className="brand-logo">Logo</Link>
-                        <button data-target="slide-out" className="sidenav-trigger right hide-on-large-only">=</button>
-                        <ul id="nav-mobile" className="right hide-on-med-and-down">
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/quiz">Quiz</Link></li>
-                            <li><Link to="/recommendations">Recommendations</Link></li>
-                            <li><Link to="/about">About</Link></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
-            <ul id="slide-out" className="sidenav">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/quiz">Quiz</Link></li>
-                <li><Link to="/recommendations">Recommendations</Link></li>
-                <li><Link to="/about">About</Link></li>
-            </ul> */}
         </>
         
     )
