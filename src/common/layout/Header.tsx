@@ -2,16 +2,19 @@
 import { Link } from 'react-router-dom';
 import { Navbar, SideNavItem } from 'react-materialize';
 import { useNavigate } from 'react-router-dom';
+import { stateReset } from '../../features/user/userSlice';
+import { useDispatch } from 'react-redux';
 
 // icons
 import { GiHamburgerMenu } from 'react-icons/gi'
 
 
 function Header():JSX.Element {
-    
+    const dispatch = useDispatch();
     const navigate = useNavigate()
     const onLogOut = () => {
         localStorage.removeItem("token");
+        dispatch(stateReset())
         navigate("/");
     };
 

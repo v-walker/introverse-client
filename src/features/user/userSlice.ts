@@ -147,6 +147,16 @@ export const userSlice = createSlice({
         finalScore: (state, action: PayloadAction<number>) => {
             state.finalScore = action.payload
         },
+        stateReset: (state) => {
+            state.finalScore= 0
+            state.username=""
+            state.homeCity= ""
+            state.homeState= ""
+            state.isSuccess= false
+            state.isError= false
+            state.errorMessage= ""
+            state.introvertRating= 0
+        },
     },
     extraReducers: {
     [userSignUp.fulfilled]: (state, { payload }) => {
@@ -203,7 +213,7 @@ export const userSlice = createSlice({
     },
 });
 
-export const { finalScore, clearState } = userSlice.actions;
+export const { finalScore, clearState, stateReset } = userSlice.actions;
 
 export const selectFinalScore = (state: RootState) => state.user.finalScore;
 
