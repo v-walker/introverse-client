@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
@@ -12,7 +13,7 @@ import Marker from '../../features/map/Marker';
 import InfoWindow from '../../features/map/InfoWindow';
 import { useAppSelector } from '../../app/hooks';
 import { selectUserCity, selectUserState } from '../../features/user/userSlice';
-import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery, updateCurrentMapCenter, updateClick, updateSelectedPlace, updatePopTimesData } from '../../features/map/mapSlice';
+import { updateCurrentLocation, selectCurrentLocation, selectCurrentLocationQuery, updateCurrentMapCenter, updateClick, updateSelectedPlace, updatePopTimesData, updateLocationQuery } from '../../features/map/mapSlice';
 
 // Atlanta lat: 33.748995, lng:-84.387982
 
@@ -59,6 +60,11 @@ function MapCardContent(): JSX.Element {
             dispatch(updateCurrentLocation({lat: results.results[0].geometry.location.lat, lng: results.results[0].geometry.location.lng}));
         });
 
+        // run cleanup when component unmounts
+        return () => {
+            dispatch(updateLocationQuery([]));
+        }
+
         }, []);
 
     useEffect(() => {
@@ -93,7 +99,7 @@ function MapCardContent(): JSX.Element {
             })
         }
 
-    }, [selectedPlaceObj])
+    }, [selectedPlaceObj]);
     
     return (
         <div className='map-card'>
@@ -116,7 +122,7 @@ function MapCardContent(): JSX.Element {
                             <br>
                             ${selectedPlaceObj.formatted_address}
                             <br>
-                            <a href="#times_chart">see times recommendations</a>
+                            <a href="#scroll-to-point">see times recommendations</a>
                         <div>`}>
                     </InfoWindow>
 

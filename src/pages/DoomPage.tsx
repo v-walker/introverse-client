@@ -9,7 +9,7 @@ function DoomPage(): JSX.Element {
                     {/* <div>
                         <h1 className='center-align mt-1'>WELCOME TO...</h1>
                     </div> */}
-                    <div style={{ width: "960px", height: "600px" }}>
+                    <div style={{width: "100%"}}>
                         <DosPlayer bundleUrl="DOOM.jsdos" />
                     </div>
                 </div>
@@ -50,6 +50,36 @@ function DoomPage(): JSX.Element {
                     <span className="doomFontLeft">Q</span>
                     <span className="doomFontStd">uick star</span>
                     <span className="doomFontRight">T</span>
+                </div>
+                <div className="center-align">
+                    1. Click the bottom-most button on the 
+                    game's menu bar to fullscreen the app 
+                    (if desired).
+                    <br />
+                    <br />
+                    2. Click the mouse pointer button and 
+                    select the SECOND option. This enables 
+                    mouse-focus and is required for the 
+                    controls to work properly.
+                    <br />
+                    <br />
+                    3. Click the left caret (the little tab) 
+                    to hide the menu bar.
+                    <br />
+                    <br />
+                    4. Click the main window one time and the 
+                    app will capture your mouse.
+                    <br />
+                    <br />
+                    5. Press ESC at anytime to exit fullscreen
+                    and regain control of the mouse.
+                    <br />
+                    <br />
+                    6. Navigate through the game menu using the
+                    arrow keys and Enter.
+                    <br />
+                    <br />
+                    7. Rip and tear, you introvert you...
                 </div>
             </div>
         </main>

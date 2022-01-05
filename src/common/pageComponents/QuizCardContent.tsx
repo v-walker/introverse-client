@@ -1,25 +1,16 @@
 import React, { FormEvent, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
-import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { finalScore, userSignUp, PayloadUserInfo, updateIntrovertRating, selectUserEmail, selectUserCity, selectUserState } from "../../features/user/userSlice"
+import { useAppDispatch } from "../../app/hooks";
+import { finalScore, userSignUp, PayloadUserInfo, updateIntrovertRating } from "../../features/user/userSlice"
 // import { statesArray } from '../utils';
 
 function QuizCardContent(): JSX.Element {
-    const navigate = useNavigate()
     const dispatch = useAppDispatch();
-    // const globalEmail = useAppSelector(selectUserEmail)
-    // const globalCity = useAppSelector(selectUserCity)
-    // const globalState = useAppSelector(selectUserState)
-    // const globalPW = useAppSelector(selectUserPW)
+    const navigate = useNavigate();
     const [counter, setCounter] = useState(0);
     const [localScore, setLocalScore] = useState([] as any);
     const [indivScore, setIndivScore] = useState(0);
     const [totalScore, setTotalScore] = useState(0);
-    // const [email, setEmail] = useState(globalEmail);
-    // const [homeCity, setHomeCity] = useState(globalCity);
-    // const [homeState, setHomeState] = useState(globalState);
-    // const [password, setPassword] = useState(globalPW);
-    // const [isSignIn, setIsSignIn] = useState(false);
 
     // useEffect(() => {
     //     console.log(localScore)
@@ -109,7 +100,6 @@ function QuizCardContent(): JSX.Element {
         setCounter(counter + 1)
     }
 
-
     const handleRegistration = (e: FormEvent) => {
         e.preventDefault();
         dispatch(updateIntrovertRating({introvertRating: totalScore})).then(() => {
@@ -120,7 +110,8 @@ function QuizCardContent(): JSX.Element {
     return (
         <>
             <div className='center-align'>
-                <img src="logo192.png" alt="" />
+                <br />
+                <img src={`img/quiz-${counter + 1}.png`} alt="" />
             </div>
             {counter === 12
             ?
@@ -147,32 +138,6 @@ function QuizCardContent(): JSX.Element {
                             <div className="center-align">
                                 <button className='waves-effect waves-light btn-small' onClick={(e) => handleRegistration(e)}>COMPLETE MY REGISTRATION</button>
                             </div>
-                        {/* <form onSubmit={(e) => handleSignUp(e, {email, homeCity, homeState, password})}>
-                            <div className="input-field">
-                                <input id="email" type="text" className="validate" value={email} onChange={(e) => setEmail(e.target.value)} />
-                                <label htmlFor="email">Email</label>
-                            </div>
-                            <div className='input-field'>
-                                <input id="homeCity" type="text" value={homeCity} onChange={(e) => setHomeCity(e.target.value)} />
-                                <label htmlFor="homeCity">Home City</label>
-                            </div>
-                            <div className='input-field'>
-                                <label htmlFor="homeState" className='select-label'>Select a State</label>
-                                <select id="homeState" className='browser-default' defaultValue={globalState} value={homeState} onChange={(e) => setHomeState(e.target.value)}>
-                                    <option value="" disabled>State</option>
-                                    {statesArray.map((stateString, index) => {
-                                        return <option key={index} value={stateString}>{stateString}</option>
-                                    })}
-                                </select>
-                            </div>
-                            <div className="input-field">
-                                <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                                <label htmlFor="password">Password</label>
-                            </div>
-                            <div className='right-align'>
-                                <button type='submit' className='waves-effect waves-light btn'>My info is correct</button>
-                            </div>
-                        </form> */}
                     </>
                 :
                     <>
@@ -286,7 +251,7 @@ function QuizCardContent(): JSX.Element {
                                                 <h6>"I have 'The Right Stuff'."</h6>
                                                 <br />
                                                 <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerOne}>The best pilot you ever saw? You're lookin' at him.</button><br />
-                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>2</button><br />
+                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>Hey, Ridley, ya got any Beeman's?</button><br />
                                                 <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerThree}>An astronaut named Gus???</button><br />
                                                 <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>I'm more like spam in a can.</button><br />
                                             </>
@@ -303,22 +268,22 @@ function QuizCardContent(): JSX.Element {
                                         }
                                         {counter === 8 &&
                                             <>
-                                                <h6>Placeholder 9</h6>
+                                                <h6>"Sleep is..."</h6>
                                                 <br />
-                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerOne}>1</button><br />
-                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>2</button><br />
-                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerThree}>3</button><br />
-                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>4</button><br />
+                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerOne}>Unimportant.</button><br />
+                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>A luxury.</button><br />
+                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerThree}>Welcomed.</button><br />
+                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>Required.</button><br />
                                             </>
                                         }
                                         {counter === 9 &&
                                             <>
-                                                <h6>Placeholder 10</h6>
+                                                <h6>"My coding bootcamp was amazing!"</h6>
                                                 <br />
-                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerOne}>1</button><br />
-                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>2</button><br />
-                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerThree}>3</button><br />
-                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>4</button><br />
+                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerOne}>What's a bootcamp?</button><br />
+                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerTwo}>I've heard of those.</button><br />
+                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerThree}>I'm starting one soon!</button><br />
+                                                <button className='waves-effect waves-light btn-small' style={{margin: "7px"}} onClick={handleAnswerFour}>It changed my life!</button><br />
                                             </>
                                         }
                                     </div>

@@ -11,25 +11,25 @@ function Footer(): JSX.Element {
                 <div className='col s12 m4 footer-col1'>
                     <div>Navigation Menu</div>
                     <br />
-                    <div>
-                        <Link to="/">
+                    <div className='footer-link-container'>
+                        {/* <Link className='waves-effect waves-yellow' to="/">
                             Home
                         </Link>
-                        <br />
-                        <Link to="/quiz">
+                        <br /> */}
+                        {/* <Link className='waves-effect waves-yellow' to="/quiz">
                             Quiz
                         </Link>
-                        <br />
-                        <Link to="/recommendations">
-                            Recommendations
+                        <br /> */}
+                        <Link className='waves-effect waves-yellow' to="/recommendations">
+                            Your Introverse
                         </Link>
                         <br />
-                        <Link to="/about">
+                        <Link className='waves-effect waves-yellow' to="/about">
                             About
                         </Link>
                         <br />
                         <br />
-                        <a href="#top">Back to Top</a>
+                        <a className='waves-effect waves-yellow' href="#top">Back to Top</a>
                         <br />
                     </div>
                 </div>
@@ -37,10 +37,10 @@ function Footer(): JSX.Element {
                 <div className='col s12 m4 footer-col2'>
                     © Introverse 2021 | All rights reserved
                 </div>
-                <div className='col s12 m4 footer-col3'>
+                <div className='col s12 m4 footer-col3 footer-link-container'>
                     <div>Interested in our Source Code?</div>
                     <br />
-                    <a href="https://github.com/v-walker/introverse-client" target="blank">Github <VscGithub /></a>
+                    <a className='waves-effect waves-yellow' href="https://github.com/v-walker/introverse-client" target="blank">Github <VscGithub /></a>
                 </div>
             </div>
         </footer>

@@ -10,7 +10,7 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks'
 interface MapProps extends google.maps.MapOptions {
     style: {[key: string]: string};
     onClick?: (e: google.maps.MapMouseEvent) => void;
-    onIdle?: (map: google.maps.Map) => void
+    onIdle?: (map: google.maps.Map) => void;
 }
 
 const deepCompareEqualsForMaps = createCustomEqual(

@@ -57,11 +57,11 @@ footer {
 
 /** card component classes */
 .map-card {
-  height: 60vh;
+  height: 80vh;
 }
 
 .locations-list {
-  height: 40vh;
+  height: 34vh;
   overflow-y: scroll;
 }
 
@@ -77,7 +77,7 @@ ul.hide-on-med-and-down.right:last-child {
   }
 }
 
-/** footer responsiveness */
+/** footer responsiveness and styling */
 .footer-col1 {
   display: flex;
   flex-direction: column;
@@ -96,6 +96,14 @@ ul.hide-on-med-and-down.right:last-child {
   align-items: flex-end;
 }
 
+.footer-link-container a {
+  color:#4db6ac;
+}
+
+.footer-link-container a:hover {
+  color: #ffb74d;
+}
+
 @media only screen and (max-width: 601px) {
 
   .footer-col2, .footer-col3 {
@@ -105,6 +113,24 @@ ul.hide-on-med-and-down.right:last-child {
 
 }
 
+
+/** More Link Styling */
+.dev-link-container a {
+  color: #4db6ac;
+}
+
+.dev-link-container a:hover {
+  color: #ffb74d;
+}
+
+.instructions-link {
+  color: #4db6ac;
+  font-weight: bold;
+}
+
+.instructions-link:hover {
+  color: #ffb74d;
+}
 
 /** Home Page Logo Icon Formatting */
 
@@ -161,6 +187,11 @@ ul.hide-on-med-and-down.right:last-child {
   justify-content: center;
 }
 
+.centerVert {
+  display: flex;
+  align-items: center;
+}
+
 /* .centerHorizDoom {
   display: flex;
   justify-content: center;
@@ -173,6 +204,10 @@ ul.hide-on-med-and-down.right:last-child {
 
 /* Icon sizing */
 
+.md-icon {
+  font-size: 6rem;
+}
+
 .lg-icon {
   font-size: 10rem;
 }
@@ -180,6 +215,35 @@ ul.hide-on-med-and-down.right:last-child {
 .xl-icon {
   font-size: 17rem;
 }
+
+/* font-sizing */
+.fs1 {
+  font-size: 1rem;
+}
+
+.fs2 {
+  font-size: 1.5rem;
+}
+
+.fs3 {
+  font-size: 2rem;
+}
+
+.fs4 {
+  font-size: 2.5rem;
+}
+
+.fs5 {
+  font-size: 3rem;
+}
+
+.displayFont {
+  font-size: 1.1rem;
+  /* line-height: 1.5rem; */
+  letter-spacing: 0.05em;
+}
+
+/* fonts */
 
 @font-face{
   font-family: "DoomStd";
@@ -260,4 +324,18 @@ ul.hide-on-med-and-down.right:last-child {
   color: #4db6ac;
   font-size: 50px;
   margin: 0px
+}
+
+@font-face{
+  font-family: "Arista";
+  src: local("Arista"),
+  url("./fonts/Arista2.0.ttf") format("truetype")
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Arista";
+}
+
+.hidden-point {
+  color: #fafafa;
 }
