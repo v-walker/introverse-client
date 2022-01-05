@@ -13,11 +13,11 @@ function DevColumn({imagePath, name, link}: DevColElements): JSX.Element {
             <div className="row mt-5">
                 <div className='col s12 center-align'>
                 {/* image here */}
-                    <img src={imagePath} alt="stick figure with bag over head for anonymity" width={210} />
+                    <a href={link} target="_blank" rel="noreferrer"><img src={imagePath} alt="stick figure with bag over head for anonymity" width={210} /></a>
                 </div>
                 <div className='col s12 center-align'>
                 {/* text here */}
-                <p><a href={link} target="_blank" rel="noreferrer">{name}&nbsp;<GoLinkExternal /></a></p>
+                    <p className='fs2'><a href={link} target="_blank" rel="noreferrer">{name}&nbsp;<GoLinkExternal /></a></p>
                 </div>
             </div>
         </div>
