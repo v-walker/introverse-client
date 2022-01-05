@@ -24,9 +24,9 @@ function Header():JSX.Element {
             <Navbar
                 className='teal lighten-2'
                 alignLinks="right"
-                brand={<Link to="/" className="" id="top">Logo</Link>}
+                brand={<Link to="/" className="mt-2" id="top"><img src="img/header-logo.png" width={80} /></Link>}
                 id="mobile-nav"
-                menuIcon={<GiHamburgerMenu style={{fontSize: "1.5rem"}} />}
+                menuIcon={<GiHamburgerMenu  style={{fontSize: "2rem", margin: "16px"}} />}
                 options={{
                     draggable: true,
                     edge: 'left',
@@ -39,7 +39,7 @@ function Header():JSX.Element {
                             <SideNavItem href="/quiz">Quiz</SideNavItem>
                             <SideNavItem href="/recommendations">Recommendations</SideNavItem>
                             <SideNavItem href="/about">About</SideNavItem>
-                            <button onClick={() => onLogOut()}>Logout</button>
+                            <button style={{width: "100%"}} className="left-align" onClick={() => onLogOut()}><SideNavItem href="/">Logout</SideNavItem></button>
                         </>}
                 >
                 <Link to="/">
@@ -54,7 +54,10 @@ function Header():JSX.Element {
                 <Link to="/about">
                     About
                 </Link>
-                <button onClick={() => onLogOut()}>Logout</button>
+                <Link onClick={() => onLogOut()} to="/">
+                    Logout
+                </Link>
+                
             </Navbar>
         </>
         
