@@ -9,7 +9,7 @@ function DoomPage(): JSX.Element {
                     {/* <div>
                         <h1 className='center-align mt-1'>WELCOME TO...</h1>
                     </div> */}
-                    <div style={{ width: "960px", height: "600px" }}>
+                    <div style={{width: "100%"}}>
                         <DosPlayer bundleUrl="DOOM.jsdos" />
                     </div>
                 </div>
