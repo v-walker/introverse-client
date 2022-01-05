@@ -73,7 +73,7 @@ function App(): JSX.Element {
                   <h3>Fun</h3>
                 </div>
                 <div className='col s12'>
-                  <p>Frankly, you deserve to have it. And we here at the IntroVerse aim to help you find it.</p>
+                  <p>Frankly, you deserve to have it. And we here at the IntroVerse aim to help you find it. Find your comfort zone by registering today!</p>
                 </div>
               </div>
             </div>
