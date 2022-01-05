@@ -20,7 +20,7 @@ function Header():JSX.Element {
     // }, [indivScore])
     
     return (
-        <>
+        <div id='top'>
             <Navbar
                 className='teal lighten-2'
                 alignLinks="right"
@@ -59,7 +59,7 @@ function Header():JSX.Element {
                 </Link>
                 
             </Navbar>
-        </>
+        </div>
         
     )
 }
