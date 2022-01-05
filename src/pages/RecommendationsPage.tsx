@@ -9,6 +9,7 @@ import { MdSearch } from 'react-icons/md';
 import { GiDirectionSigns } from 'react-icons/gi';
 import { FaQuestion } from 'react-icons/fa';
 import { IoRocketSharp } from 'react-icons/io5';
+import { AiOutlinePlusSquare, AiOutlineMinusSquare } from 'react-icons/ai'
 
 /** local components */
 import BasicLargeCard from '../common/pageComponents/BasicLargeCard';
@@ -122,15 +123,15 @@ function RecommendationsPage() {
                             <CollapsibleItem icon={<>&nbsp;<GiDirectionSigns />&nbsp;</>} expanded={false} header="New here or looking for a refresher? Click here to view instructions on how to use this map." node="div">
                                 This page is where you will find the main functionality of this application. 
                                 <br /><br />
-                                <b>To find a location type</b>, select a place type from the drop-down menu under "Select Place Type" on the left-hand side in your browser or directly under your Intro-Safe shield on mobile view. Then press "search". Your map will populate markers for your sign-up location or the last locaiton you searched. 
+                                <b>To find a location type</b>, select a place type from the drop-down menu under "<a href="#select-place-type">Select Place Type</a>" on the left-hand side in your browser or directly under your Intro-Safe shield on mobile view. Then press "search". Your map will populate markers for your sign-up location or the last location you searched. 
                                 <br /><br />
-                                <b>To change your map search area</b>, you can either input a search location under "Change Search Location," then press the "search button." This input takes in a city name or zip code. Alternatively, you can pan to a new location on the map, then click or tap the map before pressing the  "set new map center" button above the map. Your place search will update with the new location selected.
+                                <b>To change your map search area</b>, you can either input a search location under "<a href="#change-search-location">Change Search Location</a>," then press the "search" button. This input takes in a city name or zip code. Alternatively, you can pan to a new location on the map, then click or tap the map before pressing the  "<a href="#set-new-center">set new map center</a>" button above the map. Your place search will update with the new location selected.
                                 <br /><br />
                                 <b>To view details about a selected business or point of interest</b>, click on a map marker to view the title of the business/point of interest and the address. You will also see a link to "see times recommendations." You can either click this link or scroll down on the page to see your times recommendations chart for this location. Various popular times data is available for each day of the week. If there is no data available for this location, you will see "no data" in the chart section. If data is available, but you do not see anything on the chart, that location appears to be closed at that time/day. Try selecting another day of the week. 
                                 <br /><br />
-                                <b>To view more or less of the map</b>, use the "+" and "-" buttons on the bottom right-hand corner of the map to zoom in or out on your centered search area. 
+                                <b>To view more or less of the map</b>, use the <AiOutlinePlusSquare /> and <AiOutlineMinusSquare /> buttons on the bottom right-hand corner of the map to zoom in or out on your centered search area. 
                                 <br /><br />
-                                <b>What if I don't see any markers on the map?</b>, try zooming out. Your search type may be further away from your centered location than the map default zoom ratio. You can also try panning around your centered location. If there are no locations available in the "Map Locations List," we were unable to find any locations matching your search type for your selected map area.
+                                <b>What if I don't see any markers on the map?</b>, try zooming out. Your search type may be further away from your centered location than the map default zoom ratio. You can also try panning around your centered location. If there are no locations available in the "<a href="#locations-list">Map Locations List</a>," we were unable to find any locations matching your search type for your selected map area.
 
                             </CollapsibleItem>
                             <CollapsibleItem icon={<>&nbsp;<FaQuestion />&nbsp;</>} expanded={false} header="What does my introvert rating mean and how do I use it?" node="div">
@@ -155,7 +156,7 @@ function RecommendationsPage() {
                         </div>
 
                         {/* Places query form */}
-                        <h6>Select Place Type</h6>
+                        <h6 id="select-place-type">Select Place Type</h6>
                         <form onSubmit={(e) => handlePlaceTypeSubmit(e)}>
                             <div className='row'>
                                 {/* <label htmlFor="placeTypeSearch">Select a Place Type</label> */}
@@ -175,7 +176,7 @@ function RecommendationsPage() {
                         </form>
 
                         {/* Location change form */}
-                        <h6>Change Search Location</h6>
+                        <h6 id="change-search-location">Change Search Location</h6>
                         <form onSubmit={(e) => handleCitySearchSubmit(e)}>
                             <div className='row'>
                                 <div className='input-field col s12'>
@@ -189,14 +190,16 @@ function RecommendationsPage() {
 
                             </div>
                         </form>
-
-                        <BasicLargeCard cardContent={<LocationsListContent />} />
+                        
+                        <div id="locations-list">
+                            <BasicLargeCard cardContent={<LocationsListContent />} />
+                        </div>
                     </aside>
 
 
                     {/* map section */}
                     <div className='center-align'>
-                        <button className="mt-5 btn waves-effect waves-light" onClick={() => handleRecenterButton()}>set new map center</button>
+                        <button id="set-new-center" className="mt-5 btn waves-effect waves-light" onClick={() => handleRecenterButton()}>set new map center</button>
                     </div>
 
                     <div className='col s12 m9'>
