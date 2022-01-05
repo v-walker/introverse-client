@@ -92,7 +92,10 @@ export const updateIntrovertRating:AsyncThunk<any,any,{}> = createAsyncThunk(
 async (formData, thunkAPI) => {
         console.log(formData)
         try {
-            const response = await axios.put("/introvertrating", formData)
+            const response = await axios.put("/introvertrating", formData, {
+                headers: {
+                    'authorization': localStorage.token
+                }})
         if (response.status === 200) {
             localStorage.setItem('token', response.data.token);
             return response.data
