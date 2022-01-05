@@ -6,7 +6,8 @@ import { Collapsible, CollapsibleItem } from 'react-materialize';
 /** icons */
 import { MdSearch } from 'react-icons/md';
 import { GiDirectionSigns } from 'react-icons/gi';
-import { FaQuestion } from 'react-icons/fa'
+import { FaQuestion } from 'react-icons/fa';
+import { IoRocketSharp } from 'react-icons/io5';
 
 /** local components */
 import BasicLargeCard from '../common/pageComponents/BasicLargeCard';
@@ -108,7 +109,7 @@ function RecommendationsPage() {
                 <div className='row m-below-nav'>
 
                     <div className='col s12 center-align'>
-                        <h1>Your Interactive Intro-Rating Map</h1>
+                        <h1>Your Introverse</h1>
                         <hr />
                     </div>
 
@@ -118,6 +119,7 @@ function RecommendationsPage() {
 
                             <CollapsibleItem icon={<>&nbsp;<GiDirectionSigns />&nbsp;</>} expanded={false} header="New here or looking for a refresher? Click here to view instructions on how to use this map." node="div">Instructions here</CollapsibleItem>
                             <CollapsibleItem icon={<>&nbsp;<FaQuestion />&nbsp;</>} expanded={false} header="What does my introvert rating mean and how do I use it?" node="div">Instructions here</CollapsibleItem>
+                            <CollapsibleItem icon={<>&nbsp;<IoRocketSharp />&nbsp;</>} expanded={false} header="What if I would like to visit Mars?" node="div">Astronaut Mark Watney asks for your patience. This feature is not yet available.</CollapsibleItem>
 
                         </Collapsible>
 
@@ -144,6 +146,7 @@ function RecommendationsPage() {
                                     {placeTypesArray.map((placeTypeObj, index) => {
                                         return <option key={index} value={placeTypeObj.value}>{placeTypeObj.displayName}</option>
                                     })}
+                                    <option value="" disabled>Mars</option>
                                 </select>
                                 <br />
                                 <div className='right-align col s12'>
