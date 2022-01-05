@@ -1,7 +1,7 @@
 import React, { FormEvent, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
-import { finalScore, userSignUp, PayloadUserInfo, updateIntrovertRating, selectUserEmail, selectUserCity, selectUserState, selectUserPW } from "../../features/user/userSlice"
+import { finalScore, userSignUp, PayloadUserInfo, updateIntrovertRating, selectUserEmail, selectUserCity, selectUserState } from "../../features/user/userSlice"
 // import { statesArray } from '../utils';
 
 function QuizCardContent(): JSX.Element {

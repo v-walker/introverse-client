@@ -27,21 +27,8 @@ const initialState: MapState = {
     click: {lat: 0, lng: 0},
     placeSearchType: "",
     selectedPlace: null,
-    // status: 'idle',
     popTimesData: null
 }
-
-
-// export const setPopTimesData = createAsyncThunk(
-//     'Map/setPopTimesData',
-//     async (placeID: string) => {
-//         const response = await axios.get(`https://introverse-crawler.herokuapp.com/get-by-id/?place_id=${placeID}`)
-
-//         console.log(response.data)
-
-//         return response.data
-//     }
-// );
 
 export const mapSlice = createSlice({
     name: 'Map',
@@ -65,24 +52,13 @@ export const mapSlice = createSlice({
         updatePlaceSearchType: (state, action:PayloadAction<string>) => {
             state.placeSearchType = action.payload
         },
-        updateSelectedPlace: (state, action:PayloadAction<google.maps.places.PlaceResult>) => {
+        updateSelectedPlace: (state, action:PayloadAction<google.maps.places.PlaceResult | null>) => {
             state.selectedPlace = action.payload
         },
         updatePopTimesData: (state, action:PayloadAction<any>) => {
             state.popTimesData = action.payload
         }
     },
-
-    // extraReducers: (builder) => {
-    //     builder
-    //         .addCase(setPopTimesData.pending, (state) => {
-    //             state.status = "loading";
-    //         })
-    //         .addCase(setPopTimesData.fulfilled, (state, action) => {
-    //             state.status = 'idle';
-    //             state.popTimesData += action.payload
-    //         });
-    // },
 });
 
 export const { updateCurrentLocation, searchCity, updateLocationQuery, updateCurrentMapCenter, updateClick, updatePlaceSearchType, updateSelectedPlace, updatePopTimesData } = mapSlice.actions;
@@ -98,6 +74,8 @@ export const selectCurrentMapCenter = (state: RootState) => state.map.mapCenter;
 export const selectRecentClick = (state: RootState) => state.map.click;
 
 export const selectPlaceSearchType = (state: RootState) => state.map.placeSearchType;
+
+export const selectSelectedPlace = (state: RootState) => state.map.selectedPlace;
 
 export const selectPopTimesData = (state: RootState) => state.map.popTimesData;
 
