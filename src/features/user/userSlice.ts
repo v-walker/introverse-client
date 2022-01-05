@@ -6,30 +6,28 @@ import { RootState } from '../../app/store';
 import axios from 'axios';
 
 export interface UserState {
-    finalScore: number,
-    email: string,
-    username:string,
-    homeCity: string,
-    homeState: string,
-    isSuccess: boolean,
-    isError: boolean,
-    errorMessage:string,
-    introvertRating: number
-    password: string
+    finalScore: number;
+    email: string;
+    username:string;
+    homeCity: string;
+    homeState: string;
+    isSuccess: boolean;
+    isError: boolean;
+    errorMessage:string;
+    introvertRating: number;
 };
 
 export interface PayloadUserInfo {
-    email: string,
-    username:string,
-    password:string
-    homeCity: string,
-    homeState: string,
+    email: string;
+    username:string;
+    password:string;
+    homeCity: string;
+    homeState: string;
     
 }
 export interface PayloadUserLoginInfo {
-    email: string,
-    password:string
-
+    email: string;
+    password:string;
 }
 
 const initialState: UserState = {
@@ -38,7 +36,6 @@ const initialState: UserState = {
     username:"",
     homeCity: "",
     homeState: "",
-    password: "",
     isSuccess: false,
     isError: false,
     errorMessage: "",
@@ -207,13 +204,13 @@ export const { finalScore, clearState } = userSlice.actions;
 
 export const selectFinalScore = (state: RootState) => state.user.finalScore;
 
+export const selectIntrovertRating = (state: RootState) => state.user.introvertRating;
+
 export const selectUserEmail = (state: RootState) => state.user.email;
 
 export const selectUserCity = (state: RootState) => state.user.homeCity;
 
 export const selectUserState = (state: RootState) => state.user.homeState;
-
-export const selectUserPW = (state: RootState) => state.user.password;
 
 export default userSlice.reducer
 
