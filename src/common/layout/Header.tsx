@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Navbar, Icon, SideNavItem } from 'react-materialize';
+import { Navbar, SideNavItem } from 'react-materialize';
 import { useNavigate } from 'react-router-dom';
 
 // icons
