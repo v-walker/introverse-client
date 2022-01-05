@@ -24,7 +24,7 @@ function Header():JSX.Element {
             <Navbar
                 className='teal lighten-2'
                 alignLinks="right"
-                brand={<Link to="/" className="mt-2" id="top"><img src="img/header-logo.png" width={80} /></Link>}
+                brand={<Link to="/recommendations" className="mt-2" id="top"><img src="img/header-logo.png" width={80} /></Link>}
                 id="mobile-nav"
                 menuIcon={<GiHamburgerMenu  style={{fontSize: "2rem", margin: "16px"}} />}
                 options={{
@@ -35,27 +35,27 @@ function Header():JSX.Element {
                     preventScrolling: true
                 }}
                 sidenav={<>
-                            <SideNavItem href="/">Home</SideNavItem>
-                            <SideNavItem href="/quiz">Quiz</SideNavItem>
-                            <SideNavItem href="/recommendations">Recommendations</SideNavItem>
-                            <SideNavItem href="/about">About</SideNavItem>
-                            <button style={{width: "100%"}} className="left-align" onClick={() => onLogOut()}><SideNavItem href="/">Logout</SideNavItem></button>
+                            {/* <SideNavItem href="/">Home</SideNavItem>
+                            <SideNavItem href="/quiz">Quiz</SideNavItem> */}
+                            <SideNavItem href="/recommendations">YOUR INTROVERSE</SideNavItem>
+                            <SideNavItem href="/about">ABOUT</SideNavItem>
+                            <button style={{width: "100%"}} className="left-align" onClick={() => onLogOut()}><SideNavItem href="/">LOGOUT</SideNavItem></button>
                         </>}
                 >
-                <Link to="/">
-                    Home
+                {/* <Link to="/">
+                    <b>HOME</b>
                 </Link>
                 <Link to="/quiz">
-                    Quiz
-                </Link>
+                    <b>OUIZ</b>
+                </Link> */}
                 <Link to="/recommendations">
-                    Recommendations
+                    <b>YOUR INTROVERSE</b>
                 </Link>
                 <Link to="/about">
-                    About
+                    <b>ABOUT</b>
                 </Link>
                 <Link onClick={() => onLogOut()} to="/">
-                    Logout
+                    <b>LOGOUT</b>
                 </Link>
                 
             </Navbar>
