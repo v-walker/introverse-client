@@ -1,6 +1,8 @@
 import React from 'react';
 import BasicLargeCard from '../common/pageComponents/BasicLargeCard';
 import AboutMainCardContent from '../common/pageComponents/AboutMainCardContent';
+import DevColumn from '../common/pageComponents/DevColumn';
+import DevIconCard from '../common/pageComponents/DevIconCard';
 
 function AboutPage(): JSX.Element {
     return (
@@ -14,9 +16,12 @@ function AboutPage(): JSX.Element {
                     <div className='col s12'>
                         <div className='row'>
                             {/* Tech Stack Section */}
-                            <h2 className='center-align'>Technical Stack</h2>
+                            <h2 className='col s12 center-align'>Technical Stack</h2>
                             <hr />
-                            Icons here
+                            {/* Icons here */}
+                            <div className='col s12 row'>
+                                <DevIconCard />
+                            </div>
                         </div>
                     </div>
 
@@ -28,9 +33,10 @@ function AboutPage(): JSX.Element {
                             {/* dev cards here */}
                             <div className='col s12'>
                                 <div className='row'>
-                                    <div>
-                                        
-                                    </div>
+                                    <DevColumn imagePath="../../img/anon.png" name="Andrew Hatch" link="https://github.com/AMHatch"/>
+                                    <DevColumn imagePath="../../img/anon.png" name="Hunter Hutchisson" link="https://github.com/hunterhutchisson"/>
+                                    <DevColumn imagePath="../../img/anon.png" name="Ryan Donald" link="https://github.com/ryanthomasdonald"/>
+                                    <DevColumn imagePath="../../img/anon.png" name="Victoria Walker" link="https://github.com/v-walker"/>
 
                                 </div>
                             </div>
