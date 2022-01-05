@@ -2,7 +2,7 @@ import React from 'react';
 import '../../index.css'
 
 interface LargeCardElements {
-    cardContent: JSX.Element
+    cardContent: JSX.Element;
 }
 
 function BasicLargeCard({cardContent}: LargeCardElements): JSX.Element {

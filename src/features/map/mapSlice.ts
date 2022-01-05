@@ -4,19 +4,19 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 
 export interface LatLng {
-    lat: number,
-    lng: number
+    lat: number;
+    lng: number;
 }
 export interface MapState {
-    currentLocation: LatLng,
-    citySearch: string,
-    locationQuery: object[],
-    mapCenter: LatLng,
-    click: LatLng,
-    placeSearchType: string,
-    selectedPlace: google.maps.places.PlaceResult | null,
+    currentLocation: LatLng;
+    citySearch: string;
+    locationQuery: object[];
+    mapCenter: LatLng;
+    click: LatLng;
+    placeSearchType: string;
+    selectedPlace: google.maps.places.PlaceResult | null;
     // status: 'idle' | 'loading' | 'failed',
-    popTimesData: any
+    popTimesData: any;
 }
 
 const initialState: MapState = {

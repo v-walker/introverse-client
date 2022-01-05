@@ -2,9 +2,9 @@ import React from 'react';
 import { GoLinkExternal } from 'react-icons/go'
 
 interface DevColElements {
-    imagePath: string,
-    name: string,
-    link: string
+    imagePath: string;
+    name: string;
+    link: string;
 }
 
 function DevColumn({imagePath, name, link}: DevColElements): JSX.Element {
