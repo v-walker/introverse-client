@@ -1,4 +1,5 @@
-import React, { useState, FormEvent } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 
 /** icons */
@@ -9,7 +10,7 @@ import BasicLargeCard from '../common/pageComponents/BasicLargeCard';
 import LocationsListContent from '../common/pageComponents/LocationsListContent';
 import MapCardContent from '../common/pageComponents/MapCardContent';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { updateCurrentLocation, searchCity, selectRecentClick, updateCurrentMapCenter, updatePlaceSearchType, selectPlaceSearchType} from '../features/map/mapSlice';
+import { updateCurrentLocation, searchCity, selectRecentClick, updateCurrentMapCenter, updatePlaceSearchType, selectPlaceSearchType, updateSelectedPlace, updatePopTimesData} from '../features/map/mapSlice';
 import TimesTabs from "../features/map/TimesTabs";
 import { getGeoInfo, placeTypesArray } from '../common/utils';
 
@@ -17,11 +18,21 @@ import { getGeoInfo, placeTypesArray } from '../common/utils';
 function RecommendationsPage() {
     const dispatch = useAppDispatch();
     const selectedPlaceSearchType = useAppSelector(selectPlaceSearchType);
-
     const [userCitySearch, setUserCitySearch] = useState("");
     const [placeTypeSearch, setPlaceTypeSearch] = useState(selectedPlaceSearchType || "");
     const recentClick = useAppSelector(selectRecentClick);
     
+
+    useEffect(() => {
+
+    // run cleanup when component unmounts
+    return () => {
+        dispatch(updatePlaceSearchType(""));
+        dispatch(searchCity(""));
+        dispatch(updateSelectedPlace(null));
+        dispatch(updatePopTimesData(null));
+    }
+    }, []);
 
     /**
      * handlePlaceTypeSubmit() handles form submission of place type search, dispatching the seaarch string to the global state, then resetting the form input to an empty string
@@ -82,12 +93,12 @@ function RecommendationsPage() {
         setUserCitySearch("");
     }
 
-
-
     const handleRecenterButton = () => {
-        dispatch(updateCurrentLocation(recentClick))
-        dispatch(updateCurrentMapCenter(recentClick))
+        dispatch(updateCurrentLocation(recentClick));
+        dispatch(updateCurrentMapCenter(recentClick));
     }
+
+
 
     return (
         <>
