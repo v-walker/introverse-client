@@ -123,19 +123,28 @@ function RecommendationsPage() {
                             <CollapsibleItem icon={<>&nbsp;<GiDirectionSigns />&nbsp;</>} expanded={false} header="New here or looking for a refresher? Click here to view instructions on how to use this map." node="div">
                                 This page is where you will find the main functionality of this application. 
                                 <br /><br />
-                                <b>To find a location type</b>, select a place type from the drop-down menu under "<a href="#select-place-type">Select Place Type</a>" on the left-hand side in your browser or directly under your Intro-Safe shield on mobile view. Then press "search". Your map will populate markers for your sign-up location or the last location you searched. 
+                                <b>To find a location type</b>, select a place type from the drop-down menu under "<a className='instructions-link' href="#select-place-type">Select Place Type</a>" on the left-hand side in your browser or directly under your Intro-Safe shield on mobile view. Then press "search". Your map will populate markers for your sign-up location or the last location you searched. 
                                 <br /><br />
-                                <b>To change your map search area</b>, you can either input a search location under "<a href="#change-search-location">Change Search Location</a>," then press the "search" button. This input takes in a city name or zip code. Alternatively, you can pan to a new location on the map, then click or tap the map before pressing the  "<a href="#set-new-center">set new map center</a>" button above the map. Your place search will update with the new location selected.
+                                <b>To change your map search area</b>, you can either input a search location under "<a className='instructions-link' href="#change-search-location">Change Search Location</a>," then press the "search" button. This input takes in a city name or zip code. Alternatively, you can pan to a new location on the map, then click or tap the map before pressing the  "<a className='instructions-link' href="#set-new-center">set new map center</a>" button above the map. Your place search will update with the new location selected.
                                 <br /><br />
                                 <b>To view details about a selected business or point of interest</b>, click on a map marker to view the title of the business/point of interest and the address. You will also see a link to "see times recommendations." You can either click this link or scroll down on the page to see your times recommendations chart for this location. Various popular times data is available for each day of the week. If there is no data available for this location, you will see "no data" in the chart section. If data is available, but you do not see anything on the chart, that location appears to be closed at that time/day. Try selecting another day of the week. 
                                 <br /><br />
                                 <b>To view more or less of the map</b>, use the <AiOutlinePlusSquare /> and <AiOutlineMinusSquare /> buttons on the bottom right-hand corner of the map to zoom in or out on your centered search area. 
                                 <br /><br />
-                                <b>What if I don't see any markers on the map?</b>, try zooming out. Your search type may be further away from your centered location than the map default zoom ratio. You can also try panning around your centered location. If there are no locations available in the "<a href="#locations-list">Map Locations List</a>," we were unable to find any locations matching your search type for your selected map area.
+                                <b>What if I don't see any markers on the map?</b>, try zooming out. Your search type may be further away from your centered location than the map default zoom ratio. You can also try panning around your centered location. If there are no locations available in the "<a className='instructions-link' href="#locations-list">Map Locations List</a>," we were unable to find any locations matching your search type for your selected map area.
 
                             </CollapsibleItem>
                             <CollapsibleItem icon={<>&nbsp;<FaQuestion />&nbsp;</>} expanded={false} header="What does my introvert rating mean and how do I use it?" node="div">
-                                Instructions here
+                                Your IntroSafe™ rating is how introverted we estimate you are based on your IntroSafe quiz responses.
+                                <br />
+                                <br />
+                                <b style={{color: "#4db6ac"}}>Low</b>: We estimate that you are fairly low on the introversion scale. This means that most times on the times recommendations chart will be okay for you. You can visit places at times colored either <b><i style={{color: "#4db6ac"}}>green</i></b>, <b><i style={{color: "#ffa726"}}>yellow</i></b>, or <b><i style={{color: "#ef5350"}}>red</i></b>.
+                                <br />
+                                <br />
+                                <b style={{color: "#ffa726"}}>Medium</b>: We estimate that you are moderately introverted when compared to others. This means that <b><i style={{color: "#4db6ac"}}>green</i></b> or <b><i style={{color: "#ffa726"}}>yellow</i></b> chart times for your chosen place will be best for you. Red times may be moderately uncomfortable.
+                                <br />
+                                <br />
+                                <b style={{color: "#ef5350"}}>High</b>: We estimate that you are highly introverted when compared to others. This means that only <b><i style={{color: "#4db6ac"}}>green</i></b> chart times are recommended for you. Red and yellow times are likely to cause discomfort.
                             </CollapsibleItem>
                             <CollapsibleItem icon={<>&nbsp;<IoRocketSharp />&nbsp;</>} expanded={false} header="What if I would like to visit Mars?" node="div">
                                 Astronaut Mark Watney asks for your patience. This feature is not yet available.

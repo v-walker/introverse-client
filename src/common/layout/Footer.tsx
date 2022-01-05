@@ -12,10 +12,10 @@ function Footer(): JSX.Element {
                     <div>Navigation Menu</div>
                     <br />
                     <div className='footer-link-container'>
-                        <Link className='waves-effect waves-yellow' to="/">
+                        {/* <Link className='waves-effect waves-yellow' to="/">
                             Home
                         </Link>
-                        <br />
+                        <br /> */}
                         {/* <Link className='waves-effect waves-yellow' to="/quiz">
                             Quiz
                         </Link>

@@ -123,6 +123,15 @@ ul.hide-on-med-and-down.right:last-child {
   color: #ffb74d;
 }
 
+.instructions-link {
+  color: #4db6ac;
+  font-weight: bold;
+}
+
+.instructions-link:hover {
+  color: #ffb74d;
+}
+
 /** Home Page Logo Icon Formatting */
 
 .main-icon-container {
