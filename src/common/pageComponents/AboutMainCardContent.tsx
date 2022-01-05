@@ -3,7 +3,7 @@ import React from 'react';
 function AboutMainCardContent(): JSX.Element {
     return (
         <div>
-            <h1 className='center-align'>About The IntroVERSE</h1>
+            <h1 className='center-align responsive-h1'>About The <span className='break-word'>IntroVERSE</span></h1>
             <hr />
             <div className='row'>
                 <div className='col s12 xl8'>

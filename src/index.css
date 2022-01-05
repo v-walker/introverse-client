@@ -339,3 +339,19 @@ h1, h2, h3, h4, h5 {
 .hidden-point {
   color: #fafafa;
 }
+
+.break-word {
+  word-break: break-word;
+}
+
+@media only screen and (max-width: 440px) {
+  .responsive-h1 {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .responsive-h1 {
+    font-size: 2rem;
+  }
+}
