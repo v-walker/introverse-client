@@ -21,7 +21,6 @@ function RecommendationsPage() {
     const [userCitySearch, setUserCitySearch] = useState("");
     const [placeTypeSearch, setPlaceTypeSearch] = useState(selectedPlaceSearchType || "");
     const recentClick = useAppSelector(selectRecentClick);
-    
 
     useEffect(() => {
 
@@ -97,8 +96,6 @@ function RecommendationsPage() {
         dispatch(updateCurrentLocation(recentClick));
         dispatch(updateCurrentMapCenter(recentClick));
     }
-
-
 
     return (
         <>
