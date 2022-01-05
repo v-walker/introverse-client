@@ -68,7 +68,6 @@ export const loginUser:AsyncThunk<any,any,{}> = createAsyncThunk(
 "users/login",
 async (formData, thunkAPI) => {
     try {
-        console.log('formData',formData)
         const response = await axios.post("/login",formData)
         
     console.log('response',response)
