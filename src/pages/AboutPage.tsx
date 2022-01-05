@@ -25,7 +25,7 @@ function AboutPage(): JSX.Element {
                             <h2 className='col s12 center-align'>Technical Stack</h2>
                             <hr />
                             {/* Icons here */}
-                            <div className='col s12 row center-align mt-5'>
+                            <div className='col s12 row mt-5'>
                                 <DevIconCard IconElement={<SiTypescript className='md-icon text-orange' />} techName='TypeScript'/>
                                 <DevIconCard IconElement={<SiNodedotjs className='md-icon text-orange' />} techName='Node.js'/>
                                 <DevIconCard IconElement={<SiReact className='md-icon text-orange' />} techName='React'/>
@@ -38,7 +38,13 @@ function AboutPage(): JSX.Element {
                                 <DevIconCard IconElement={<SiGoogle className='md-icon text-orange' />} techName='Google Cloud APIs'/>
                                 <DevIconCard IconElement={<MdOutlineAreaChart className='md-icon text-orange' />} techName='Chart.js'/>
                                 <DevIconCard IconElement={<SiJsonwebtokens className='md-icon text-orange' />} techName='JSON Web Tokens'/>
-                                <DevIconCard IconElement={<GrDos className='md-icon text-orange' />} techName='JS-DOS'/>
+                                <div className='row center-align'>
+                                    <div className='center-align'>
+                                        <GrDos className='md-icon text-orange' />
+                                        <br />
+                                        <p className='fs2'>JS-DOS</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -51,10 +57,10 @@ function AboutPage(): JSX.Element {
                             {/* dev cards here */}
                             <div className='col s12'>
                                 <div className='row'>
-                                    <DevColumn imagePath="../../img/anon.png" name="Andrew Hatch" link="https://github.com/AMHatch"/>
-                                    <DevColumn imagePath="../../img/anon.png" name="Hunter Hutchisson" link="https://github.com/hunterhutchisson"/>
-                                    <DevColumn imagePath="../../img/anon.png" name="Ryan Donald" link="https://github.com/ryanthomasdonald"/>
-                                    <DevColumn imagePath="../../img/anon.png" name="Victoria Walker" link="https://github.com/v-walker"/>
+                                    <DevColumn imagePath="../../img/bagshot.png" name="Andrew Hatch" link="https://github.com/AMHatch"/>
+                                    <DevColumn imagePath="../../img/bagshot.png" name="Hunter Hutchisson" link="https://github.com/hunterhutchisson"/>
+                                    <DevColumn imagePath="../../img/bagshot.png" name="Ryan Donald" link="https://github.com/ryanthomasdonald"/>
+                                    <DevColumn imagePath="../../img/bagshot.png" name="Victoria Walker" link="https://github.com/v-walker"/>
 
                                 </div>
                             </div>

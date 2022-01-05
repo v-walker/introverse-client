@@ -161,6 +161,11 @@ ul.hide-on-med-and-down.right:last-child {
   justify-content: center;
 }
 
+.centerVert {
+  display: flex;
+  align-items: center;
+}
+
 /* .centerHorizDoom {
   display: flex;
   justify-content: center;
@@ -204,6 +209,12 @@ ul.hide-on-med-and-down.right:last-child {
 
 .fs5 {
   font-size: 3rem;
+}
+
+.displayFont {
+  font-size: 1.1rem;
+  /* line-height: 1.5rem; */
+  letter-spacing: 0.05em;
 }
 
 /* fonts */
@@ -287,4 +298,14 @@ ul.hide-on-med-and-down.right:last-child {
   color: #4db6ac;
   font-size: 50px;
   margin: 0px
+}
+
+@font-face{
+  font-family: "Arista";
+  src: local("Arista"),
+  url("./fonts/Arista2.0.ttf") format("truetype")
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "Arista" 
 }
