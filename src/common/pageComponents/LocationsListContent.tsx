@@ -22,7 +22,7 @@ function LocationsListContent(): JSX.Element {
             <h6>Map Locations List</h6>
             <hr />
             <br />
-
+            {(placesList.length === 0) && <>Please select a place type to view a list of places on the map</>}
             {placesList.map((placeObj: google.maps.places.PlaceResult, index: number) => {
                 return (
                         <p key={index}><b>{index + 1}.</b>&nbsp;{placeObj.name}</p>
