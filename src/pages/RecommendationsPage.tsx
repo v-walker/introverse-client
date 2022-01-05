@@ -171,7 +171,7 @@ function RecommendationsPage() {
                                 {/* <label htmlFor="placeTypeSearch">Select a Place Type</label> */}
                                 <br />
                                 <select required id="placeTypeSearch" className='browser-default' defaultValue={selectedPlaceSearchType || "place"} onChange={(e) => setPlaceTypeSearch(e.target.value)} >
-                                    <option value="place" disabled>place</option>
+                                    <option value="place" disabled>Place</option>
                                     {placeTypesArray.map((placeTypeObj, index) => {
                                         return <option key={index} value={placeTypeObj.value}>{placeTypeObj.displayName}</option>
                                     })}

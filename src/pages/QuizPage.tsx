@@ -7,7 +7,7 @@ function QuizPage() {
         <>
             <main className='container'>
                 <div className="row m-below-nav">
-                    <div className='col s12'>
+                    <div className='col s12 center-align'>
                         <h2>Quiz</h2>
                         <h5>Before we get started, please ponder these sentences.</h5>
                     </div>
