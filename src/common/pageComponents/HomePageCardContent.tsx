@@ -17,7 +17,7 @@ function HomePageCardContent(): JSX.Element {
                 {/* add icon or logo/image here */}
                 <div className='row main-icon-container'>
                     <div className='col s12 mt-5'>
-                        <img src="./img/introVERSE-stacked-yellow.png" width={500} />
+                        <img src="./img/introVERSE-stacked-all-yellow.png" width={500} />
                     </div>
                 </div>
                 <div className="row">

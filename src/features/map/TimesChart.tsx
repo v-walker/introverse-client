@@ -38,7 +38,7 @@ const TimesChart: React.FC<any> = ({ data }) => {
                 options={{
                     // indexAxis: "y",
                     maintainAspectRatio: true,
-                    aspectRatio: 1.6,
+                    aspectRatio: 2,
                     layout: {
                         // padding: 20
                     },
