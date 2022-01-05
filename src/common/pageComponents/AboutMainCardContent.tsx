@@ -17,6 +17,6 @@ function AboutMainCardContent(): JSX.Element {
             </div>
         </div>
     )
-}
+};
 
 export default AboutMainCardContent;

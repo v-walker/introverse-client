@@ -101,7 +101,7 @@ ul.hide-on-med-and-down.right:last-child {
 }
 
 .footer-link-container a:hover {
-  color: #e57373 ;
+  color: #ffb74d;
 }
 
 @media only screen and (max-width: 601px) {
@@ -113,6 +113,15 @@ ul.hide-on-med-and-down.right:last-child {
 
 }
 
+
+/** More Link Styling */
+.dev-link-container a {
+  color: #4db6ac;
+}
+
+.dev-link-container a:hover {
+  color: #ffb74d;
+}
 
 /** Home Page Logo Icon Formatting */
 

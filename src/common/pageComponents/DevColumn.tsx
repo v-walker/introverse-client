@@ -15,9 +15,9 @@ function DevColumn({imagePath, name, link}: DevColElements): JSX.Element {
                 {/* image here */}
                     <a href={link} target="_blank" rel="noreferrer"><img src={imagePath} alt="stick figure with bag over head for anonymity" width={210} /></a>
                 </div>
-                <div className='col s12 center-align'>
+                <div className='col s12 center-align dev-link-container'>
                 {/* text here */}
-                    <p className='fs2'><a href={link} target="_blank" rel="noreferrer">{name}&nbsp;<GoLinkExternal /></a></p>
+                    <p className='fs2 waves-effect waves-yellow'><a href={link} target="_blank" rel="noreferrer">{name}&nbsp;<GoLinkExternal /></a></p>
                 </div>
             </div>
         </div>
