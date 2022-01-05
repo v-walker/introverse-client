@@ -145,7 +145,7 @@ export const userSlice = createSlice({
             return state;
     },
         finalScore: (state, action: PayloadAction<number>) => {
-            state.finalScore = action.payload
+            state.introvertRating = action.payload
         },
     },
     extraReducers: {

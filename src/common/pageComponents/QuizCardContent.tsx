@@ -5,8 +5,8 @@ import { finalScore, userSignUp, PayloadUserInfo, updateIntrovertRating, selectU
 // import { statesArray } from '../utils';
 
 function QuizCardContent(): JSX.Element {
-    const navigate = useNavigate()
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     // const globalEmail = useAppSelector(selectUserEmail)
     // const globalCity = useAppSelector(selectUserCity)
     // const globalState = useAppSelector(selectUserState)
@@ -120,7 +120,8 @@ function QuizCardContent(): JSX.Element {
     return (
         <>
             <div className='center-align'>
-                <img src="logo192.png" alt="" />
+                <br />
+                <img src={`img/quiz-${counter + 1}.png`} alt="" />
             </div>
             {counter === 12
             ?
