@@ -1,9 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
+import { Collapsible, CollapsibleItem } from 'react-materialize';
 
 /** icons */
 import { MdSearch } from 'react-icons/md';
+import { GiDirectionSigns } from 'react-icons/gi';
+import { FaQuestion } from 'react-icons/fa'
 
 /** local components */
 import BasicLargeCard from '../common/pageComponents/BasicLargeCard';
@@ -11,6 +14,7 @@ import LocationsListContent from '../common/pageComponents/LocationsListContent'
 import MapCardContent from '../common/pageComponents/MapCardContent';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { updateCurrentLocation, searchCity, selectRecentClick, updateCurrentMapCenter, updatePlaceSearchType, selectPlaceSearchType, updateSelectedPlace, updatePopTimesData} from '../features/map/mapSlice';
+import { selectIntrovertRating } from '../features/user/userSlice';
 import TimesTabs from "../features/map/TimesTabs";
 import { getGeoInfo, placeTypesArray } from '../common/utils';
 
@@ -18,6 +22,7 @@ import { getGeoInfo, placeTypesArray } from '../common/utils';
 function RecommendationsPage() {
     const dispatch = useAppDispatch();
     const selectedPlaceSearchType = useAppSelector(selectPlaceSearchType);
+    const introvertRating = useAppSelector(selectIntrovertRating);
     const [userCitySearch, setUserCitySearch] = useState("");
     const [placeTypeSearch, setPlaceTypeSearch] = useState(selectedPlaceSearchType || "");
     const recentClick = useAppSelector(selectRecentClick);
@@ -107,8 +112,26 @@ function RecommendationsPage() {
                         <hr />
                     </div>
 
+                    <div className='col s12 center-align'>
+
+                        <Collapsible accordion popout>
+
+                            <CollapsibleItem icon={<>&nbsp;<GiDirectionSigns />&nbsp;</>} expanded={false} header="New here or looking for a refresher? Click here to view instructions on how to use this map." node="div">Instructions here</CollapsibleItem>
+                            <CollapsibleItem icon={<>&nbsp;<FaQuestion />&nbsp;</>} expanded={false} header="What does my introvert rating mean and how do I use it?" node="div">Instructions here</CollapsibleItem>
+
+                        </Collapsible>
+
+                    </div>
+
                     <aside className='col s12 m3 mt-5'>
                         {/* search section */}
+
+                        <div className='center-align'>
+                            {(introvertRating <= 20) && <img width='120px' src='../img/shield-low.png' alt="introvert rating - green shield displaying the text 'low'"/>}
+                            {(introvertRating > 20 && introvertRating <= 30) && <img width='120px' src='../img/shield-medium.png' alt="introvert rating - yellow-orange shield displaying the text 'medium'"/>}
+                            {(introvertRating >= 31) && <img width='120px' src='../img/shield-high.png' alt="introvert rating - red shield displaying the text 'high'"/>}
+
+                        </div>
 
                         {/* Places query form */}
                         <h6>Select Place Type</h6>
@@ -151,7 +174,7 @@ function RecommendationsPage() {
 
                     {/* map section */}
                     <div className='center-align'>
-                        <button className="mt-5" onClick={() => handleRecenterButton()}>set new map center</button>
+                        <button className="mt-5 btn waves-effect waves-light" onClick={() => handleRecenterButton()}>set new map center</button>
                     </div>
 
                     <div className='col s12 m9'>

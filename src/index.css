@@ -57,11 +57,11 @@ footer {
 
 /** card component classes */
 .map-card {
-  height: 60vh;
+  height: 80vh;
 }
 
 .locations-list {
-  height: 40vh;
+  height: 34vh;
   overflow-y: scroll;
 }
 
@@ -307,5 +307,5 @@ ul.hide-on-med-and-down.right:last-child {
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: "Arista" 
+  font-family: "Arista";
 }
