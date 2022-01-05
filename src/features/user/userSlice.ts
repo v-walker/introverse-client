@@ -6,30 +6,28 @@ import { RootState } from '../../app/store';
 import axios from 'axios';
 
 export interface UserState {
-    finalScore: number,
-    email: string,
-    username:string,
-    homeCity: string,
-    homeState: string,
-    isSuccess: boolean,
-    isError: boolean,
-    errorMessage:string,
-    introvertRating: number
-    password: string
+    finalScore: number;
+    email: string;
+    username:string;
+    homeCity: string;
+    homeState: string;
+    isSuccess: boolean;
+    isError: boolean;
+    errorMessage:string;
+    introvertRating: number;
 };
 
 export interface PayloadUserInfo {
-    email: string,
-    username:string,
-    password:string
-    homeCity: string,
-    homeState: string,
+    email: string;
+    username:string;
+    password:string;
+    homeCity: string;
+    homeState: string;
     
 }
 export interface PayloadUserLoginInfo {
-    email: string,
-    password:string
-
+    email: string;
+    password:string;
 }
 
 const initialState: UserState = {
@@ -38,7 +36,6 @@ const initialState: UserState = {
     username:"",
     homeCity: "",
     homeState: "",
-    password: "",
     isSuccess: false,
     isError: false,
     errorMessage: "",
@@ -80,7 +77,7 @@ async (formData, thunkAPI) => {
         localStorage.setItem('token', response.data.token);
         return response.data
     } else {
-        return thunkAPI.rejectWithValue(data);
+        return thunkAPI.rejectWithValue(response.data);
     }
     } catch (e) {
         console.log(e, 'e')
@@ -89,6 +86,27 @@ async (formData, thunkAPI) => {
     }
 }
 );
+
+export const updateIntrovertRating:AsyncThunk<any,any,{}> = createAsyncThunk(
+"users/updateIntrovertRating",
+async (formData, thunkAPI) => {
+        console.log(formData)
+        try {
+            const response = await axios.put("/introvertrating", formData)
+        if (response.status === 200) {
+            localStorage.setItem('token', response.data.token);
+            return response.data
+        } else {
+            return thunkAPI.rejectWithValue(data);
+        }
+        } catch (e) {
+            console.log(e, 'e')
+        console.log('Error', e.response.data);
+        thunkAPI.rejectWithValue(e.response.data);
+        }
+    }
+    );
+
 
 export const fetchUserBytoken = createAsyncThunk(
 'users/fetchUserByToken',
@@ -154,6 +172,20 @@ export const userSlice = createSlice({
         state.isError = true;
         state.errorMessage = payload.message;
         },
+        [updateIntrovertRating.fulfilled]: (state, { payload }) => {
+            console.log('payload',payload)
+        state.email = payload.email;
+        state.username = payload.username;
+        state.homeCity = payload.homeCity
+        state.homeState = payload.homeState
+        state.introvertRating = payload.introvertRating
+        state.isSuccess = true;
+        return state;
+        },
+        [updateIntrovertRating.rejected]: (state, { payload }) => {
+        state.isError = true;
+        state.errorMessage = payload.message;
+        },
         [fetchUserBytoken.fulfilled]: (state, { payload }) => {
         state.isSuccess = true;
         state.email = payload.email;
@@ -172,13 +204,13 @@ export const { finalScore, clearState } = userSlice.actions;
 
 export const selectFinalScore = (state: RootState) => state.user.finalScore;
 
+export const selectIntrovertRating = (state: RootState) => state.user.introvertRating;
+
 export const selectUserEmail = (state: RootState) => state.user.email;
 
 export const selectUserCity = (state: RootState) => state.user.homeCity;
 
 export const selectUserState = (state: RootState) => state.user.homeState;
-
-export const selectUserPW = (state: RootState) => state.user.password;
 
 export default userSlice.reducer
 
