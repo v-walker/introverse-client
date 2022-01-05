@@ -12,7 +12,9 @@ function AboutMainCardContent(): JSX.Element {
                     <p>Need to get groceries, but want to go at the least popular time? We've got your back. How about visiting a dog park? Check out our interactive map to plan your outing with Man's Best Friend (perhaps the only one you need!). Our patented IntroSAFE quiz and ratings help us to make better suggestions for you based on your level of introversion.</p>
                 </div>
                 <div className="col s12 m4">
-                    <div className='mt-5 center-align'>image here</div>
+                    <div className='mt-5 center-align'>
+                        <img src='../../img/fun.png' alt='stick figure with bag over head playing fetch with dog' />
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface FeatureElements {
-    IconElement: JSX.Element,
-    text: string
+    IconElement: JSX.Element;
+    text: string;
 }
 
 function FeatureColumn({IconElement, text}: FeatureElements): JSX.Element {
