@@ -197,7 +197,7 @@ const TimesTabs = () => {
             {realData === null || realData.populartimes === undefined
             ?
             <>
-            <h1>No Data</h1>
+            <h4 className='center-align'>No Data</h4>
             </>
             :
             <>

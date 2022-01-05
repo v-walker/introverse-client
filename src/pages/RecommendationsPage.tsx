@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
@@ -14,7 +15,7 @@ import BasicLargeCard from '../common/pageComponents/BasicLargeCard';
 import LocationsListContent from '../common/pageComponents/LocationsListContent';
 import MapCardContent from '../common/pageComponents/MapCardContent';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { updateCurrentLocation, searchCity, selectRecentClick, updateCurrentMapCenter, updatePlaceSearchType, selectPlaceSearchType, updateSelectedPlace, updatePopTimesData} from '../features/map/mapSlice';
+import { updateCurrentLocation, searchCity, selectRecentClick, updateCurrentMapCenter, updatePlaceSearchType, selectPlaceSearchType, updateSelectedPlace, updatePopTimesData, selectSelectedPlace} from '../features/map/mapSlice';
 import { selectIntrovertRating } from '../features/user/userSlice';
 import TimesTabs from "../features/map/TimesTabs";
 import { getGeoInfo, placeTypesArray } from '../common/utils';
@@ -27,6 +28,7 @@ function RecommendationsPage() {
     const [userCitySearch, setUserCitySearch] = useState("");
     const [placeTypeSearch, setPlaceTypeSearch] = useState(selectedPlaceSearchType || "");
     const recentClick = useAppSelector(selectRecentClick);
+    const selectedPlace = useAppSelector(selectSelectedPlace);
 
     useEffect(() => {
 
@@ -182,12 +184,23 @@ function RecommendationsPage() {
 
                     <div className='col s12 m9'>
                         <BasicLargeCard cardContent={<MapCardContent />} />
+                        <a className='hidden-point' id="scroll-to-point">Hidden anchor point</a>
                     </div>
-                    <div className="row">
-                        <div className="col s12">
-                            <TimesTabs />
+                    
+                    {selectedPlace && <>
+                        
+                        <div className="row">
+                            <div className='col s12 center-align'>
+                                <h2>Popular Times Data for Chosen Location</h2>
+                            </div>
+
+                            <div className="col s12">
+                                <TimesTabs />
+                            </div>
                         </div>
-                    </div>
+
+                    </>}
+
                     <div className="row">
                         <div className="col s12 center-align">
                             <Link to="/itrunsdoom">

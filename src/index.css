@@ -309,3 +309,7 @@ ul.hide-on-med-and-down.right:last-child {
 h1, h2, h3, h4, h5 {
   font-family: "Arista";
 }
+
+.hidden-point {
+  color: #fafafa;
+}

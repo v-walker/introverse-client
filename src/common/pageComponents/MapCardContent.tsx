@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
@@ -121,7 +122,7 @@ function MapCardContent(): JSX.Element {
                             <br>
                             ${selectedPlaceObj.formatted_address}
                             <br>
-                            <a href="#times_chart">see times recommendations</a>
+                            <a href="#scroll-to-point">see times recommendations</a>
                         <div>`}>
                     </InfoWindow>
 
