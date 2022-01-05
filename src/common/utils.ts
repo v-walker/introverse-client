@@ -11,7 +11,6 @@ const placeTypesArray: PlaceTypeObj[] = [
     {displayName: "Airport", value: "airport"},
     {displayName: "Aquarium", value: "aquarium"},
     {displayName: "Art Gallery", value: "art+gallery"},
-    {displayName: "ATM", value: "atm"},
     {displayName: "Bakery", value: "bakery"},
     {displayName: "Bank", value: "bank"},
     {displayName: "Bar", value: "bar"},

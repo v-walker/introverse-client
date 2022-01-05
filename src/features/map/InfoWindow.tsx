@@ -11,6 +11,7 @@ const InfoWindow: React.FC<InfoWindowProps> = ({...options}) => {
         if (!infoWindow) {
             setInfoWindow(new google.maps.InfoWindow());
         };
+
     }, [infoWindow]);
 
     useEffect(() => {
@@ -19,11 +20,7 @@ const InfoWindow: React.FC<InfoWindowProps> = ({...options}) => {
         }
     }, [infoWindow, options])
 
-    return (
-        <>
-
-        </>
-    )
-}
+    return null;
+};
 
 export default InfoWindow;
